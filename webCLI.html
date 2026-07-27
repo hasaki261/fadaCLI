@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://vpaianhudtmuyjvckqnl.supabase.co/storage/v1/object/public/assets/webpassets/Guideicons/Elfy.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./webCLI.css" />
+    <title>Fada - CLI</title>
+  </head>
+  <body>
+    <div class="fb">
+            <a href="https://discotecafada.vercel.app" class="sticl">
+                <div class="stic">
+                    <h2 class="fh">Fada</h2>
+                </div>
+            </a>
+            <div class="dropdown">
+                <button class="actbtt">
+                    <img src="https://vpaianhudtmuyjvckqnl.supabase.co/storage/v1/object/public/assets/webpassets/Guideicons/fada.png" id="actcha" />
+                </button>
+            </div>
+            <label class="modest">
+                <input type="checkbox" id="darkmode" />
+                <svg
+                    class="moon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                >
+                    <path
+                        d="M12 2.25a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-1.5 0V3a.75.75 0 0 1 .75-.75ZM7.5 12a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM18.894 6.166a.75.75 0 0 0-1.06-1.06l-1.591 1.59a.75.75 0 1 0 1.06 1.061l1.591-1.59ZM21.75 12a.75.75 0 0 1-.75.75h-2.25a.75.75 0 0 1 0-1.5H21a.75.75 0 0 1 .75.75ZM17.834 18.894a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 1 0-1.061 1.06l1.59 1.591ZM12 18a.75.75 0 0 1 .75.75V21a.75.75 0 0 1-1.5 0v-2.25A.75.75 0 0 1 12 18ZM7.758 17.303a.75.75 0 0 0-1.061-1.06l-1.591 1.59a.75.75 0 0 0 1.06 1.061l1.591-1.59ZM6 12a.75.75 0 0 1-.75.75H3a.75.75 0 0 1 0-1.5h2.25A.75.75 0 0 1 6 12ZM6.697 7.757a.75.75 0 0 0 1.06-1.06l-1.59-1.591a.75.75 0 0 0-1.061 1.06l1.59 1.591Z"
+                    />
+                </svg>
+                <svg
+                    class="sun"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z"
+                        clip-rule="evenodd"
+                    />
+                </svg>
+            </label>
+            <a href="https://discotecafada.vercel.app/pages/has.html" class="htubd" target="_blank">
+                <div class="htub">
+                <svg
+                    class="htubi"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 640 640"
+                >
+                    <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                    <path
+                    d="M160 96C160 78.3 145.7 64 128 64C110.3 64 96 78.3 96 96L96 544C96 561.7 110.3 576 128 576C145.7 576 160 561.7 160 544L160 422.4L222.7 403.6C264.6 391 309.8 394.9 348.9 414.5C391.6 435.9 441.4 438.5 486.1 421.7L523.2 407.8C535.7 403.1 544 391.2 544 377.8L544 130.1C544 107.1 519.8 92.1 499.2 102.4L487.4 108.3C442.5 130.8 389.6 130.8 344.6 108.3C308.2 90.1 266.3 86.5 227.4 98.2L160 118.4L160 96z"
+                    />
+                </svg>
+                </div>
+            </a>
+    </div>
+    <div class="cliCT">
+        <div class="terminalCT">
+            <div class="decTerminalLineCT" id="decTerminalLineCT">
+                <div class="terminalLineLink"></div>
+                <div class="terminalLineDec">
+                    <div class="terminalPathDec"><b>guest</b></div>
+                </div>
+                <div class="terminalInputCT">
+                    <span class="terminalInputPlaceHolder">Please Input your UID:</span>
+                    <input type="text" class="terminalInput" id="terminalInput" maxlength="10" inputmode="numeric" pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+                </div>
+            </div>
+        </div>
+        <div class="terminalScreenCT">
+            <div class="terminalTopScreen">
+            </div>
+            <div class="terminalBottomScreen"></div>
+        </div>
+    </div>
+    <script type="module" src="./webCLI.js"></script>
+  </body>
+</html>

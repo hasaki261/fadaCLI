@@ -1,0 +1,651 @@
+#root {
+    display: flex;
+    height: 100vh;
+}
+
+/* ==================== VARIÁVEIS DE COR ==================== */
+:root {
+    --bg-image: url("./bg.webp");
+    /* Modo Escuro */
+    --bg-dark: oklch(0.1 0.04 256);
+    --bg: oklch(0.15 0.04 256);
+    --bg-light: oklch(0.2 0.04 256);
+    --bg-light-e: oklch(0.22 0.04 256);
+    --text: oklch(0.92 0.04 256);
+    /* Menos cansativo para os olhos */
+    --text-muted: oklch(0.65 0.04 256);
+    /* Melhor contraste intermediário */
+    --highlight: oklch(0.5 0.08 256);
+    --border: oklch(0.35 0.04 256);
+    /* Mais visível */
+    --border-muted: oklch(0.25 0.03 256);
+    /* Mais sutil */
+    --primary: oklch(0.7 0.12 256);
+    /* Mais vibrante */
+    --secondary: oklch(0.7 0.12 76);
+    --danger: oklch(0.65 0.15 30);
+    /* Mais saturado */
+    --warning: oklch(0.7 0.12 100);
+    --success: oklch(0.65 0.12 160);
+    --info: oklch(0.7 0.12 260);
+    --shadow-color: transparent;
+    --gradient-good: linear-gradient(135deg,
+            oklch(0.65 0.12 160) 0%,
+            oklch(0.75 0.10 150) 100%);
+    --gradient-weak: linear-gradient(135deg,
+            oklch(0.65 0.15 30) 0%,
+            oklch(0.75 0.12 20) 100%);
+    --absolute-bg-dark: oklch(0.10 0.02 280);
+    --absolute-bg: oklch(0.14 0.02 280);
+    --absolute-bg-light: oklch(0.18 0.02 280);
+    --absolute-bg-light-e: oklch(0.20 0.02 280);
+    --absolute-text: oklch(0.75 0.15 280);
+    /* Roxo claro vibrante */
+    --absolute-text-muted: oklch(0.60 0.10 280);
+    /* Roxo médio */
+    --absolute-highlight: oklch(0.50 0.15 280);
+    --absolute-border: oklch(0.45 0.15 280);
+    /* Roxo para bordas */
+    --absolute-border-muted: oklch(0.30 0.08 280);
+    /* Roxo escuro */
+    --absolute-primary: oklch(0.65 0.20 280);
+    /* Roxo brilhante primário */
+    --absolute-secondary: oklch(0.70 0.18 290);
+    /* Roxo-azulado claro */
+    --absolute-shadow-color: oklch(0.25 0.10 280);
+
+    /* Gradientes especiais para ABSOLUTE Dark */
+    --absolute-gradient-primary: linear-gradient(135deg,
+            oklch(0.65 0.20 280) 0%,
+            oklch(0.60 0.22 290) 50%,
+            oklch(0.55 0.20 270) 100%);
+    --absolute-gradient-accent: linear-gradient(135deg,
+            oklch(0.50 0.18 280) 0%,
+            oklch(0.60 0.15 290) 100%);
+    --peak-bg-dark: oklch(0.10 0.02 200);
+    --peak-bg: oklch(0.14 0.02 200);
+    --peak-bg-light: oklch(0.18 0.02 200);
+    --peak-bg-light-e: oklch(0.20 0.02 200);
+    --peak-text: oklch(0.75 0.16 200);
+    /* Cyan claro vibrante */
+    --peak-text-muted: oklch(0.60 0.12 200);
+    /* Cyan médio */
+    --peak-highlight: oklch(0.50 0.15 200);
+    --peak-border: oklch(0.50 0.16 200);
+    /* Cyan para bordas */
+    --peak-border-muted: oklch(0.35 0.10 200);
+    /* Cyan escuro */
+    --peak-primary: oklch(0.65 0.20 200);
+    /* Cyan brilhante primário */
+    --peak-secondary: oklch(0.70 0.18 190);
+    /* Azul-cyan claro */
+    --peak-shadow-color: oklch(0.25 0.12 200);
+
+    /* Gradientes especiais para PEAK Dark */
+    --peak-gradient-primary: linear-gradient(135deg,
+            oklch(0.65 0.20 200) 0%,
+            oklch(0.60 0.22 190) 50%,
+            oklch(0.70 0.18 210) 100%);
+    --peak-gradient-accent: linear-gradient(135deg,
+            oklch(0.55 0.18 200) 0%,
+            oklch(0.65 0.15 190) 100%);
+    /* Duração da transição de tema */
+    --theme-transition-duration: 0.4s;
+    --randomdeg: 2deg;
+    --text-name: oklch(0.2 0.04 256);
+    --bgimage-userinfoct: url("https://vpaianhudtmuyjvckqnl.supabase.co/storage/v1/object/public/assets/webpassets/ZZZICONS/AutoNC.webp");
+    --shadow-color: oklch(0.85 0.03 256);
+}
+
+body.light {
+    /* Modo Claro - usando OKLCH (mais moderno) */
+    --bg-dark: oklch(0.92 0.04 256);
+    --bg: oklch(0.96 0.04 256);
+    --bg-light: oklch(1 0.04 256);
+    --bg-light-e: oklch(0.93 0.04 256);
+    --text: oklch(0.25 0.05 256);
+    /* Melhor contraste, menos saturado */
+    --text-muted: oklch(0.5 0.04 256);
+    /* Mais legível, menos saturado */
+    --highlight: oklch(1 0.08 256);
+    --border: oklch(0.7 0.04 256);
+    /* Mais suave */
+    --border-muted: oklch(0.85 0.03 256);
+    /* Mais claro e sutil */
+    --primary: oklch(0.45 0.12 256);
+    /* Mais vibrante */
+    --secondary: oklch(0.45 0.12 76);
+    --danger: oklch(0.55 0.15 30);
+    /* Mais saturado */
+    --warning: oklch(0.6 0.12 100);
+    --success: oklch(0.5 0.12 160);
+    --info: oklch(0.5 0.12 260);
+    --gradient-good: linear-gradient(135deg,
+            oklch(0.5 0.12 160) 0%,
+            oklch(0.6 0.10 150) 100%);
+    --gradient-weak: linear-gradient(135deg,
+            oklch(0.55 0.15 30) 0%,
+            oklch(0.65 0.12 20) 100%);
+    --absolute-bg-dark: oklch(0.90 0.02 280);
+    --absolute-bg: oklch(0.94 0.02 280);
+    --absolute-bg-light: oklch(0.97 0.02 280);
+    --absolute-bg-light-e: oklch(0.92 0.02 280);
+    --absolute-text: oklch(0.35 0.15 280);
+    /* Roxo escuro vibrante */
+    --absolute-text-muted: oklch(0.50 0.08 280);
+    /* Roxo médio */
+    --absolute-highlight: oklch(0.98 0.03 280);
+    --absolute-border: oklch(0.60 0.12 280);
+    /* Roxo para bordas */
+    --absolute-border-muted: oklch(0.75 0.06 280);
+    /* Roxo claro */
+    --absolute-primary: oklch(0.50 0.18 280);
+    /* Roxo vibrante primário */
+    --absolute-secondary: oklch(0.55 0.15 290);
+    /* Roxo-azulado */
+    --absolute-shadow-color: oklch(0.70 0.08 280);
+
+    /* Gradientes especiais para ABSOLUTE */
+    --absolute-gradient-primary: linear-gradient(135deg,
+            oklch(0.50 0.18 280) 0%,
+            oklch(0.45 0.20 290) 50%,
+            oklch(0.40 0.18 270) 100%);
+    --absolute-gradient-accent: linear-gradient(135deg,
+            oklch(0.60 0.15 280) 0%,
+            oklch(0.70 0.12 290) 100%);
+    --peak-bg-dark: oklch(0.90 0.02 200);
+    --peak-bg: oklch(0.94 0.02 200);
+    --peak-bg-light: oklch(0.97 0.02 200);
+    --peak-bg-light-e: oklch(0.92 0.02 200);
+    --peak-text: oklch(0.30 0.15 200);
+    /* Cyan escuro vibrante */
+    --peak-text-muted: oklch(0.45 0.10 200);
+    /* Cyan médio */
+    --peak-highlight: oklch(0.98 0.03 200);
+    --peak-border: oklch(0.55 0.15 200);
+    /* Cyan para bordas */
+    --peak-border-muted: oklch(0.75 0.08 200);
+    /* Cyan claro */
+    --peak-primary: oklch(0.50 0.18 200);
+    /* Cyan vibrante primário */
+    --peak-secondary: oklch(0.55 0.15 190);
+    /* Azul-cyan */
+    --peak-shadow-color: oklch(0.70 0.08 200);
+
+    /* Gradientes especiais para PEAK */
+    --peak-gradient-primary: linear-gradient(135deg,
+            oklch(0.55 0.18 200) 0%,
+            oklch(0.60 0.16 190) 50%,
+            oklch(0.65 0.14 210) 100%);
+    --peak-gradient-accent: linear-gradient(135deg,
+            oklch(0.60 0.15 200) 0%,
+            oklch(0.70 0.12 190) 100%);
+}
+
+/* ==================== RESET E FONTES ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition:
+        background-color var(--theme-transition-duration),
+        color var(--theme-transition-duration),
+        border-color var(--theme-transition-duration);
+}
+
+::selection {
+    background-color: var(--primary);
+    transition: background-color var(--theme-transition-duration) linear;
+}
+
+@font-face {
+    font-family: "has";
+    src: url("./fonts/Main.woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "has2";
+    src: url("./fonts/ZZZ.woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "has3";
+    src: url("./fonts/Number.woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "terminalHas";
+    src: url("./fonts/DepartureMono-Regular.woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ==================== BODY E BACKGROUNDS ==================== */
+html {
+    min-height: 100vh;
+}
+
+body {
+    font-family: "has", Arial, Helvetica, sans-serif;
+    background-color: var(--bg);
+    min-height: 100vh;
+    position: relative;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    transition:
+        background-color var(--theme-transition-duration) linear,
+        opacity 0.3s ease,
+        filter 0.3s ease;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: var(--bg-image);
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    opacity: 0.5;
+    z-index: -1;
+    pointer-events: none;
+    min-height: 100%;
+    transition:
+        opacity 0.6s ease,
+        background-image 0.6s ease;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: var(--bg-image);
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+    min-height: 100%;
+    transition:
+        opacity 0.6s ease,
+        background-image 0.6s ease;
+}
+
+body.light::before {
+    opacity: 0;
+}
+
+body.light::after {
+    opacity: 0.3;
+}
+
+.fb {
+    display: flex;
+    position: sticky;
+    top: 0;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-light);
+    padding: 0;
+    gap: 5px;
+    box-shadow: 0 2px 6px var(--bg-dark);
+    opacity: 0.95;
+    z-index: 100;
+    transition:
+        background-color var(--theme-transition-duration) linear,
+        color var(--theme-transition-duration) linear,
+        box-shadow var(--theme-transition-duration) linear;
+}
+
+.sticl {
+    text-decoration: none;
+}
+
+.stic {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding: 0;
+    margin: 4px 0 0 10px;
+    border-radius: 10px;
+    transition:
+        background-color var(--theme-transition-duration) linear,
+        color var(--theme-transition-duration) linear,
+        border-color var(--theme-transition-duration) linear;
+}
+
+.stic::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--border-muted);
+    border-radius: 10px;
+    transform: translateX(-50%);
+    transition:
+        width 0.3s ease,
+        background-color var(--theme-transition-duration) linear;
+}
+
+.stic:hover::after {
+    width: 100%;
+}
+
+.stic:hover {
+    border-color: var(--bg-light);
+}
+
+.fh {
+    color: var(--primary);
+    font-family: "has2", Arial, Helvetica, sans-serif;
+    user-select: none;
+    transition: color var(--theme-transition-duration) linear;
+}
+
+/* ==================== DROPDOWN DE PERSONAGENS ==================== */
+.dropdown {
+    margin: 0 0 0 10px;
+    display: inline-block;
+    transition:
+        background-color var(--theme-transition-duration) linear,
+        color var(--theme-transition-duration) linear;
+}
+
+.actbtt {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-dark);
+    padding: 2px;
+    border: none;
+    border-radius: 12px;
+    max-width: 89.3px;
+    box-shadow: 0 0 10px var(--bg-dark);
+    transition:
+        background-color var(--theme-transition-duration) linear,
+        color var(--theme-transition-duration) linear,
+        box-shadow var(--theme-transition-duration) linear;
+}
+
+#actcha {
+    width: 20px;
+    height: 20px;
+
+}
+
+#cactcha {
+    width: 20px;
+    height: 20px;
+}
+
+#actchap {
+    margin: 2px 0 0 2px;
+    color: var(--text);
+    max-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 14px;
+    transition:
+        max-width 0.5s steps(200),
+        color var(--theme-transition-duration) linear;
+}
+
+.arri {
+    color: var(--text);
+    width: 20px;
+    height: 20px;
+    transition:
+        transform 0.5s ease,
+        margin-left 0.5s ease,
+        color var(--theme-transition-duration) linear;
+}
+
+/* ==================== TOGGLE DARK MODE ==================== */
+.modest {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+    padding: 1px;
+    border-radius: 999px;
+    overflow: hidden;
+    transition: var(--theme-transition-duration)
+}
+
+.modest:hover {
+    background-color: var(--text);
+    cursor: pointer;
+}
+
+.modest:hover .sun,
+.modest:hover .moon {
+    color: var(--bg-light);
+}
+
+#darkmode {
+    display: none;
+}
+
+.sun,
+.moon {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    color: var(--text);
+    transition:
+        top 0.3s ease,
+        color var(--theme-transition-duration) linear;
+}
+
+.sun {
+    top: 0px;
+}
+
+.moon {
+    top: -30px;
+}
+
+#darkmode:checked~.sun {
+    top: 30px;
+}
+
+#darkmode:checked~.moon {
+    top: 0px;
+}
+/* ================ Link Ajuda ================= */
+.htubd {
+    margin-right: 10px;
+}
+
+.htub {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+    border-radius: 999px;
+    transition: background-color 0.5s ease;
+}
+
+.htubi {
+    fill: var(--text);
+    transition:
+        fill 0.2s ease,
+        fill var(--theme-transition-duration) linear;
+}
+
+.htub:hover {
+    background-color: var(--text);
+}
+
+.htub:hover .htubi {
+    fill: var(--bg-light);
+}
+.cliCT {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    width: 100vw;
+    height: 95vh;
+    padding: 12px;
+    flex: 1;
+    transition: var(--theme-transition-duration);
+}
+.terminalCT {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    width: 75%;
+    height: 100%;
+    padding: 15px;
+    background-color: var(--bg-dark);
+    border-radius: 18px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    opacity: 0.92;
+    gap: 15px;
+    align-items: flex-start;
+    transition: var(--theme-transition-duration);
+}
+.terminalScreenCT {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 100%;
+    gap: 4px;
+    border-radius: 18px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    transition: var(--theme-transition-duration);
+}
+.decTerminalLineCT {
+    display: flex;
+    position: relative;
+    width: 100%;
+    min-height: 70px;
+    height: 70px;
+    padding: 5px;
+    transition: var(--theme-transition-duration);
+}
+.terminalLineDec {
+    display: flex;
+    background-color: var(--info);
+    clip-path: polygon(20px 0, calc(100% - 17px) 0, 100% 50%, calc(100% - 17px) 100%, 0 100%);
+    min-width: 80px;
+    height: 50%;
+    justify-content: center;
+    padding-left: 25px;
+    padding-right: 30px;
+    text-align: center;
+    transition: var(--theme-transition-duration);
+}
+.terminalPathDec {
+    color: var(--text);
+    user-select: none;
+    font-size: 21px;
+    font-family: "terminalHas", Arial, Helvetica, sans-serif;
+    transition: var(--theme-transition-duration);
+}
+.terminalLineLink {
+    display: flex;
+    align-self: center;
+    height: 50%;
+    width: 20px;
+    border: solid 3px var(--text-muted);
+    border-right: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    transition: var(--theme-transition-duration);
+}
+.terminalInputCT {
+    display: flex;
+    position: absolute;
+    top: 55%;
+    left: 35px;
+    width: 95%;
+    transition: var(--theme-transition-duration);
+    gap: 2px;
+}
+.terminalInputPlaceHolder {
+    position: relative;
+    flex-shrink: 0;
+    color: var(--text-muted);
+    font-size: 20px;
+    font-family: "terminalHas", Arial, Helvetica, sans-serif;
+    pointer-events: none;
+    transition: var(--theme-transition-duration);
+}
+.terminalInput {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    border: none;
+    caret-shape: block;
+    color: var(--text);
+    font-size: 20px;
+    font-family: "terminalHas", Arial, Helvetica, sans-serif;
+    caret-color: var(--primary);
+}
+.terminalInput:focus {
+    outline: none;
+}
+.terminalTopScreen {
+    position: relative;
+    overflow-y: scroll;
+    width: 100%;
+    height: 60%;
+    background-color: var(--bg-dark);
+    border-radius: 18px;
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    opacity: 0.92;
+    align-items: flex-start;
+    transition: var(--theme-transition-duration);
+}
+.terminalBottomScreen {
+    position: relative;
+    overflow-y: scroll;
+    container-type: inline-size;
+    width: 100%;
+    height: 40%;
+    background-color: var(--bg-dark);
+    border-radius: 18px;
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    opacity: 0.92;
+    align-items: flex-start;
+    transition: var(--theme-transition-duration);
+}
+.normalTerminalLineCT {
+    color: var(--text);
+    font-family: "terminalHas", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    user-select: none;
+}
