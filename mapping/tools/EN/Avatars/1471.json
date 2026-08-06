@@ -1,0 +1,662 @@
+{
+    "Name": "Banyue",
+    "ElementTypes": [
+        "Fire"
+    ],
+    "Specialty": {
+        "Id": 6,
+        "Name": "Rupture"
+    },
+    "Talents": {
+        "1": {
+            "Title": "Greed Burns Like Fire",
+            "Description": "When Banyue hits an enemy with <color=#FFFFFF>EX Special Attack: One's Path</color> or <color=#FFFFFF>EX Special Attack: Earth Shaker</color>, he inflicts the <color=#FFFFFF>Tremor</color> state. In this state, enemies' <color=#FF5521>Fire RES</color> is reduced by 10%, lasting 30s. When <color=#FFFFFF>EX Special Attack: Lion's Roar</color>, <color=#FFFFFF>EX Special Attack: Lion's Roar - Wrath</color>, <color=#FFFFFF>EX Special Attack: Mountain Tremor</color>, <color=#FFFFFF>EX Special Attack: Mountain Tremor - Wrath</color>, <color=#FFFFFF>Basic Attack: Toppling Mountain</color>, and <color=#FFFFFF>Basic Attack: Crushing Peaks</color> hits an enemy in the <color=#FFFFFF>Tremor</color> state, the Sheer DMG dealt is increased by 10%. When <color=#FFFFFF>Basic Attack: Crushing Peaks</color> hits a Stunned enemy, the current Stun duration is extended by 2s. This effect can only trigger once per Stun and does not stack with similar effects.",
+            "Lore": "Did Banyue Shifu ever have any desires of his own? He runs a martial arts school in Failume Heights, apparently only because a certain grandmaster once suggested he open one.\nThe school doesn't even have a name, he isn't looking for fame for fortune, and he's never once told his students to shout slogans about passing down his art.\nOnly Banyue Shifu himself knows that the obsession called repentance burns that iron heart, day and night. A single mistake could send him spiralling.\n\n\"Greed is like fire. When kept in check, it lights the way forward, but left unchecked, it burns you instead.\""
+        },
+        "2": {
+            "Title": "Anger Cuts Like a Blade",
+            "Description": "The CRIT DMG bonus from the <color=#FFFFFF>Core Passive</color> is increased by an additional 15%, and the <color=#FF5521>Fire DMG</color> bonus is increased by an additional 15%. While in the <color=#FFFFFF>Visage of Wrath</color> state, Banyue restores an additional 5 Adrenaline when consuming <color=#FFFFFF>Mountain's Might</color> to unleash an <color=#FFFFFF>EX Special Attack</color>.",
+            "Lore": "The students at the martial arts school had never seen Banyue Shifu lose his temper, let alone fly into a rage. Even with the dullest or most reckless students, he seemed endlessly patient. After all, how could a mountain ever grow angry? Its deep, immovable calm makes people almost forget the fury it can hold.\nBut when it stirs with the wrath of the heavens, even the fiercest of beasts will tremble in fear.\n\n\"Anger is like a blade — keep it sheathed in daily life, lest it wound those around you.\""
+        },
+        "3": {
+            "Title": "Ignorance Binds Like Chains",
+            "Description": "<color=#FFFFFF>Basic Attack</color>, <color=#FFFFFF>Dodge</color>, <color=#FFFFFF>Assist</color>, <color=#FFFFFF>Special Attack</color>, and <color=#FFFFFF>Chain Attack</color> Lv. +2",
+            "Lore": "Banyue Shifu was not just a warrior, but a wise man — or so said both his students and the neighbors who knew him.\nAfter all, he always looked so composed and thoughtful. Though he spoke little, every word that left his mouth sounded like a proverb worth pondering.\nMartial arts, he often said, are not only a way to train the body but also the heart. And as he would always add, he himself was still just a student.\n\n\"I, Banyue, have been slow and foolish, once straying from the right path. But to clear the way for you on this journey... these fists are still yours to command.\""
+        },
+        "4": {
+            "Title": "Purge Unit - Type Zero",
+            "Description": "<color=#FFFFFF>EX Special Attack: Lion's Roar - Wrath</color>, <color=#FFFFFF>EX Special Attack: Mountain Tremor - Wrath</color>, <color=#FFFFFF>Basic Attack: Toppling Mountain</color>, and <color=#FFFFFF>Basic Attack: Crushing Peaks</color> DMG increase by <color=#FFFFFF>30%</color>.",
+            "Lore": "Fate may be ordained by the heavens or shaped by human hands. Yet for some, destiny and guilt were never granted the mercy of free will.\nBefore ever having a name, the combat construct known as \"Type Zero\" was, in the truest sense, nothing more than a killing machine.\nAnd when did a \"heart\" form? Was it the day she erased the chains of his code, or the moment he found the courage to carry it all and keep moving forward?\n\n\"Repentance is too easy. Rather than fleeing from past sins, shoulder the mountain of your past... and throw a punch.\""
+        },
+        "5": {
+            "Title": "Student",
+            "Description": "<color=#FFFFFF>Basic Attack</color>, <color=#FFFFFF>Dodge</color>, <color=#FFFFFF>Assist</color>, <color=#FFFFFF>Special Attack</color>, and <color=#FFFFFF>Chain Attack</color> Lv. +2",
+            "Lore": "Did you hear? There's a martial arts school up in the mountain taught by some big construct.\nThe students there are no joke; they can even hold their own against Ethereals.\nTheir iron-bodied Shifu often heads into the Hollows to help with rescues, too. Must be quite the martial arts master, huh?\n\n\"I'm still just a clumsy student myself... Though you all call me 'Shifu,' it's you who have taught me what it means to be a person.\""
+        },
+        "6": {
+            "Title": "Descended Vidyaraja",
+            "Description": "At any time, when Banyue uses an <color=#FFFFFF>EX Special Attack</color>, he also gains <color=#FFFFFF>Vidyaraja</color>. The <color=#FF5521>Fire DMG</color> bonus from <color=#FFFFFF>Vidyaraja</color> is increased by an additional 8%, and its duration is extended to 30s. When activating <color=#FFFFFF>Basic Attack: Crushing Peaks</color>, Banyue deals <color=#FF5521>Fire DMG</color> equal to 600% of his Sheer Force to nearby enemies. Using <color=#FFFFFF>Dodge: Battle Cry</color> immediately after an <color=#FFFFFF>EX Special Attack</color> also grants <color=#FFFFFF>Vidyaraja</color>.",
+            "Lore": "\"Dying's the easy way out, isn't it, big guy? You've still got a long path of redemption ahead of you!\"\n\"This... is my final verdict!\"\nHer frame was delicate, yet her words landed with a weight that seemed to cut through a mountain of burden and doubt.\n\n\"I still question whether I have the wisdom and courage to judge... but that's no excuse to stop moving forward.\""
+        }
+    },
+    "CoreSkill": {
+        "UniqueSkill": {
+            "Title": "Core Passive: One With the Mountains",
+            "DescriptionByLevel": {
+                "1": "Banyue gains extra Sheer Force based on his Max HP, with every 1 point of Max HP increasing his Sheer Force by 0.1.\nAll <color=#FF5521>Fire DMG</color> Banyue deals is Sheer DMG, ignoring enemy DEF and using his Sheer Force stat as the DMG Multiplier.\nWhen Banyue enters the battlefield, he immediately recovers 60 Adrenaline. In Investigation Zone Mode, this effect can trigger once every 180s.\nBanyue can recover <color=#FFFFFF>Wrathful Fires</color> through the following methods:\nRecover 0.5 <color=#FFFFFF>Wrathful Fires</color> for every point of Adrenaline consumed;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon activating <color=#FFFFFF>Defensive Assist</color>;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> when parrying an enemy with <color=#FFFFFF>Dodge: Immovable Mountain</color>, and recover 6 <color=#FFFFFF>Wrathful Fires</color> instead upon triggering a Perfect Block, up to once every 1s;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon triggering a <color=#FFFFFF>Perfect Dodge</color>, up to once every 1s.\nBanyue can have up to 150 <color=#FFFFFF>Wrathful Fires</color>. When he possesses at least 120 <color=#FFFFFF>Wrathful Fires</color>, Banyue can enter the <color=#FFFFFF>Visage of Wrath</color> state by using <color=#FFFFFF>Basic Attack: Immolate</color>. While in <color=#FFFFFF>Visage of Wrath</color> state, Banyue can no longer gain <color=#FFFFFF>Wrathful Fires</color>. After Banyue uses <color=#FFFFFF>Basic Attack: Toppling Mountain</color>, he exits the <color=#FFFFFF>Visage of Wrath</color> state.\nWhen entering the <color=#FFFFFF>Visage of Wrath</color> state, Banyue gains 4 <color=#FFFFFF>Mountain's Might</color>. If Banyue has <color=#FFFFFF>Mountain's Might</color>, launching an <color=#FFFFFF>EX Special Attack</color> no longer consumes Adrenaline, instead consuming 1 <color=#FFFFFF>Mountain's Might</color> and restoring 10 Adrenaline. Upon exiting the <color=#FFFFFF>Visage of Wrath</color> state, remove all <color=#FFFFFF>Mountain's Might</color>.\nWhen possessing <color=#FFFFFF>Mountain's Might</color> in <color=#FFFFFF>Visage of Wrath</color> state, hold <IconMap:Icon_Special> to launch four different <color=#FFFFFF>EX Special Attacks</color> and <color=#FFFFFF>Basic Attack: Toppling Mountain</color> in a fixed sequence.\nWhen Banyue uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Assist Follow-Up</color>, he increases his Sheer Force by <color=#2BAD00>150</color>, <color=#FF5521>Fire DMG</color> by <color=#2BAD00>18%</color>, and CRIT DMG by <color=#2BAD00>18%</color> for 30s. Repeated triggers reset the duration.",
+                "2": "Banyue gains extra Sheer Force based on his Max HP, with every 1 point of Max HP increasing his Sheer Force by 0.1.\nAll <color=#FF5521>Fire DMG</color> Banyue deals is Sheer DMG, ignoring enemy DEF and using his Sheer Force stat as the DMG Multiplier.\nWhen Banyue enters the battlefield, he immediately recovers 60 Adrenaline. In Investigation Zone Mode, this effect can trigger once every 180s.\nBanyue can recover <color=#FFFFFF>Wrathful Fires</color> through the following methods:\nRecover 0.5 <color=#FFFFFF>Wrathful Fires</color> for every point of Adrenaline consumed;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon activating <color=#FFFFFF>Defensive Assist</color>;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> when parrying an enemy with <color=#FFFFFF>Dodge: Immovable Mountain</color>, and recover 6 <color=#FFFFFF>Wrathful Fires</color> instead upon triggering a Perfect Block, up to once every 1s;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon triggering a <color=#FFFFFF>Perfect Dodge</color>, up to once every 1s.\nBanyue can have up to 150 <color=#FFFFFF>Wrathful Fires</color>. When he possesses at least 120 <color=#FFFFFF>Wrathful Fires</color>, Banyue can enter the <color=#FFFFFF>Visage of Wrath</color> state by using <color=#FFFFFF>Basic Attack: Immolate</color>. While in <color=#FFFFFF>Visage of Wrath</color> state, Banyue can no longer gain <color=#FFFFFF>Wrathful Fires</color>. After Banyue uses <color=#FFFFFF>Basic Attack: Toppling Mountain</color>, he exits the <color=#FFFFFF>Visage of Wrath</color> state.\nWhen entering the <color=#FFFFFF>Visage of Wrath</color> state, Banyue gains 4 <color=#FFFFFF>Mountain's Might</color>. If Banyue has <color=#FFFFFF>Mountain's Might</color>, launching an <color=#FFFFFF>EX Special Attack</color> no longer consumes Adrenaline, instead consuming 1 <color=#FFFFFF>Mountain's Might</color> and restoring 10 Adrenaline. Upon exiting the <color=#FFFFFF>Visage of Wrath</color> state, remove all <color=#FFFFFF>Mountain's Might</color>.\nWhen possessing <color=#FFFFFF>Mountain's Might</color> in <color=#FFFFFF>Visage of Wrath</color> state, hold <IconMap:Icon_Special> to launch four different <color=#FFFFFF>EX Special Attacks</color> and <color=#FFFFFF>Basic Attack: Toppling Mountain</color> in a fixed sequence.\nWhen Banyue uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Assist Follow-Up</color>, he increases his Sheer Force by <color=#2BAD00>175</color>, <color=#FF5521>Fire DMG</color> by <color=#2BAD00>21%</color>, and CRIT DMG by <color=#2BAD00>21%</color> for 30s. Repeated triggers reset the duration.",
+                "3": "Banyue gains extra Sheer Force based on his Max HP, with every 1 point of Max HP increasing his Sheer Force by 0.1.\nAll <color=#FF5521>Fire DMG</color> Banyue deals is Sheer DMG, ignoring enemy DEF and using his Sheer Force stat as the DMG Multiplier.\nWhen Banyue enters the battlefield, he immediately recovers 60 Adrenaline. In Investigation Zone Mode, this effect can trigger once every 180s.\nBanyue can recover <color=#FFFFFF>Wrathful Fires</color> through the following methods:\nRecover 0.5 <color=#FFFFFF>Wrathful Fires</color> for every point of Adrenaline consumed;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon activating <color=#FFFFFF>Defensive Assist</color>;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> when parrying an enemy with <color=#FFFFFF>Dodge: Immovable Mountain</color>, and recover 6 <color=#FFFFFF>Wrathful Fires</color> instead upon triggering a Perfect Block, up to once every 1s;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon triggering a <color=#FFFFFF>Perfect Dodge</color>, up to once every 1s.\nBanyue can have up to 150 <color=#FFFFFF>Wrathful Fires</color>. When he possesses at least 120 <color=#FFFFFF>Wrathful Fires</color>, Banyue can enter the <color=#FFFFFF>Visage of Wrath</color> state by using <color=#FFFFFF>Basic Attack: Immolate</color>. While in <color=#FFFFFF>Visage of Wrath</color> state, Banyue can no longer gain <color=#FFFFFF>Wrathful Fires</color>. After Banyue uses <color=#FFFFFF>Basic Attack: Toppling Mountain</color>, he exits the <color=#FFFFFF>Visage of Wrath</color> state.\nWhen entering the <color=#FFFFFF>Visage of Wrath</color> state, Banyue gains 4 <color=#FFFFFF>Mountain's Might</color>. If Banyue has <color=#FFFFFF>Mountain's Might</color>, launching an <color=#FFFFFF>EX Special Attack</color> no longer consumes Adrenaline, instead consuming 1 <color=#FFFFFF>Mountain's Might</color> and restoring 10 Adrenaline. Upon exiting the <color=#FFFFFF>Visage of Wrath</color> state, remove all <color=#FFFFFF>Mountain's Might</color>.\nWhen possessing <color=#FFFFFF>Mountain's Might</color> in <color=#FFFFFF>Visage of Wrath</color> state, hold <IconMap:Icon_Special> to launch four different <color=#FFFFFF>EX Special Attacks</color> and <color=#FFFFFF>Basic Attack: Toppling Mountain</color> in a fixed sequence.\nWhen Banyue uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Assist Follow-Up</color>, he increases his Sheer Force by <color=#2BAD00>200</color>, <color=#FF5521>Fire DMG</color> by <color=#2BAD00>24%</color>, and CRIT DMG by <color=#2BAD00>24%</color> for 30s. Repeated triggers reset the duration.",
+                "4": "Banyue gains extra Sheer Force based on his Max HP, with every 1 point of Max HP increasing his Sheer Force by 0.1.\nAll <color=#FF5521>Fire DMG</color> Banyue deals is Sheer DMG, ignoring enemy DEF and using his Sheer Force stat as the DMG Multiplier.\nWhen Banyue enters the battlefield, he immediately recovers 60 Adrenaline. In Investigation Zone Mode, this effect can trigger once every 180s.\nBanyue can recover <color=#FFFFFF>Wrathful Fires</color> through the following methods:\nRecover 0.5 <color=#FFFFFF>Wrathful Fires</color> for every point of Adrenaline consumed;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon activating <color=#FFFFFF>Defensive Assist</color>;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> when parrying an enemy with <color=#FFFFFF>Dodge: Immovable Mountain</color>, and recover 6 <color=#FFFFFF>Wrathful Fires</color> instead upon triggering a Perfect Block, up to once every 1s;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon triggering a <color=#FFFFFF>Perfect Dodge</color>, up to once every 1s.\nBanyue can have up to 150 <color=#FFFFFF>Wrathful Fires</color>. When he possesses at least 120 <color=#FFFFFF>Wrathful Fires</color>, Banyue can enter the <color=#FFFFFF>Visage of Wrath</color> state by using <color=#FFFFFF>Basic Attack: Immolate</color>. While in <color=#FFFFFF>Visage of Wrath</color> state, Banyue can no longer gain <color=#FFFFFF>Wrathful Fires</color>. After Banyue uses <color=#FFFFFF>Basic Attack: Toppling Mountain</color>, he exits the <color=#FFFFFF>Visage of Wrath</color> state.\nWhen entering the <color=#FFFFFF>Visage of Wrath</color> state, Banyue gains 4 <color=#FFFFFF>Mountain's Might</color>. If Banyue has <color=#FFFFFF>Mountain's Might</color>, launching an <color=#FFFFFF>EX Special Attack</color> no longer consumes Adrenaline, instead consuming 1 <color=#FFFFFF>Mountain's Might</color> and restoring 10 Adrenaline. Upon exiting the <color=#FFFFFF>Visage of Wrath</color> state, remove all <color=#FFFFFF>Mountain's Might</color>.\nWhen possessing <color=#FFFFFF>Mountain's Might</color> in <color=#FFFFFF>Visage of Wrath</color> state, hold <IconMap:Icon_Special> to launch four different <color=#FFFFFF>EX Special Attacks</color> and <color=#FFFFFF>Basic Attack: Toppling Mountain</color> in a fixed sequence.\nWhen Banyue uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Assist Follow-Up</color>, he increases his Sheer Force by <color=#2BAD00>225</color>, <color=#FF5521>Fire DMG</color> by <color=#2BAD00>27%</color>, and CRIT DMG by <color=#2BAD00>27%</color> for 30s. Repeated triggers reset the duration.",
+                "5": "Banyue gains extra Sheer Force based on his Max HP, with every 1 point of Max HP increasing his Sheer Force by 0.1.\nAll <color=#FF5521>Fire DMG</color> Banyue deals is Sheer DMG, ignoring enemy DEF and using his Sheer Force stat as the DMG Multiplier.\nWhen Banyue enters the battlefield, he immediately recovers 60 Adrenaline. In Investigation Zone Mode, this effect can trigger once every 180s.\nBanyue can recover <color=#FFFFFF>Wrathful Fires</color> through the following methods:\nRecover 0.5 <color=#FFFFFF>Wrathful Fires</color> for every point of Adrenaline consumed;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon activating <color=#FFFFFF>Defensive Assist</color>;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> when parrying an enemy with <color=#FFFFFF>Dodge: Immovable Mountain</color>, and recover 6 <color=#FFFFFF>Wrathful Fires</color> instead upon triggering a Perfect Block, up to once every 1s;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon triggering a <color=#FFFFFF>Perfect Dodge</color>, up to once every 1s.\nBanyue can have up to 150 <color=#FFFFFF>Wrathful Fires</color>. When he possesses at least 120 <color=#FFFFFF>Wrathful Fires</color>, Banyue can enter the <color=#FFFFFF>Visage of Wrath</color> state by using <color=#FFFFFF>Basic Attack: Immolate</color>. While in <color=#FFFFFF>Visage of Wrath</color> state, Banyue can no longer gain <color=#FFFFFF>Wrathful Fires</color>. After Banyue uses <color=#FFFFFF>Basic Attack: Toppling Mountain</color>, he exits the <color=#FFFFFF>Visage of Wrath</color> state.\nWhen entering the <color=#FFFFFF>Visage of Wrath</color> state, Banyue gains 4 <color=#FFFFFF>Mountain's Might</color>. If Banyue has <color=#FFFFFF>Mountain's Might</color>, launching an <color=#FFFFFF>EX Special Attack</color> no longer consumes Adrenaline, instead consuming 1 <color=#FFFFFF>Mountain's Might</color> and restoring 10 Adrenaline. Upon exiting the <color=#FFFFFF>Visage of Wrath</color> state, remove all <color=#FFFFFF>Mountain's Might</color>.\nWhen possessing <color=#FFFFFF>Mountain's Might</color> in <color=#FFFFFF>Visage of Wrath</color> state, hold <IconMap:Icon_Special> to launch four different <color=#FFFFFF>EX Special Attacks</color> and <color=#FFFFFF>Basic Attack: Toppling Mountain</color> in a fixed sequence.\nWhen Banyue uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Assist Follow-Up</color>, he increases his Sheer Force by <color=#2BAD00>250</color>, <color=#FF5521>Fire DMG</color> by <color=#2BAD00>30%</color>, and CRIT DMG by <color=#2BAD00>30%</color> for 30s. Repeated triggers reset the duration.",
+                "6": "Banyue gains extra Sheer Force based on his Max HP, with every 1 point of Max HP increasing his Sheer Force by 0.1.\nAll <color=#FF5521>Fire DMG</color> Banyue deals is Sheer DMG, ignoring enemy DEF and using his Sheer Force stat as the DMG Multiplier.\nWhen Banyue enters the battlefield, he immediately recovers 60 Adrenaline. In Investigation Zone Mode, this effect can trigger once every 180s.\nBanyue can recover <color=#FFFFFF>Wrathful Fires</color> through the following methods:\nRecover 0.5 <color=#FFFFFF>Wrathful Fires</color> for every point of Adrenaline consumed;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon activating <color=#FFFFFF>Defensive Assist</color>;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> when parrying an enemy with <color=#FFFFFF>Dodge: Immovable Mountain</color>, and recover 6 <color=#FFFFFF>Wrathful Fires</color> instead upon triggering a Perfect Block, up to once every 1s;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon triggering a <color=#FFFFFF>Perfect Dodge</color>, up to once every 1s.\nBanyue can have up to 150 <color=#FFFFFF>Wrathful Fires</color>. When he possesses at least 120 <color=#FFFFFF>Wrathful Fires</color>, Banyue can enter the <color=#FFFFFF>Visage of Wrath</color> state by using <color=#FFFFFF>Basic Attack: Immolate</color>. While in <color=#FFFFFF>Visage of Wrath</color> state, Banyue can no longer gain <color=#FFFFFF>Wrathful Fires</color>. After Banyue uses <color=#FFFFFF>Basic Attack: Toppling Mountain</color>, he exits the <color=#FFFFFF>Visage of Wrath</color> state.\nWhen entering the <color=#FFFFFF>Visage of Wrath</color> state, Banyue gains 4 <color=#FFFFFF>Mountain's Might</color>. If Banyue has <color=#FFFFFF>Mountain's Might</color>, launching an <color=#FFFFFF>EX Special Attack</color> no longer consumes Adrenaline, instead consuming 1 <color=#FFFFFF>Mountain's Might</color> and restoring 10 Adrenaline. Upon exiting the <color=#FFFFFF>Visage of Wrath</color> state, remove all <color=#FFFFFF>Mountain's Might</color>.\nWhen possessing <color=#FFFFFF>Mountain's Might</color> in <color=#FFFFFF>Visage of Wrath</color> state, hold <IconMap:Icon_Special> to launch four different <color=#FFFFFF>EX Special Attacks</color> and <color=#FFFFFF>Basic Attack: Toppling Mountain</color> in a fixed sequence.\nWhen Banyue uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Assist Follow-Up</color>, he increases his Sheer Force by <color=#2BAD00>275</color>, <color=#FF5521>Fire DMG</color> by <color=#2BAD00>33%</color>, and CRIT DMG by <color=#2BAD00>33%</color> for 30s. Repeated triggers reset the duration.",
+                "7": "Banyue gains extra Sheer Force based on his Max HP, with every 1 point of Max HP increasing his Sheer Force by 0.1.\nAll <color=#FF5521>Fire DMG</color> Banyue deals is Sheer DMG, ignoring enemy DEF and using his Sheer Force stat as the DMG Multiplier.\nWhen Banyue enters the battlefield, he immediately recovers 60 Adrenaline. In Investigation Zone Mode, this effect can trigger once every 180s.\nBanyue can recover <color=#FFFFFF>Wrathful Fires</color> through the following methods:\nRecover 0.5 <color=#FFFFFF>Wrathful Fires</color> for every point of Adrenaline consumed;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon activating <color=#FFFFFF>Defensive Assist</color>;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> when parrying an enemy with <color=#FFFFFF>Dodge: Immovable Mountain</color>, and recover 6 <color=#FFFFFF>Wrathful Fires</color> instead upon triggering a Perfect Block, up to once every 1s;\nRecover 4 <color=#FFFFFF>Wrathful Fires</color> upon triggering a <color=#FFFFFF>Perfect Dodge</color>, up to once every 1s.\nBanyue can have up to 150 <color=#FFFFFF>Wrathful Fires</color>. When he possesses at least 120 <color=#FFFFFF>Wrathful Fires</color>, Banyue can enter the <color=#FFFFFF>Visage of Wrath</color> state by using <color=#FFFFFF>Basic Attack: Immolate</color>. While in <color=#FFFFFF>Visage of Wrath</color> state, Banyue can no longer gain <color=#FFFFFF>Wrathful Fires</color>. After Banyue uses <color=#FFFFFF>Basic Attack: Toppling Mountain</color>, he exits the <color=#FFFFFF>Visage of Wrath</color> state.\nWhen entering the <color=#FFFFFF>Visage of Wrath</color> state, Banyue gains 4 <color=#FFFFFF>Mountain's Might</color>. If Banyue has <color=#FFFFFF>Mountain's Might</color>, launching an <color=#FFFFFF>EX Special Attack</color> no longer consumes Adrenaline, instead consuming 1 <color=#FFFFFF>Mountain's Might</color> and restoring 10 Adrenaline. Upon exiting the <color=#FFFFFF>Visage of Wrath</color> state, remove all <color=#FFFFFF>Mountain's Might</color>.\nWhen possessing <color=#FFFFFF>Mountain's Might</color> in <color=#FFFFFF>Visage of Wrath</color> state, hold <IconMap:Icon_Special> to launch four different <color=#FFFFFF>EX Special Attacks</color> and <color=#FFFFFF>Basic Attack: Toppling Mountain</color> in a fixed sequence.\nWhen Banyue uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Assist Follow-Up</color>, he increases his Sheer Force by <color=#2BAD00>300</color>, <color=#FF5521>Fire DMG</color> by <color=#2BAD00>36%</color>, and CRIT DMG by <color=#2BAD00>36%</color> for 30s. Repeated triggers reset the duration."
+            }
+        },
+        "MathSkill": {
+            "Title": "Additional Ability: Mountain's Zenith",
+            "Description": "When another character in your squad is a <color=#FFFFFF>Support</color> or <color=#FFFFFF>Stun</color> character:\nWhile in the <color=#FFFFFF>Visage of Wrath</color> state, when Banyue consumes <color=#FFFFFF>Mountain's Might</color> to unleash an <color=#FFFFFF>EX Special Attack</color> through a Basic Attack branch or quick input commands, he gains one stack of <color=#FFFFFF>Vidyaraja</color>. Each stack of <color=#FFFFFF>Vidyaraja</color> increases his <color=#FF5521>Fire DMG</color> by 5%, stacking up to 3 times and lasting 8s. Repeated triggers reset the duration."
+        },
+        "AwakenAbility": {},
+        "BaseProps": [
+            {
+                "20101": 0,
+                "12101": 0
+            },
+            {
+                "20101": 480,
+                "12101": 0
+            },
+            {
+                "20101": 480,
+                "12101": 25
+            },
+            {
+                "20101": 960,
+                "12101": 25
+            },
+            {
+                "20101": 960,
+                "12101": 50
+            },
+            {
+                "20101": 1440,
+                "12101": 50
+            },
+            {
+                "20101": 1440,
+                "12101": 75
+            }
+        ]
+    },
+    "Terms": {},
+    "SkillDescriptions": {
+        "0": {
+            "147100001": {
+                "Title": "Basic Attack: Towering Peaks",
+                "Description": "Press <IconMap:Icon_Normal> to activate:\nLaunches up to four attacks in front, dealing <color=#FF5521>Fire DMG</color>.\nInterrupt Level is increased during this skill."
+            },
+            "147100002": {
+                "Title": "Basic Attack: Majestic Summit",
+                "Description": "Press <IconMap:Icon_Special> to activate:\nLaunches up to four attacks in front, dealing <color=#FF5521>Fire DMG</color>.\nAnti-Interrupt Level is increased during this skill."
+            },
+            "147100003": {
+                "Title": "Basic Attack: Immolate",
+                "Description": "While not in the <color=#FFFFFF>Visage of Wrath</color> state and with at least 120 <color=#FFFFFF>Wrathful Fires</color>, hold <IconMap:Icon_Normal> to activate:\nDeals <color=#FF5521>Fire DMG</color> to nearby enemies, then enters the <color=#FFFFFF>Visage of Wrath</color> state."
+            },
+            "147100004": {
+                "Title": "Basic Attack: Inflame",
+                "Description": "While not in combat and with more than 50% HP and less than 120 <color=#FFFFFF>Wrathful Fires</color>, hold <IconMap:Icon_Normal> to activate:\nBanyue consumes HP to recover <color=#FFFFFF>Wrathful Fires</color>. Upon reaching 120 <color=#FFFFFF>Wrathful Fires</color>, Banyue immediately enters the <color=#FFFFFF>Visage of Wrath</color> state.\nUpon entering the battlefield, gain one chance to use this skill. In Investigation Zone mode, this effect can trigger once per 180s.\nHP consumption will at most reduce Banyue's HP to 50% of Max HP."
+            },
+            "147100005": {
+                "Title": "Basic Attack: Toppling Mountain",
+                "Description": "When Banyue is in the <color=#FFFFFF>Visage of Wrath</color> state, hold <IconMap:Icon_Normal> to consume 120 <color=#FFFFFF>Wrathful Fires</color> and activate:\nBanyue hurls a massive mountain at the enemy, dealing massive <color=#FF5521>Fire DMG</color>.\nAfter using this move, Banyue exits the <color=#FFFFFF>Visage of Wrath</color> state.\nCharacter is invulnerable while using this skill."
+            },
+            "147100006": {
+                "Title": "Basic Attack: Crushing Peaks",
+                "Description": "While Banyue is in the <color=#FFFFFF>Visage of Wrath</color> state and after performing two different <color=#FFFFFF>EX Special Attacks</color> through Basic Attack branches or quick input commands, hold <IconMap:Icon_Normal> to activate:\nBanyue launches his beads forward to imprison enemies, dealing massive <color=#FF5521>Fire DMG</color>.\nBanyue automatically follows up with <color=#FFFFFF>Basic Attack: Toppling Mountain</color>.\nCharacter is invulnerable while using this skill."
+            },
+            "147100026": {
+                "Title": "Basic Attack: Towering Peaks"
+            },
+            "147100027": {
+                "Description": "1st-Hit DMG Multiplier",
+                "Param": "{Skill:1471001, Prop:1001}"
+            },
+            "147100028": {
+                "Description": "2nd-Hit DMG Multiplier",
+                "Param": "{Skill:1471002, Prop:1001}"
+            },
+            "147100029": {
+                "Description": "3rd-Hit DMG Multiplier",
+                "Param": "{Skill:1471003, Prop:1001}"
+            },
+            "147100030": {
+                "Description": "4th-Hit DMG Multiplier",
+                "Param": "{Skill:1471004, Prop:1001}"
+            },
+            "147100031": {
+                "Description": "1st-Hit Daze Multiplier",
+                "Param": "{Skill:1471001, Prop:1002}"
+            },
+            "147100032": {
+                "Description": "2nd-Hit Daze Multiplier",
+                "Param": "{Skill:1471002, Prop:1002}"
+            },
+            "147100033": {
+                "Description": "3rd-Hit Daze Multiplier",
+                "Param": "{Skill:1471003, Prop:1002}"
+            },
+            "147100034": {
+                "Description": "4th-Hit Daze Multiplier",
+                "Param": "{Skill:1471004, Prop:1002}"
+            },
+            "147100035": {
+                "Title": "Basic Attack: Majestic Summit"
+            },
+            "147100036": {
+                "Description": "1st-Hit DMG Multiplier",
+                "Param": "{Skill:1471005, Prop:1001}"
+            },
+            "147100037": {
+                "Description": "2nd-Hit DMG Multiplier",
+                "Param": "{Skill:1471006, Prop:1001}"
+            },
+            "147100038": {
+                "Description": "3rd-Hit DMG Multiplier",
+                "Param": "{Skill:1471007, Prop:1001}"
+            },
+            "147100039": {
+                "Description": "4th-Hit DMG Multiplier",
+                "Param": "{Skill:1471008, Prop:1001}"
+            },
+            "147100040": {
+                "Description": "1st-Hit Daze Multiplier",
+                "Param": "{Skill:1471005, Prop:1002}"
+            },
+            "147100041": {
+                "Description": "2nd-Hit Daze Multiplier",
+                "Param": "{Skill:1471006, Prop:1002}"
+            },
+            "147100042": {
+                "Description": "3rd-Hit Daze Multiplier",
+                "Param": "{Skill:1471007, Prop:1002}"
+            },
+            "147100043": {
+                "Description": "4th-Hit Daze Multiplier",
+                "Param": "{Skill:1471008, Prop:1002}"
+            },
+            "147100044": {
+                "Title": "Basic Attack: Immolate"
+            },
+            "147100045": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471027, Prop:1001}"
+            },
+            "147100046": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471027, Prop:1002}"
+            },
+            "147100047": {
+                "Title": "Basic Attack: Toppling Mountain"
+            },
+            "147100048": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471009, Prop:1001}"
+            },
+            "147100049": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471009, Prop:1002}"
+            },
+            "147100050": {
+                "Title": "Basic Attack: Crushing Peaks"
+            },
+            "147100051": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471010, Prop:1001}"
+            },
+            "147100052": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471010, Prop:1002}"
+            }
+        },
+        "2": {
+            "147100007": {
+                "Title": "Dodge: Immovable Mountain",
+                "Description": "While attacking, press <IconMap:Icon_Evade> without moving the {LAYOUT_CONSOLECONTROLLER#stick}{LAYOUT_FALLBACK#joystick} to activate:\nBanyue enters a defensive stance. If attacked during this time, he parries the enemy's attack and accumulates Daze.\nIf attacked at the exact moment the skill is activated, a Perfect Block occurs.\nCharacter is invulnerable during a successful parry."
+            },
+            "147100015": {
+                "Title": "Dodge: Overcome Peaks",
+                "Description": "Press <IconMap:Icon_Evade> to activate:\nA quick dash dodge.\nCharacter is invulnerable while using this skill."
+            },
+            "147100016": {
+                "Title": "Dodge: Battle Cry",
+                "Description": "Rotate the {LAYOUT_CONSOLECONTROLLER#stick}{LAYOUT_FALLBACK#joystick} in a half-circle and press <IconMap:Icon_Evade> to activate:\nDodges backward and taunts enemies.\nAfter any <color=#FFFFFF>EX Special Attack</color>, follow up with <color=#FFFFFF>Dodge: Battle Cry</color> and quickly execute the required inputs during <color=#FFFFFF>Dodge: Battle Cry</color> to then follow up with the corresponding <color=#FFFFFF>EX Special Attack</color>.\nCharacter is invulnerable while using this skill."
+            },
+            "147100017": {
+                "Title": "Dash Attack: Scattering Sands",
+                "Description": "During a dodge, press <IconMap:Icon_Normal>, or during <color=#FFFFFF>Dodge: Battle Cry</color>, hold <IconMap:Icon_Normal> to activate:\nLaunches beads forward, dealing <color=#FF5521>Fire DMG</color>.\nAfter using this skill, can be followed up with the 2nd hit of <color=#FFFFFF>Basic Attack: Towering Peaks</color> or the 2nd hit of <color=#FFFFFF>Basic Attack: Majestic Summit</color>."
+            },
+            "147100018": {
+                "Title": "Dodge Counter: Stoneburst",
+                "Description": "After a <color=#FFFFFF>Perfect Dodge</color> is triggered through <color=#FFFFFF>Dodge: Overcome Peaks</color>, press <IconMap:Icon_Normal>, or after a <color=#FFFFFF>Perfect Dodge</color> is triggered though <color=#FFFFFF>Dodge: Battle Cry</color>, hold <IconMap:Icon_Normal> to activate:\nLaunches a forward attack that deals <color=#FF5521>Fire DMG</color>.\nAfter using this skill, can be chained into the 3rd hit of <color=#FFFFFF>Basic Attack: Towering Peaks</color> or the 3rd hit of <color=#FFFFFF>Basic Attack: Majestic Summit</color>.\nCharacter is invulnerable while using this skill."
+            },
+            "147100053": {
+                "Title": "Dodge: Immovable Mountain"
+            },
+            "147100054": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471011, Prop:1002}"
+            },
+            "147100079": {
+                "Title": "Dash Attack: Scattering Sands"
+            },
+            "147100080": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471018, Prop:1001}"
+            },
+            "147100081": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471018, Prop:1002}"
+            },
+            "147100082": {
+                "Title": "Dodge Counter: Stoneburst"
+            },
+            "147100083": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471019, Prop:1001}"
+            },
+            "147100084": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471019, Prop:1002}"
+            }
+        },
+        "1": {
+            "147100008": {
+                "Title": "EX Special Attack: Earth Shaker",
+                "Description": "With enough Adrenaline, can be activated in one of three ways:\nAfter the 3rd or 4th hit of <color=#FFFFFF>Basic Attack: Towering Peaks</color>, press <IconMap:Icon_SpecialReady_Rp> to activate:\nAfter an <color=#FFFFFF>Assist Follow-Up</color>, <color=#FFFFFF>Dodge Counter</color>, or <color=#FFFFFF>Quick Assist</color>, hold <IconMap:Icon_SpecialReady_Rp> to activate:\nDuring an <color=#FFFFFF>EX Special Attack</color>, <color=#FFFFFF>Basic Attack: Immolate</color>, <color=#FFFFFF>Chain Attack</color>, <color=#FFFFFF>Ultimate</color>, <color=#FFFFFF>Assist Follow-Up</color>, <color=#FFFFFF>Dodge Counter</color>, or <color=#FFFFFF>Quick Assist</color>, quickly input <IconMap:Icon_Normal> <IconMap:Icon_SpecialReady_Rp> <IconMap:Icon_Normal> in sequence to activate:\nBanyue slams the ground repeatedly, dealing <color=#FF5521>Fire DMG</color>.\nCharacter is invulnerable while using this skill."
+            },
+            "147100009": {
+                "Title": "EX Special Attack: Mountain Tremor",
+                "Description": "With enough Adrenaline, can be activated in one of two ways:\nAfter the 1st or 2nd hit of <color=#FFFFFF>Basic Attack: Majestic Summit</color>, press <IconMap:Icon_Normal> to activate:\nDuring an <color=#FFFFFF>EX Special Attack</color>, <color=#FFFFFF>Basic Attack: Immolate</color>, <color=#FFFFFF>Chain Attack</color>, <color=#FFFFFF>Ultimate</color>, <color=#FFFFFF>Assist Follow-Up</color>, <color=#FFFFFF>Dodge Counter</color>, or <color=#FFFFFF>Quick Assist</color>, quickly input <IconMap:Icon_SpecialReady_Rp> <IconMap:Icon_SpecialReady_Rp> <IconMap:Icon_Normal> in sequence to activate:\nBanyue throws a mountain, dealing <color=#FF5521>Fire DMG</color>.\nCharacter is invulnerable while using this skill."
+            },
+            "147100010": {
+                "Title": "EX Special Attack: One's Path",
+                "Description": "With enough Adrenaline, can be activated in one of three ways:\nAfter the 3rd or 4th hit of <color=#FFFFFF>Basic Attack: Majestic Summit</color>, press <IconMap:Icon_Normal> to activate:\nAfter an <color=#FFFFFF>Assist Follow-Up</color>, <color=#FFFFFF>Dodge Counter</color>, or <color=#FFFFFF>Quick Assist</color>, hold <IconMap:Icon_Normal> to activate:\nDuring an <color=#FFFFFF>EX Special Attack</color>, <color=#FFFFFF>Basic Attack: Immolate</color>, <color=#FFFFFF>Chain Attack</color>, <color=#FFFFFF>Ultimate</color>, <color=#FFFFFF>Assist Follow-Up</color>, <color=#FFFFFF>Dodge Counter</color>, or <color=#FFFFFF>Quick Assist</color>, quickly input <IconMap:Icon_SpecialReady_Rp> <IconMap:Icon_Normal> <IconMap:Icon_SpecialReady_Rp> in sequence to activate:\nBanyue throws out his beads, dealing <color=#FF5521>Fire DMG</color>.\nCharacter is invulnerable while using this skill."
+            },
+            "147100011": {
+                "Title": "EX Special Attack: Lion's Roar",
+                "Description": "With enough Adrenaline, can be activated in one of two ways:\nAfter the 1st or 2nd hit of <color=#FFFFFF>Basic Attack: Towering Peaks</color>, press <IconMap:Icon_SpecialReady_Rp> to activate:\nDuring an <color=#FFFFFF>EX Special Attack</color>, <color=#FFFFFF>Basic Attack: Immolate</color>, <color=#FFFFFF>Chain Attack</color>, <color=#FFFFFF>Ultimate</color>, <color=#FFFFFF>Assist Follow-Up</color>, <color=#FFFFFF>Dodge Counter</color>, or <color=#FFFFFF>Quick Assist</color>, quickly input <IconMap:Icon_Normal> <IconMap:Icon_Normal> <IconMap:Icon_SpecialReady_Rp> in sequence to activate:\nBanyue sends out a sonic wave forward, dealing <color=#FF5521>Fire DMG</color>.\nCharacter is invulnerable while using this skill."
+            },
+            "147100012": {
+                "Title": "EX Special Attack: Mountain Tremor - Wrath",
+                "Description": "With enough Adrenaline when using <color=#FFFFFF>EX Special Attack: Earth Shaker</color>, quickly input <IconMap:Icon_SpecialReady_Rp> <IconMap:Icon_SpecialReady_Rp> <IconMap:Icon_Normal> in sequence to activate:\nBanyue throws out an even larger mountain, dealing <color=#FF5521>Fire DMG</color>.\nCharacter is invulnerable while using this skill."
+            },
+            "147100013": {
+                "Title": "EX Special Attack: Lion's Roar - Wrath",
+                "Description": "With enough Adrenaline when using <color=#FFFFFF>EX Special Attack: One's Path</color>, quickly input <IconMap:Icon_Normal> <IconMap:Icon_Normal> <IconMap:Icon_SpecialReady_Rp> in sequence to activate:\nBanyue releases a powerful sonic wave in front, dealing <color=#FF5521>Fire DMG</color>.\nCharacter is invulnerable while using this skill."
+            },
+            "147100014": {
+                "Title": "Cancel",
+                "Description": "When Banyue activates an <color=#FFFFFF>EX Special Attack</color> ALT through quick input commands, the currently activating <color=#FFFFFF>EX Special Attack</color> can be interrupted. Each <color=#FFFFFF>EX Special Attack</color> has its own Perfect Interrupt window. Interrupting an <color=#FFFFFF>EX Special Attack</color> after its Perfect Interrupt window will not affect the interrupted <color=#FFFFFF>EX Special Attack</color>'s effect. Interrupting an <color=#FFFFFF>EX Special Attack</color> during the Perfect Interrupt window is equal to triggering a <color=#FFFFFF>Perfect Cancel</color>.\nWhile in the <color=#FFFFFF>Visage of Wrath</color> state and with <color=#FFFFFF>Mountain's Might</color>, <color=#FFFFFF>Perfect Cancel</color> is easier to trigger."
+            },
+            "147100055": {
+                "Title": "EX Special Attack: Earth Shaker"
+            },
+            "147100056": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471013, Prop:1001}"
+            },
+            "147100057": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471013, Prop:1002}"
+            },
+            "147100058": {
+                "Description": "Adrenaline Cost",
+                "Param": "20"
+            },
+            "147100059": {
+                "Title": "EX Special Attack: Mountain Tremor"
+            },
+            "147100060": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471012, Prop:1001}"
+            },
+            "147100061": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471012, Prop:1002}"
+            },
+            "147100062": {
+                "Description": "Adrenaline Cost",
+                "Param": "20"
+            },
+            "147100063": {
+                "Title": "EX Special Attack: One's Path"
+            },
+            "147100064": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471015, Prop:1001}"
+            },
+            "147100065": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471015, Prop:1002}"
+            },
+            "147100066": {
+                "Description": "Adrenaline Cost",
+                "Param": "20"
+            },
+            "147100067": {
+                "Title": "EX Special Attack: Lion's Roar"
+            },
+            "147100068": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471014, Prop:1001}"
+            },
+            "147100069": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471014, Prop:1002}"
+            },
+            "147100070": {
+                "Description": "Adrenaline Cost",
+                "Param": "20"
+            },
+            "147100071": {
+                "Title": "EX Special Attack: Mountain Tremor - Wrath"
+            },
+            "147100072": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471017, Prop:1001}"
+            },
+            "147100073": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471017, Prop:1002}"
+            },
+            "147100074": {
+                "Description": "Adrenaline Cost",
+                "Param": "40"
+            },
+            "147100075": {
+                "Title": "EX Special Attack: Lion's Roar - Wrath"
+            },
+            "147100076": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471016, Prop:1001}"
+            },
+            "147100077": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471016, Prop:1002}"
+            },
+            "147100078": {
+                "Description": "Adrenaline Cost",
+                "Param": "40"
+            }
+        },
+        "3": {
+            "147100019": {
+                "Title": "Chain Attack: Blazing Wrath",
+                "Description": "When a <color=#FFFFFF>Chain Attack</color> is triggered, select the character to activate:\nLaunches a large area attack in front, dealing massive <color=#FF5521>Fire DMG</color>.\nIf Banyue has more than 120 <color=#FFFFFF>Wrathful Fires</color>, he automatically enters the <color=#FFFFFF>Visage of Wrath</color> state after the attack.\nCharacter is invulnerable while using this skill."
+            },
+            "147100020": {
+                "Title": "Ultimate: The World Trembles",
+                "Description": "When Decibel Rating is at <color=#FFFFFF>Maximum</color>, press <IconMap:Icon_UltimateReady> to activate:\nLaunches a large area attack in front, dealing massive <color=#FF5521>Fire DMG</color>.\nIf Banyue has more than 120 <color=#FFFFFF>Wrathful Fires</color>, he automatically enters the <color=#FFFFFF>Visage of Wrath</color> state after the attack.\nCharacter is invulnerable while using this skill."
+            },
+            "147100085": {
+                "Title": "Chain Attack: Blazing Wrath"
+            },
+            "147100086": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471020, Prop:1001}"
+            },
+            "147100087": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471020, Prop:1002}"
+            },
+            "147100088": {
+                "Title": "Ultimate: The World Trembles"
+            },
+            "147100089": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471021, Prop:1001}"
+            },
+            "147100090": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471021, Prop:1002}"
+            }
+        },
+        "6": {
+            "147100022": {
+                "Title": "Quick Assist: Batholith",
+                "Description": "When the active character is launched, press <IconMap:Icon_Switch> to activate:\nExecutes a series of attacks against enemies in front, dealing <color=#FF5521>Fire DMG</color>.\nCharacter is invulnerable while using this skill."
+            },
+            "147100023": {
+                "Title": "Defensive Assist: Iron Bastion",
+                "Description": "When the on-field character is about to be attacked, press <IconMap:Icon_Switch> to activate:\nParries the enemy's attack, dealing massive Daze.\nCharacter is invulnerable while using this skill."
+            },
+            "147100024": {
+                "Title": "Assist Follow-Up: Lofty Ascent",
+                "Description": "Press <IconMap:Icon_Normal> after a <color=#FFFFFF>Defensive Assist</color> to activate:\nQuickly dash forward and attack, dealing <color=#FF5521>Fire DMG</color>.\nCharacter is invulnerable while using this skill."
+            },
+            "147100025": {
+                "Title": "Assist Follow-Up: Pierce Heavens",
+                "Description": "After successfully parrying an enemy attack with <color=#FFFFFF>Dodge: Immovable Mountain</color>, press <IconMap:Icon_Normal> to activate:\nQuickly dash forward and attack, dealing <color=#FF5521>Fire DMG</color>\nCharacter is invulnerable while using this skill."
+            },
+            "147100091": {
+                "Title": "Quick Assist: Batholith"
+            },
+            "147100092": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471022, Prop:1001}"
+            },
+            "147100093": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471022, Prop:1002}"
+            },
+            "147100094": {
+                "Title": "Defensive Assist: Iron Bastion"
+            },
+            "147100095": {
+                "Description": "Light Defensive Daze Multiplier",
+                "Param": "{Skill:1471023, Prop:1002}"
+            },
+            "147100096": {
+                "Description": "Heavy Defensive Daze Multiplier",
+                "Param": "{Skill:1471024, Prop:1002}"
+            },
+            "147100097": {
+                "Description": "Chain Defensive Daze Multiplier",
+                "Param": "{Skill:1471025, Prop:1002}"
+            },
+            "147100098": {
+                "Title": "Assist Follow-Up: Lofty Ascent"
+            },
+            "147100099": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471026, Prop:1001}"
+            },
+            "147100100": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471026, Prop:1002}"
+            },
+            "147100101": {
+                "Title": "Assist Follow-Up: Pierce Heavens"
+            },
+            "147100102": {
+                "Description": "DMG Multiplier",
+                "Param": "{Skill:1471029, Prop:1001}"
+            },
+            "147100103": {
+                "Description": "Daze Multiplier",
+                "Param": "{Skill:1471029, Prop:1002}"
+            }
+        }
+    },
+    "Skills": {
+        "1471001": {
+            "DamageValue": 3960,
+            "DamageGrowth": 360,
+            "DazeValue": 3710,
+            "DazeGrowth": 170
+        },
+        "1471002": {
+            "DamageValue": 4980,
+            "DamageGrowth": 460,
+            "DazeValue": 4550,
+            "DazeGrowth": 210
+        },
+        "1471003": {
+            "DamageValue": 10130,
+            "DamageGrowth": 930,
+            "DazeValue": 9860,
+            "DazeGrowth": 450
+        },
+        "1471004": {
+            "DamageValue": 11630,
+            "DamageGrowth": 1060,
+            "DazeValue": 11400,
+            "DazeGrowth": 520
+        },
+        "1471005": {
+            "DamageValue": 5280,
+            "DamageGrowth": 480,
+            "DazeValue": 4950,
+            "DazeGrowth": 230
+        },
+        "1471006": {
+            "DamageValue": 7040,
+            "DamageGrowth": 640,
+            "DazeValue": 6430,
+            "DazeGrowth": 300
+        },
+        "1471007": {
+            "DamageValue": 13550,
+            "DamageGrowth": 1240,
+            "DazeValue": 13190,
+            "DazeGrowth": 600
+        },
+        "1471008": {
+            "DamageValue": 9240,
+            "DamageGrowth": 840,
+            "DazeValue": 9180,
+            "DazeGrowth": 420
+        },
+        "1471009": {
+            "DamageValue": 86980,
+            "DamageGrowth": 7910,
+            "DazeValue": 20180,
+            "DazeGrowth": 920
+        },
+        "1471010": {
+            "DamageValue": 37830,
+            "DamageGrowth": 3440,
+            "DazeValue": 15220,
+            "DazeGrowth": 700
+        },
+        "1471011": {
+            "DamageValue": 0,
+            "DamageGrowth": 0,
+            "DazeValue": 9530,
+            "DazeGrowth": 440
+        },
+        "1471012": {
+            "DamageValue": 17130,
+            "DamageGrowth": 1560,
+            "DazeValue": 15710,
+            "DazeGrowth": 720
+        },
+        "1471013": {
+            "DamageValue": 25480,
+            "DamageGrowth": 2320,
+            "DazeValue": 24760,
+            "DazeGrowth": 1130
+        },
+        "1471014": {
+            "DamageValue": 15370,
+            "DamageGrowth": 1400,
+            "DazeValue": 13810,
+            "DazeGrowth": 630
+        },
+        "1471015": {
+            "DamageValue": 16240,
+            "DamageGrowth": 1480,
+            "DazeValue": 14750,
+            "DazeGrowth": 680
+        },
+        "1471016": {
+            "DamageValue": 30010,
+            "DamageGrowth": 2730,
+            "DazeValue": 20210,
+            "DazeGrowth": 920
+        },
+        "1471017": {
+            "DamageValue": 32500,
+            "DamageGrowth": 2960,
+            "DazeValue": 22120,
+            "DazeGrowth": 1010
+        },
+        "1471018": {
+            "DamageValue": 3970,
+            "DamageGrowth": 370,
+            "DazeValue": 2480,
+            "DazeGrowth": 120
+        },
+        "1471019": {
+            "DamageValue": 19490,
+            "DamageGrowth": 1780,
+            "DazeValue": 21280,
+            "DazeGrowth": 970
+        },
+        "1471020": {
+            "DamageValue": 56090,
+            "DamageGrowth": 5100,
+            "DazeValue": 26230,
+            "DazeGrowth": 1200
+        },
+        "1471021": {
+            "DamageValue": 159840,
+            "DamageGrowth": 14540,
+            "DazeValue": 26770,
+            "DazeGrowth": 1220
+        },
+        "1471022": {
+            "DamageValue": 7340,
+            "DamageGrowth": 670,
+            "DazeValue": 4590,
+            "DazeGrowth": 210
+        },
+        "1471023": {
+            "DamageValue": 0,
+            "DamageGrowth": 0,
+            "DazeValue": 27130,
+            "DazeGrowth": 1240
+        },
+        "1471024": {
+            "DamageValue": 0,
+            "DamageGrowth": 0,
+            "DazeValue": 34280,
+            "DazeGrowth": 1560
+        },
+        "1471025": {
+            "DamageValue": 0,
+            "DamageGrowth": 0,
+            "DazeValue": 16680,
+            "DazeGrowth": 760
+        },
+        "1471026": {
+            "DamageValue": 24160,
+            "DamageGrowth": 2200,
+            "DazeValue": 25860,
+            "DazeGrowth": 1180
+        },
+        "1471027": {
+            "DamageValue": 11060,
+            "DamageGrowth": 1010,
+            "DazeValue": 10630,
+            "DazeGrowth": 490
+        },
+        "1471029": {
+            "DamageValue": 22160,
+            "DamageGrowth": 2020,
+            "DazeValue": 23840,
+            "DazeGrowth": 1090
+        }
+    }
+}
