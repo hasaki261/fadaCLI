@@ -6,21 +6,15 @@ self.onmessage = async function (e) {
     let workerLog
     let userData
     let acessError
-    const urls = [
-      `https://enka.network/api/zzz/uid/${uid}`,
-      `https://fadazzzproxy.lucascampelo2040.workers.dev/${uid}`,
-    ]
+    const urls = [`/api/zzz/uid/${encodeURIComponent(uid)}`]
     for (const url of urls) {
         try {
             const response  = await fetch(url,  {
                 headers: {
-                    "User-Agent": "discotecafadacfworker/discord:hasak116",
-                    Accept: "application/json",
-                    "Accept-Language": "en-US,en;q=0.9",
-                    Referer: "https://discotecafada.vercel.app/",
-                    Origin: "https://discotecafada.vercel.app",
+                    Accept: "application/json"
                 },
             })
+            console.log(response)
             if (response.ok) {
                 userData = await response.json()
                 break
@@ -44,4 +38,7 @@ self.onmessage = async function (e) {
         self.postMessage( {type: 'fetchResult', response: { success: true }} )
     }
   }
+}
+function processUserdata(userData) {
+    
 }

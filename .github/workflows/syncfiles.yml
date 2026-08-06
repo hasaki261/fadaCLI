@@ -1,0 +1,64 @@
+name: Sync ZZZ raw IDs
+
+on:
+  schedule:
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Automatic commit of ZZZ item IDs
+        uses: actions/checkout@v4
+
+      - name: Get ZZZ item IDs from EnkaNetwork/API-docs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p mapping/raw
+          curl -sL -H "Authorization: token $GH_TOKEN" \
+            "https://api.github.com/repos/EnkaNetwork/API-docs/contents/store/zzz?ref=master" \
+            | jq -r '.[] | select(.type=="file") | .download_url' \
+            | while read url; do
+                filename=$(basename "$url")
+                curl -sL -o "mapping/raw/$filename" "$url"
+              done
+
+      - name: Get ZZZ tooltip data from EnkaNetwork/API-docs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          sync_folder() {
+            remote_path="$1"
+            local_path="$2"
+            mkdir -p "$local_path"
+
+            curl -sL -H "Authorization: token $GH_TOKEN" \
+              "https://api.github.com/repos/EnkaNetwork/API-docs/contents/${remote_path}?ref=master" > /tmp/listing.json
+
+            jq -r '.[] | select(.type=="file") | .name + "|" + .download_url' /tmp/listing.json | while IFS='|' read -r name url; do
+              curl -sL -o "$local_path/$name" "$url"
+            done
+
+            jq -r '.[] | select(.type=="dir") | .name' /tmp/listing.json | while read -r subdir; do
+              sync_folder "${remote_path}/${subdir}" "${local_path}/${subdir}"
+            done
+          }
+
+          sync_folder "tooltip-data/zzz" "mapping/tools"
+
+      - name: Sync Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add mapping/raw mapping/tools
+          if git diff --staged --quiet; then
+            echo "No changes"
+          else
+            git commit -m "chore: auto changes"
+            git push
+          fi
