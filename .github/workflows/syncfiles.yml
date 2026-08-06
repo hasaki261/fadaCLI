@@ -28,11 +28,11 @@ jobs:
                 curl -sL -o "mapping/raw/$filename" "$url"
               done
 
-      - name: Get ZZZ tooltip data from EnkaNetwork/API-docs
+      - name: Get ZZZ tooltip data (PT/EN) from EnkaNetwork/API-docs
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          sync_folder() {
+          fetch_files() {
             remote_path="$1"
             local_path="$2"
             mkdir -p "$local_path"
@@ -41,23 +41,26 @@ jobs:
               -H "Accept: application/vnd.github+json" \
               "https://api.github.com/repos/EnkaNetwork/API-docs/contents/${remote_path}?ref=master" > /tmp/listing.json
 
-            # Verifica se a resposta é realmente uma lista antes de processar
             if ! jq -e 'type == "array"' /tmp/listing.json > /dev/null 2>&1; then
               echo "ERRO ao listar '$remote_path'. Resposta da API:"
               cat /tmp/listing.json
               exit 1
             fi
 
-            jq -r '.[] | select(.type=="file") | .name + "|" + .download_url' /tmp/listing.json | while IFS='|' read -r name url; do
-              curl -sL -o "$local_path/$name" "$url"
-            done
-
-            jq -r '.[] | select(.type=="dir") | .name' /tmp/listing.json | while read -r subdir; do
-              sync_folder "${remote_path}/${subdir}" "${local_path}/${subdir}"
-            done
+            jq -r '.[] | select(.type=="file") | .name + "|" + .download_url' /tmp/listing.json \
+            | while IFS='|' read -r name url; do
+                curl -sL -o "$local_path/$name" "$url"
+              done
           }
 
-          sync_folder "tooltip-data/zzz" "mapping/tools"
+          for lang in PT EN; do
+            for sub in $(curl -sL -H "Authorization: token $GH_TOKEN" \
+                         -H "Accept: application/vnd.github+json" \
+                         "https://api.github.com/repos/EnkaNetwork/API-docs/contents/tooltip-data/zzz/${lang}?ref=master" \
+                         | jq -r '.[] | select(.type=="dir") | .name'); do
+              fetch_files "tooltip-data/zzz/${lang}/${sub}" "mapping/tools/${lang}/${sub}"
+            done
+          done
           
       - name: Sync Commit
         run: |
