@@ -38,7 +38,15 @@ jobs:
             mkdir -p "$local_path"
 
             curl -sL -H "Authorization: token $GH_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
               "https://api.github.com/repos/EnkaNetwork/API-docs/contents/${remote_path}?ref=master" > /tmp/listing.json
+
+            # Verifica se a resposta é realmente uma lista antes de processar
+            if ! jq -e 'type == "array"' /tmp/listing.json > /dev/null 2>&1; then
+              echo "ERRO ao listar '$remote_path'. Resposta da API:"
+              cat /tmp/listing.json
+              exit 1
+            fi
 
             jq -r '.[] | select(.type=="file") | .name + "|" + .download_url' /tmp/listing.json | while IFS='|' read -r name url; do
               curl -sL -o "$local_path/$name" "$url"
@@ -50,7 +58,7 @@ jobs:
           }
 
           sync_folder "tooltip-data/zzz" "mapping/tools"
-
+          
       - name: Sync Commit
         run: |
           git config user.name "github-actions[bot]"
