@@ -69,8 +69,11 @@ export function uidCLI(worker, state) {
                                     stopExternalLoading().then(() => externalNormalLine.textContent = 'Fetching External Functions: done!')
                                 } else if (smoothAppendIdx === 6) {
                                     terminalCT.appendChild(displayNormalLine)
+                                    worker.postMessage({type: 'displayStart', data: ''})
                                     const stopDisplayLoading = newLoading(displayNormalLine)
-                                    stopDisplayLoading().then(() => displayNormalLine.textContent = 'Starting Screens: done!')
+                                    document.querySelector(".terminalBottomScreen").addEventListener("animationend", () => {
+                                        stopDisplayLoading().then(() => displayNormalLine.textContent = 'Starting Screens: done!')
+                                    })
                                 } else if (smoothAppendIdx === 7) {
                                     terminalCT.appendChild(loginNormalLine)
                                     const stopLoginLoading = newLoading(loginNormalLine)

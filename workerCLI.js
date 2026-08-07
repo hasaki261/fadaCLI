@@ -1,3 +1,4 @@
+const language = 'EN'
 self.onmessage = async function (e) {
   const { type, data } = e.data
 
@@ -38,7 +39,32 @@ self.onmessage = async function (e) {
         self.postMessage( {type: 'fetchResult', response: { success: true }} )
     }
   }
+  if (type === "displayStart") {
+        self.postMessage( { type: 'mainScreens', response: { success: true } } )
+  }
 }
-function processUserdata(userData) {
-    
+async function processAgentdata(userData) {
+    // const avatarsData = (await fetch(`./mapping/raw/avatars.json`)).json()
+    // const showCaseData = userData.PlayerInfo.ShowcaseDetail
+    // const rawUserAvatars = showCaseData.avatarsList
+    // const userAvatarsIds = rawUserAvatars.map(idx => idx.id)
+    // const userAgents = []
+    // for (const avatarId of userAvatarsIds) {
+    //     const agentData = await fetch(`./mapping/tools/${language}/Avatars/${avatarId}.json`)?.json() // Missing Fallback for non-existing avatars
+    //     const agentObject = {
+    //         name: agentData.Name,
+    //         class: agentData.Specialty,
+    //         element: avatarsData[avatarId].ElementTypes[0],
+    //         elementDMG: agentData.ElementTypes[0],
+    //     }
+    // }
+}
+async function processSocialData(userData) {
+    const pfpData = (await fetch(`./mapping/raw/pfps.json`)).json()
+    const socialData = userData.PlayerInfo.SocialDetail
+    const userNickName = socialData.ProfileDetail.Nickname
+    const userIconPath = pfpData[socialData.ProfileDetail.ProfileId].icon
+    const userIconURl = 'https://enka.network' + userIconPath
+    const userTitle = socialData.Desc
+    const userLevel = socialData.ProfileDetail.Level
 }

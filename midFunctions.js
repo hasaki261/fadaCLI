@@ -38,3 +38,71 @@ export function newLoading(element) {
         return stopPromise
     }
 }
+export async function getSVGASCII(imageUrl) {
+    let newUrl = imageUrl
+    newUrl = newUrl
+     .replace('https://', '')
+     .replace('http://', '')
+    const res = await fetch('https://yourascii.vercel.app/api/convert', {
+        method: 'POST',
+        headers: {
+            "Content-Type": 'application/json'
+        },
+        body: JSON.stringify({
+            url: `https://${newUrl}`,
+            resolution: 100,
+            colorMode: 'mono',
+            format: 'svg',
+        })
+    })
+    if (!res.ok) {
+        throw new Error(`Failed to fetch SVG ASCII: ${res.status} ${res.statusText}`)
+    }
+    let svgText = await res.text()
+    svgText = svgText
+     .replace(/<svg /, '<svg class="iconsASCII" ')
+     .replace('fill="#000"', 'fill="transparent"')
+     .replaceAll('fill="#fff"', 'fill="currentColor"')
+    const parser = new DOMParser()
+    const svg = parser.parseFromString(svgText, "image/svg+xml").documentElement
+    return (svg)
+}
+export async function getScreensReady(worker) {
+    function onZoom() {
+        const bars = document.querySelectorAll('.decBar')
+        if (bars) {
+            bars.forEach((bar, index) => {
+                barsFromScreen = index <= 9 ? document.querySelector('.terminalTopScreen') : document.querySelector('.terminalBottomScreen')
+                bar.style.height = `${Number(barsFromScreen.clientHeight) - 9*3 - 9*3/15}px`
+            })
+        }
+    }
+    function reverseBars(screen) {
+    }
+    const decScreens = document.querySelectorAll('.decBarCT')
+    for (const decScreen of decScreens) {
+        let screen
+        if (decScreen === decScreens[0]) screen = document.querySelector('.terminalTopScreen')
+        if (decScreen === decScreens[1]) screen = document.querySelector('.terminalBottomScreen')
+        const screenHeight = Number(decScreen.clientHeight) - 9*3
+        window.visualViewport.addEventListener("resize", onZoom)
+        await new Promise((resolve) => {
+            let i = 0
+            const smoothAppear = setInterval(() => {
+                const bar = document.createElement('div')
+                bar.className = "decBar"
+                decScreen.appendChild(bar)
+                bar.style.height = `${screenHeight/10}px`
+                if (i === 5 && decScreen === decScreens[0]) document.querySelector('.cliCT').style.animation = 'getClose 250ms linear forwards'
+                if (i === 9) {
+                    clearInterval(smoothAppear)
+                    screen.style.animation = 'opAppear 3s linear forwards'
+                    setTimeout(() => {
+                        resolve()
+                    }, 2000);
+                }
+                else i++
+            }, 80);
+        })
+    }
+}

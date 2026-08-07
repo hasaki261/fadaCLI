@@ -4,7 +4,7 @@ const worker = new Worker(new URL("./workerCLI.js", import.meta.url),
   }
 )
 import { uidCLI } from './commands/fetchuidCLI'
-import { newDecLine, newNormalLine } from './midFunctions';
+import { newDecLine, newNormalLine, getScreensReady } from './midFunctions';
 function toggleDarkMode() {
     const lightmodecheckbox = document.getElementById("darkmode");
     const body = document.body;
@@ -35,6 +35,11 @@ terminalCT.addEventListener('click', () => state.terminalInput.focus());
 terminalCT.replaceChildren()
 state.isRunningCommand = true
 uidCLI(worker, state)
+worker.addEventListener("message", async (e) => {
+    if (e.data.type === 'mainScreens') {
+        await getScreensReady()
+    }
+})
 terminalCT.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         if (state.isRunningCommand) return
