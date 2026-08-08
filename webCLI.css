@@ -511,7 +511,7 @@ body.light::after {
 .cliCT {
     display: flex;
     flex-direction: row;
-    gap: 15px;
+    gap: 3px;
     width: 100vw;
     height: 95vh;
     padding: 12px;
@@ -619,7 +619,8 @@ body.light::after {
     display: flex;
     flex-direction: column;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     width: 100%;
     height: 60%;
     background-color: var(--bg-dark-t);
@@ -674,14 +675,6 @@ body.light::after {
         opacity: 1;
     }
 }
-@keyframes getClose {
-    from {
-        gap: 15px;
-    }
-    to {
-        gap: 5px;
-    }
-}
 @keyframes barsAppear {
     from {
         margin-left: 100%;
@@ -714,5 +707,136 @@ body.light::after {
     width: 100%;
     animation: barsAppear 550ms ease-out forwards;
     /* background-color: var(--primary); */
-    background: linear-gradient(to left, var(--primary), var(--absolute-primary));
+    background: linear-gradient(to left, var(--primary), var(--border-muted));
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+.mainFolderCT {
+    display: flex;
+    padding: 12px;
+    padding-left: 10px;
+    height: 70px;
+    width: 100%;
+    align-items: center;
+    gap: 5px;
+    filter: blur(10px);
+    opacity: 0;
+}
+.mainFolderName {
+    font-family: "terminalHas", Arial, Helvetica, sans-serif;
+    font-size: 21px;
+    color: var(--text);
+}
+.expanderArrow {
+    margin-top: 5px;
+    width: 25px;
+    height: 25px;
+    color: var(--text);
+    transform: rotate(90deg);
+}
+.expanderArrowRecoil {
+    margin-top: 5px;
+    width: 25px;
+    height: 25px;
+    color: var(--text);
+    transform: rotate(0deg);
+}
+.fileIcons {
+    width: 30px;
+    height: 30px;
+    color: var(--primary);
+}
+.folderIcons {
+    color: var(--primary);
+    width: 35px;
+    height: 35px;
+}
+.secLevelFolderCT {
+    width: 100%;
+    height: 90%;
+    padding-left: 22.5px;
+    padding-bottom: 20px;
+    opacity: 0;
+    filter: blur(10px);
+}
+.secLevelFolder {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border: solid 3px var(--text-muted);
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-width: 3px;
+    border-color: var(--border);
+}
+.fileCT {
+    height: 45px;
+    width: 100%;
+    display: flex;
+    padding-left: 12px;
+    align-items: center;
+    gap: 5px;
+}
+@keyframes appearAll {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes reverseAppearAll {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes focus {
+    from {
+        filter: blur(10px);
+    }
+    to {
+        filter: blur(0px);
+    }
+}
+@keyframes reverseFocus {
+    from {
+        filter: blur(0px);
+    }
+    to {
+        filter: blur(10px);
+    }
+}
+.agentFolder {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    height: 45px;
+    width: 100%;
+    padding-left: 12px;
+}
+.fileExpanderArrow {
+    width: 20px;
+    height: 20px;
+    color: var(--text);
+    transform: rotate(0deg);
+}
+.welcomeMessage {
+    display: none;
+    position: absolute;
+    top: 45%;
+    color: var(--primary);
+    filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    font-size: 60px;
+    font-weight: bolder;
+    opacity: 0;
+    animation: appearAll 1s linear forwards, focus 1s linear forwards 0.5s;
 }

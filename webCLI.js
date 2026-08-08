@@ -4,7 +4,7 @@ const worker = new Worker(new URL("./workerCLI.js", import.meta.url),
   }
 )
 import { uidCLI } from './commands/fetchuidCLI'
-import { newDecLine, newNormalLine, getScreensReady } from './midFunctions';
+import { newDecLine, newNormalLine, getScreensReady, getFilesTree } from './midFunctions';
 function toggleDarkMode() {
     const lightmodecheckbox = document.getElementById("darkmode");
     const body = document.body;
@@ -23,6 +23,13 @@ function toggleDarkMode() {
     });
 }
 toggleDarkMode()
+const mainFolder = document.querySelector('.mainFolderCT')
+mainFolder.addEventListener('click', () => {
+    mainFolder.querySelector('.expanderArrow').classList.toggle('expanderArrowRecoil')
+    if (mainFolder.querySelector('.expanderArrow').classList.contains('expanderArrowRecoil')) {
+        document.querySelector('.secLevelFolderCT').style.display = 'none'
+    } else document.querySelector('.secLevelFolderCT').style.display = 'flex'
+})
 const state = { 
      isRunningCommand: false,
      decLine: document.getElementById("decTerminalLineCT"),
@@ -38,6 +45,9 @@ uidCLI(worker, state)
 worker.addEventListener("message", async (e) => {
     if (e.data.type === 'mainScreens') {
         await getScreensReady()
+    }
+    if (e.data.type === 'mainWelcome') {
+        getFilesTree()
     }
 })
 terminalCT.addEventListener('keydown', (event) => {

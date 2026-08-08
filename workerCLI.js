@@ -42,6 +42,9 @@ self.onmessage = async function (e) {
   if (type === "displayStart") {
         self.postMessage( { type: 'mainScreens', response: { success: true } } )
   }
+  if (type === "welcomeStart") {
+        self.postMessage( { type: 'mainWelcome', response: { success: true } } )
+  }
 }
 async function processAgentdata(userData) {
     // const avatarsData = (await fetch(`./mapping/raw/avatars.json`)).json()

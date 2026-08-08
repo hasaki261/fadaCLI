@@ -72,12 +72,10 @@ export async function getScreensReady(worker) {
         const bars = document.querySelectorAll('.decBar')
         if (bars) {
             bars.forEach((bar, index) => {
-                barsFromScreen = index <= 9 ? document.querySelector('.terminalTopScreen') : document.querySelector('.terminalBottomScreen')
+                const barsFromScreen = index <= 9 ? document.querySelector('.terminalTopScreen') : document.querySelector('.terminalBottomScreen')
                 bar.style.height = `${Number(barsFromScreen.clientHeight) - 9*3 - 9*3/15}px`
             })
         }
-    }
-    function reverseBars(screen) {
     }
     const decScreens = document.querySelectorAll('.decBarCT')
     for (const decScreen of decScreens) {
@@ -93,16 +91,24 @@ export async function getScreensReady(worker) {
                 bar.className = "decBar"
                 decScreen.appendChild(bar)
                 bar.style.height = `${screenHeight/10}px`
-                if (i === 5 && decScreen === decScreens[0]) document.querySelector('.cliCT').style.animation = 'getClose 250ms linear forwards'
                 if (i === 9) {
                     clearInterval(smoothAppear)
                     screen.style.animation = 'opAppear 3s linear forwards'
                     setTimeout(() => {
                         resolve()
-                    }, 2000);
+                    }, 1000);
                 }
                 else i++
             }, 80);
         })
     }
+}
+export function getFilesTree(filesData) {
+    const welcomeMessage = document.querySelector('.welcomeMessage')
+    welcomeMessage.style.opacity = 1
+    welcomeMessage.style.filter = 'blur(0px)'
+    welcomeMessage.style.animation = ''
+    welcomeMessage.style.animation = 'reverseFocus 1s linear forwards 2s, reverseAppearAll 1s linear forwards 1s'
+    document.querySelector('.mainFolderCT').style.animation = 'appearAll 2s linear forwards 1s, focus 1s linear forwards 2s'
+    document.querySelector('.secLevelFolderCT').style.animation = 'appearAll 2s linear forwards 1s, focus 1s linear forwards 2s'
 }

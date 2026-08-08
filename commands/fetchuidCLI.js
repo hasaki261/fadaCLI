@@ -34,8 +34,8 @@ export function uidCLI(worker, state) {
                             const agentsNormalLine = newNormalLine('Loading Agents: ...')
                             const mountingNormalLine = newNormalLine('Mounting Partitions: ...')
                             const externalNormalLine = newNormalLine('Fetching External Functions: ...')
-                            const displayNormalLine = newNormalLine('Starting Screens: ...')
                             const loginNormalLine = newNormalLine('Logging In: ...')
+                            const displayNormalLine = newNormalLine('Starting Screens: ...')
                             const welcomeNormalLine = newNormalLine('Welcoming User: ...')
                             const finalNormalLine = newNormalLine('Finishing Details: ...')
                             let smoothAppendIdx = 0
@@ -72,9 +72,39 @@ export function uidCLI(worker, state) {
                                     worker.postMessage({type: 'displayStart', data: ''})
                                     const stopDisplayLoading = newLoading(displayNormalLine)
                                     document.querySelector(".terminalBottomScreen").addEventListener("animationend", () => {
-                                        stopDisplayLoading().then(() => displayNormalLine.textContent = 'Starting Screens: done!')
+                                    stopDisplayLoading().then(() => {
+                                        displayNormalLine.textContent = 'Starting Screens: done!'
+                                        const topScreenBars = document.querySelector(".terminalTopScreen").querySelectorAll('.decBar')
+                                        const welcomeMessage = document.querySelector(".welcomeMessage")
+                                        let k = 0
+                                        const smoothRecoil = setInterval(() => {
+                                            topScreenBars[k].style.marginLeft = '0'
+                                            topScreenBars[k].style.animation = ''
+                                            topScreenBars[k].style.animation = 'barsReveal 0.4s ease-out forwards'
+                                            if (k === 3) welcomeMessage.style.display = 'flex'
+                                            if (k === topScreenBars.length - 1) {
+                                                clearInterval(smoothRecoil)
+                                            }
+                                                else k++
+                                            }, 150)
+                                        })
+                                        document.querySelector(".welcomeMessage").addEventListener('animationend', warnWelcome)
+                                        function warnWelcome(e) {
+                                            if (e.animationName !== 'focus') return
+                                            worker.postMessage({type: 'welcomeStart', data: ''})
+                                            document.querySelector(".welcomeMessage").removeEventListener('animationend', warnWelcome)
+                                        }
                                     })
                                 } else if (smoothAppendIdx === 7) {
+                                    terminalCT.appendChild(welcomeNormalLine)
+                                    const stopWelcomeLoading = newLoading(welcomeNormalLine)
+                                    document.querySelector('.welcomeMessage').addEventListener('animationend', welcomeSequence)
+                                    function welcomeSequence(e) {
+                                        if (e.animationName !== 'focus') return
+                                        stopWelcomeLoading().then(() => welcomeNormalLine.textContent = 'Welcoming User: done!')
+                                        document.querySelector('.welcomeMessage').removeEventListener('animationend', welcomeSequence)
+                                    }
+                                } else if (smoothAppendIdx === 8) {
                                     terminalCT.appendChild(loginNormalLine)
                                     const stopLoginLoading = newLoading(loginNormalLine)
                                     stopLoginLoading().then(() => {
@@ -82,15 +112,15 @@ export function uidCLI(worker, state) {
                                         const usernameElement = state.decLine.querySelector('.terminalUsername')
                                         usernameElement.textContent = 'hasas'
                                     })
-                                } else if (smoothAppendIdx === 8) {
+                                } else if (smoothAppendIdx === 9) {
                                     terminalCT.appendChild(finalNormalLine)
                                     const stopFinalLoading = newLoading(finalNormalLine)
-                                    stopFinalLoading().then(() => finalNormalLine.textContent = 'Finishing Details: done!')
-                                }
-                                 else if (smoothAppendIdx === 9) {
-                                    terminalCT.appendChild(welcomeNormalLine)
-                                    const stopWelcomeLoading = newLoading(welcomeNormalLine)
-                                    stopWelcomeLoading().then(() => welcomeNormalLine.textContent = 'Welcoming User: done!')
+                                    document.querySelector('.secLevelFolderCT').addEventListener('animationend', welcomeSequence)
+                                    function welcomeSequence(e) {
+                                        if (e.animationName !== 'focus') return
+                                        stopFinalLoading().then(() => finalNormalLine.textContent = 'Finishing Details: done!')
+                                        document.querySelector('.secLevelFolderCT').removeEventListener('animationend', welcomeSequence)
+                                    }
                                     clearInterval(smoothAppend)
                                 }
                                 smoothAppendIdx++
