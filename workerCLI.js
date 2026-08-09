@@ -1,7 +1,7 @@
 const language = 'EN'
+let fullData
 self.onmessage = async function (e) {
   const { type, data } = e.data
-
   if (type === "fetch") {
     const uid = data
     let workerLog
@@ -15,7 +15,6 @@ self.onmessage = async function (e) {
                     Accept: "application/json"
                 },
             })
-            console.log(response)
             if (response.ok) {
                 userData = await response.json()
                 break
@@ -36,7 +35,8 @@ self.onmessage = async function (e) {
         else workerLog = { success: false, error: "Unknown Error/No Service" }
         self.postMessage( {type: 'fetchResult', response: workerLog} )
     } else {
-        self.postMessage( {type: 'fetchResult', response: { success: true }} )
+        self.postMessage( {type: 'fetchResult', response: { success: true, nick: userData.PlayerInfo.SocialDetail.ProfileDetail.Nickname }} )
+        fullData = userData 
     }
   }
   if (type === "displayStart") {
@@ -44,6 +44,10 @@ self.onmessage = async function (e) {
   }
   if (type === "welcomeStart") {
         self.postMessage( { type: 'mainWelcome', response: { success: true } } )
+  }
+  if (type === "logInStart") {
+        const userInfo = await processSocialData(fullData)
+        self.postMessage( { type: 'mainLogIn', response: userInfo } )
   }
 }
 async function processAgentdata(userData) {
@@ -63,11 +67,29 @@ async function processAgentdata(userData) {
     // }
 }
 async function processSocialData(userData) {
-    const pfpData = (await fetch(`./mapping/raw/pfps.json`)).json()
+    const pfpData = await (await fetch(`./mapping/raw/pfps.json`)).json()
     const socialData = userData.PlayerInfo.SocialDetail
     const userNickName = socialData.ProfileDetail.Nickname
-    const userIconPath = pfpData[socialData.ProfileDetail.ProfileId].icon
+    const userIconId = socialData.ProfileDetail.ProfileId
+    const userBannerId = socialData.ProfileDetail.CallingCardId
+    const userIconPath = pfpData[userIconId].Icon
     const userIconURl = 'https://enka.network' + userIconPath
-    const userTitle = socialData.Desc
+    const userDesc = socialData.Desc
     const userLevel = socialData.ProfileDetail.Level
+    let userServer = userData.region
+    if (userServer === 'NA') userServer = 'America/NA'
+    else if (userServer === 'EU') userServer = 'Europe/EU'
+    else if (userServer === 'CN') userServer = 'China/CN'
+    else if (userServer === 'JP') userServer = 'Japan/JP'
+    const userUid = socialData.ProfileDetail.Uid
+    return {
+        iconURL: userIconURl,
+        nick: userNickName,
+        level: userLevel,
+        uid: userUid,
+        server: userServer,
+        iconId: userIconId,
+        bannerId: userBannerId,
+        desc: userDesc
+    }
 }

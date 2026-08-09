@@ -26,6 +26,7 @@ export function uidCLI(worker, state) {
                         })
                     } else if (e.data.type === 'fetchResult' && e.data.response.success) {
                         stopLoading().then(() => {
+                            document.querySelector('.logInMessage').textContent = e.data.response.nick
                             state.terminalInput.disabled = true
                             normalLine.textContent = `Fetching UserData: done!`
                             const sessionNormalLine = newNormalLine('Initializing Session: ...')
@@ -84,16 +85,15 @@ export function uidCLI(worker, state) {
                                             if (k === 3) welcomeMessage.style.display = 'flex'
                                             if (k === topScreenBars.length - 1) {
                                                 clearInterval(smoothRecoil)
-                                            }
-                                                else k++
-                                            }, 150)
-                                        })
-                                        document.querySelector(".welcomeMessage").addEventListener('animationend', warnWelcome)
-                                        function warnWelcome(e) {
-                                            if (e.animationName !== 'focus') return
-                                            worker.postMessage({type: 'welcomeStart', data: ''})
-                                            document.querySelector(".welcomeMessage").removeEventListener('animationend', warnWelcome)
-                                        }
+                                            } else k++
+                                        }, 150)
+                                    })
+                                    document.querySelector(".welcomeMessage").addEventListener('animationend', warnWelcome)
+                                    function warnWelcome(e) {
+                                        if (e.animationName !== 'focus') return
+                                        worker.postMessage({type: 'welcomeStart', data: ''})
+                                        document.querySelector(".welcomeMessage").removeEventListener('animationend', warnWelcome)
+                                    }
                                     })
                                 } else if (smoothAppendIdx === 7) {
                                     terminalCT.appendChild(welcomeNormalLine)
@@ -107,19 +107,40 @@ export function uidCLI(worker, state) {
                                 } else if (smoothAppendIdx === 8) {
                                     terminalCT.appendChild(loginNormalLine)
                                     const stopLoginLoading = newLoading(loginNormalLine)
-                                    stopLoginLoading().then(() => {
-                                        loginNormalLine.textContent = 'Logging In: done!'
-                                        const usernameElement = state.decLine.querySelector('.terminalUsername')
-                                        usernameElement.textContent = 'hasas'
-                                    })
+                                    document.querySelector('.welcomeMessage').addEventListener('animationend', loginSequence)
+                                    function loginSequence(e) {
+                                        if (e.animationName !== 'focus') return
+                                        const bottomScreenBars = document.querySelector(".terminalBottomScreen").querySelectorAll('.decBar')
+                                        const logInMessage = document.querySelector(".logInMessage")
+                                        let k = 0
+                                        const smoothRecoil = setInterval(() => {
+                                            bottomScreenBars[k].style.marginLeft = '0'
+                                            bottomScreenBars[k].style.animation = ''
+                                            bottomScreenBars[k].style.animation = 'barsReveal 0.4s ease-out forwards'
+                                            if (k === 3) logInMessage.style.display = 'flex'
+                                            if (k === bottomScreenBars.length - 1) {
+                                                worker.postMessage({type: 'logInStart', data: ''})
+                                                clearInterval(smoothRecoil)
+                                            } else k++
+                                        }, 150)
+                                        document.querySelector('.welcomeMessage').removeEventListener('animationend', loginSequence)
+                                    }
+                                    document.querySelector('.logInMessage').addEventListener('animationend', logInEnd)
+                                    function logInEnd(e) {
+                                        if (e.animationName !== 'reverseFocus') return
+                                        stopLoginLoading().then(() => {
+                                            loginNormalLine.textContent = 'Logging In: done!'
+                                        })
+                                        document.querySelector('.logInMessage').removeEventListener('animationend', logInEnd)
+                                    }
                                 } else if (smoothAppendIdx === 9) {
                                     terminalCT.appendChild(finalNormalLine)
                                     const stopFinalLoading = newLoading(finalNormalLine)
-                                    document.querySelector('.secLevelFolderCT').addEventListener('animationend', welcomeSequence)
-                                    function welcomeSequence(e) {
-                                        if (e.animationName !== 'focus') return
+                                    document.querySelector('.userInfoCT').addEventListener('animationend', detailsSequence)
+                                    function detailsSequence(e) {
+                                        if (e.animationName !== 'liteFocus') return
                                         stopFinalLoading().then(() => finalNormalLine.textContent = 'Finishing Details: done!')
-                                        document.querySelector('.secLevelFolderCT').removeEventListener('animationend', welcomeSequence)
+                                        document.querySelector('.userInfoCT').removeEventListener('animationend', detailsSequence)
                                     }
                                     clearInterval(smoothAppend)
                                 }

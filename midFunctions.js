@@ -50,7 +50,7 @@ export async function getSVGASCII(imageUrl) {
         },
         body: JSON.stringify({
             url: `https://${newUrl}`,
-            resolution: 100,
+            resolution: 120,
             colorMode: 'mono',
             format: 'svg',
         })
@@ -111,4 +111,36 @@ export function getFilesTree(filesData) {
     welcomeMessage.style.animation = 'reverseFocus 1s linear forwards 2s, reverseAppearAll 1s linear forwards 1s'
     document.querySelector('.mainFolderCT').style.animation = 'appearAll 2s linear forwards 1s, focus 1s linear forwards 2s'
     document.querySelector('.secLevelFolderCT').style.animation = 'appearAll 2s linear forwards 1s, focus 1s linear forwards 2s'
+}
+export async function getLogInScreen(userInfo) {
+    const terminalTheme = 'Default'
+    const userIcon = await getSVGASCII(userInfo.iconURL)
+    document.querySelector('.userInfoHeader').prepend(userIcon)
+    document.querySelector('.userInfoNickname').textContent = userInfo.nick
+    document.querySelector('.userInfoLevel').textContent = 'Lv.' + userInfo.level
+    document.getElementById('userInfoTextValueUID').textContent = userInfo.uid
+    document.getElementById('userInfoTextValueUPTD').textContent = updateChecker()
+    document.getElementById('userInfoTextValueSERVER').textContent = userInfo.server
+    document.getElementById('userInfoTextValueTHEME').textContent = terminalTheme
+    document.getElementById('userInfoTextValueICONID').textContent = userInfo.iconId
+    document.getElementById('userInfoTextValueBANNERID').textContent = userInfo.bannerId
+    const logInMessage = document.querySelector('.logInMessage')
+    logInMessage.style.opacity = 1
+    logInMessage.style.filter = 'blur(0px)'
+    logInMessage.style.animation = ''
+    logInMessage.style.animation = 'reverseFocus 1s linear forwards 2s, reverseAppearAll 1s linear forwards 1s'
+    document.querySelector('.userInfoCT').display = 'flex'
+    const decBars = document.querySelectorAll('.decBarCT')
+    decBars.forEach(decBar => {
+        decBar.style.display = 'none'
+    })
+}
+function updateChecker() {
+    const now = new Date()
+    const month = String(now.getMonth() + 1).padStart(2, '0') 
+    const day = String(now.getDate()).padStart(2, '0')
+    const hour = String(now.getHours()).padStart(2, '0')
+    const minutes = String(now.getMinutes()).padStart(2, '0')
+    const fullString = hour + ':' + minutes + ' ' +  month + '/' + day
+    return fullString
 }

@@ -4,7 +4,7 @@ const worker = new Worker(new URL("./workerCLI.js", import.meta.url),
   }
 )
 import { uidCLI } from './commands/fetchuidCLI'
-import { newDecLine, newNormalLine, getScreensReady, getFilesTree } from './midFunctions';
+import { newDecLine, newNormalLine, getScreensReady, getFilesTree, getLogInScreen } from './midFunctions';
 function toggleDarkMode() {
     const lightmodecheckbox = document.getElementById("darkmode");
     const body = document.body;
@@ -48,6 +48,12 @@ worker.addEventListener("message", async (e) => {
     }
     if (e.data.type === 'mainWelcome') {
         getFilesTree()
+    }
+    if (e.data.type === 'mainLogIn') {
+        await getLogInScreen(e.data.response)
+        document.querySelector('.userInfoCT').style.display = 'flex'
+        const usernameElement = state.decLine.querySelector('.terminalUsername')
+        usernameElement.textContent = e.data.response.nick
     }
 })
 terminalCT.addEventListener('keydown', (event) => {
