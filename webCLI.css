@@ -746,6 +746,9 @@ body.light::after {
     opacity: 0;
     filter: blur(10px);
 }
+#mainAgentFolder {
+    display: none;
+}
 .secLevelFolder {
     display: flex;
     flex-direction: column;

@@ -47,6 +47,16 @@ worker.addEventListener("message", async (e) => {
         await getScreensReady()
     }
     if (e.data.type === 'mainWelcome') {
+        const agentsFoldersDOM = []
+        e.data.response.forEach(agent => {
+            const agentDiv = document.getElementById('mainAgentFolder').cloneNode(true)
+            agentDiv.style.display = 'flex'
+            agentDiv.querySelector('.mainFolderName').textContent = agent.name
+            agentsFoldersDOM.push(agentDiv)
+        })
+        for (let r = agentsFoldersDOM.length - 1; r > -1; r--) {
+            document.querySelector('.secLevelFolder').prepend(agentsFoldersDOM[r])
+        }
         getFilesTree()
     }
     if (e.data.type === 'mainLogIn') {

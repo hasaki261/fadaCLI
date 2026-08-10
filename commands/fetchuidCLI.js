@@ -26,6 +26,9 @@ export function uidCLI(worker, state) {
                         })
                     } else if (e.data.type === 'fetchResult' && e.data.response.success) {
                         stopLoading().then(() => {
+                            document.querySelectorAll('.mainFolderName')[0].textContent = e.data.response.nick + '_Data'
+                            document.querySelectorAll('.mainFolderName')[2].textContent = e.data.response.nick + '_Social'
+                            document.querySelectorAll('.mainFolderName')[3].textContent = e.data.response.uid + '.log'
                             document.querySelector('.logInMessage').textContent = e.data.response.nick
                             state.terminalInput.disabled = true
                             normalLine.textContent = `Fetching UserData: done!`

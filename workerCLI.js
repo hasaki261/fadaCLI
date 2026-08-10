@@ -1,4 +1,5 @@
 const language = 'EN'
+let triggerWelcome = false
 let fullData
 self.onmessage = async function (e) {
   const { type, data } = e.data
@@ -35,15 +36,17 @@ self.onmessage = async function (e) {
         else workerLog = { success: false, error: "Unknown Error/No Service" }
         self.postMessage( {type: 'fetchResult', response: workerLog} )
     } else {
-        self.postMessage( {type: 'fetchResult', response: { success: true, nick: userData.PlayerInfo.SocialDetail.ProfileDetail.Nickname }} )
+        self.postMessage( {type: 'fetchResult', response: { success: true, nick: userData.PlayerInfo.SocialDetail.ProfileDetail.Nickname, uid: userData.PlayerInfo.SocialDetail.ProfileDetail.Uid }} )
         fullData = userData 
     }
   }
   if (type === "displayStart") {
         self.postMessage( { type: 'mainScreens', response: { success: true } } )
   }
-  if (type === "welcomeStart") {
-        self.postMessage( { type: 'mainWelcome', response: { success: true } } )
+  if (type === "welcomeStart" && !triggerWelcome) {
+        triggerWelcome = true
+        const agentsInfo = await processAgentdata(fullData)
+        self.postMessage( { type: 'mainWelcome', response: agentsInfo } )
   }
   if (type === "logInStart") {
         const userInfo = await processSocialData(fullData)
@@ -51,20 +54,22 @@ self.onmessage = async function (e) {
   }
 }
 async function processAgentdata(userData) {
-    // const avatarsData = (await fetch(`./mapping/raw/avatars.json`)).json()
-    // const showCaseData = userData.PlayerInfo.ShowcaseDetail
-    // const rawUserAvatars = showCaseData.avatarsList
-    // const userAvatarsIds = rawUserAvatars.map(idx => idx.id)
-    // const userAgents = []
-    // for (const avatarId of userAvatarsIds) {
-    //     const agentData = await fetch(`./mapping/tools/${language}/Avatars/${avatarId}.json`)?.json() // Missing Fallback for non-existing avatars
-    //     const agentObject = {
-    //         name: agentData.Name,
-    //         class: agentData.Specialty,
-    //         element: avatarsData[avatarId].ElementTypes[0],
-    //         elementDMG: agentData.ElementTypes[0],
-    //     }
-    // }
+    const avatarsData = await (await fetch(`./mapping/raw/avatars.json`)).json()
+    const showCaseData = userData.PlayerInfo.ShowcaseDetail
+    const rawUserAvatars = showCaseData.AvatarList
+    const userAvatarsIds = rawUserAvatars.map(idx => idx.Id)
+    const userAgents = []
+    for (const avatarId of userAvatarsIds) {
+        const agentData = await (await fetch(`./mapping/tools/${language}/Avatars/${avatarId}.json`)).json() // Missing Fallback for non-existing avatars
+        const agentObject = {
+            name: agentData.Name,
+            class: agentData.Specialty,
+            element: avatarsData[avatarId].ElementTypes[0],
+            elementDMG: agentData.ElementTypes[0],
+        }
+        userAgents.push(agentObject)
+    }
+    return userAgents
 }
 async function processSocialData(userData) {
     const pfpData = await (await fetch(`./mapping/raw/pfps.json`)).json()
