@@ -2,7 +2,11 @@ import { newDecLine, newNormalLine, newLoading } from '../midFunctions.js'
 const terminalCT = document.querySelector(".terminalCT")
 export function uidCLI(worker, state) {
     newUIDInputFunc(state)
-    terminalCT.addEventListener('keydown', (event) => {
+    const uidKeydownHandle = (event) => uidExec(event, state, worker)
+    state.uidKeydownHandle = uidKeydownHandle
+    terminalCT.addEventListener('keydown', uidKeydownHandle)
+}
+function uidExec(event, state, worker) {
         if (event.key === 'Enter') {
             const inputValue = state.terminalInput.value
             if (inputValue.length === 0) return
@@ -26,10 +30,12 @@ export function uidCLI(worker, state) {
                         })
                     } else if (e.data.type === 'fetchResult' && e.data.response.success) {
                         stopLoading().then(() => {
-                            document.querySelectorAll('.mainFolderName')[0].textContent = e.data.response.nick + '_Data'
-                            document.querySelectorAll('.mainFolderName')[2].textContent = e.data.response.nick + '_Social'
+                            const userNickName = e.data.response.nick
+                            state.nick = e.data.response.nick
+                            document.querySelectorAll('.mainFolderName')[0].textContent = userNickName + '_Data'
+                            document.querySelectorAll('.mainFolderName')[2].textContent = userNickName + '_Social'
                             document.querySelectorAll('.mainFolderName')[3].textContent = e.data.response.uid + '.log'
-                            document.querySelector('.logInMessage').textContent = e.data.response.nick
+                            document.querySelector('.logInMessage').textContent = userNickName
                             state.terminalInput.disabled = true
                             normalLine.textContent = `Fetching UserData: done!`
                             const sessionNormalLine = newNormalLine('Initializing Session: ...')
@@ -46,33 +52,40 @@ export function uidCLI(worker, state) {
                             const smoothAppend = setInterval(() => {
                                 if (smoothAppendIdx === 0) {
                                     terminalCT.appendChild(sessionNormalLine)
+                                    sessionNormalLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
                                     const stopSessionLoading = newLoading(sessionNormalLine)
                                     stopSessionLoading().then(() => sessionNormalLine.textContent = 'Initializing Session: done!')
                                 }
                                 if (smoothAppendIdx === 1) {
                                     terminalCT.appendChild(profileNormalLine)
+                                    profileNormalLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
                                     const stopProfileLoading = newLoading(profileNormalLine)
                                     stopProfileLoading().then(() => profileNormalLine.textContent = 'Loading Profile: done!')
                                 }
                                 if (smoothAppendIdx === 2) {
                                     terminalCT.appendChild(agentsNormalLine)
+                                    agentsNormalLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
                                     const stopAgentsLoading = newLoading(agentsNormalLine)
                                     stopAgentsLoading().then(() => agentsNormalLine.textContent = 'Loading Agents: done!')
                                 }
                                 if (smoothAppendIdx === 3) {
                                     terminalCT.appendChild(parseNormalLine)
+                                    parseNormalLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
                                     const stopParseLoading = newLoading(parseNormalLine)
                                     stopParseLoading().then(() => parseNormalLine.textContent = 'Parsing UserData: done!')
                                 } else if (smoothAppendIdx === 4) {
                                     terminalCT.appendChild(mountingNormalLine)
+                                    mountingNormalLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
                                     const stopMountingLoading = newLoading(mountingNormalLine)
                                     stopMountingLoading().then(() => mountingNormalLine.textContent = 'Mounting Partitions: done!')
                                 } else if (smoothAppendIdx === 5) {
                                     terminalCT.appendChild(externalNormalLine)
+                                    externalNormalLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
                                     const stopExternalLoading = newLoading(externalNormalLine)
                                     stopExternalLoading().then(() => externalNormalLine.textContent = 'Fetching External Functions: done!')
                                 } else if (smoothAppendIdx === 6) {
                                     terminalCT.appendChild(displayNormalLine)
+                                    displayNormalLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
                                     worker.postMessage({type: 'displayStart', data: ''})
                                     const stopDisplayLoading = newLoading(displayNormalLine)
                                     document.querySelector(".terminalBottomScreen").addEventListener("animationend", () => {
@@ -100,6 +113,7 @@ export function uidCLI(worker, state) {
                                     })
                                 } else if (smoothAppendIdx === 7) {
                                     terminalCT.appendChild(welcomeNormalLine)
+                                    welcomeNormalLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
                                     const stopWelcomeLoading = newLoading(welcomeNormalLine)
                                     document.querySelector('.welcomeMessage').addEventListener('animationend', welcomeSequence)
                                     function welcomeSequence(e) {
@@ -109,6 +123,7 @@ export function uidCLI(worker, state) {
                                     }
                                 } else if (smoothAppendIdx === 8) {
                                     terminalCT.appendChild(loginNormalLine)
+                                    loginNormalLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
                                     const stopLoginLoading = newLoading(loginNormalLine)
                                     document.querySelector('.welcomeMessage').addEventListener('animationend', loginSequence)
                                     function loginSequence(e) {
@@ -138,14 +153,38 @@ export function uidCLI(worker, state) {
                                     }
                                 } else if (smoothAppendIdx === 9) {
                                     terminalCT.appendChild(finalNormalLine)
+                                    finalNormalLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
                                     const stopFinalLoading = newLoading(finalNormalLine)
                                     document.querySelector('.userInfoCT').addEventListener('animationend', detailsSequence)
                                     function detailsSequence(e) {
                                         if (e.animationName !== 'liteFocus') return
-                                        stopFinalLoading().then(() => finalNormalLine.textContent = 'Finishing Details: done!')
+                                        stopFinalLoading().then(() => {
+                                            finalNormalLine.textContent = 'Finishing Details: done!'
+                                            const welcomeLineCT = newNormalLine('')
+                                            const welcomeLine = newNormalLine('Welcome In:')
+                                            const nickLine = newNormalLine(userNickName, true)
+                                            welcomeLineCT.style.border = 'dashed 5px var(--primary)'
+                                            welcomeLineCT.style.borderBottom = 'none'
+                                            welcomeLineCT.style.borderLeft = 'none'
+                                            welcomeLineCT.style.borderRight = 'none'
+                                            welcomeLineCT.style.width = '100%'
+                                            welcomeLineCT.style.paddingTop = '10px'
+                                            welcomeLineCT.appendChild(welcomeLine)
+                                            welcomeLineCT.appendChild(nickLine)
+                                            const readyLine = newNormalLine('Your terminal is Ready, type commands to see commands')
+                                            terminalCT.appendChild(welcomeLineCT)
+                                            terminalCT.appendChild(readyLine)
+                                            readyLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
+                                            const commandLine = resetDecLine(state)
+                                            state.terminalInput.disabled = false
+                                        })
                                         document.querySelector('.userInfoCT').removeEventListener('animationend', detailsSequence)
                                     }
                                     clearInterval(smoothAppend)
+                                    terminalCT.removeEventListener('keydown', state.uidKeydownHandle)
+                                    state.isRunningCommand = false
+                                    state.terminalInput.focus()
+                                    return
                                 }
                                 smoothAppendIdx++
                             }, 600)
@@ -154,7 +193,6 @@ export function uidCLI(worker, state) {
                 }
             }
         }
-    })
 }
 function newUIDInputFunc(state) {
     const UIDinputPlaceHolder = document.createElement('span')
@@ -169,9 +207,21 @@ function newUIDInputFunc(state) {
     newUIDinput.maxLength = 10
     newUIDinput.inputMode = 'numeric'
     newUIDinput.pattern = '[0-9]*'
-    newUIDinput.oninput= function () {
+    newUIDinput.oninput = function () {
         this.value = this.value.replace(/[^0-9]/g, '')
     }
     state.terminalInput = newUIDinput
     newUIDinput.focus()
+}
+function resetDecLine(state) {
+    state.decLine = newDecLine(state)
+    const newCommandInputLine = state.decLine.querySelector('.terminalInputCT')
+    const UIDinputPlaceHolder = newCommandInputLine.querySelector('.terminalInputPlaceHolder')
+    UIDinputPlaceHolder?.remove()
+    const newCommandInput = newCommandInputLine.querySelector('.terminalInput')
+    newCommandInput.maxLength = 50
+    newCommandInput.inputMode = ''
+    newCommandInput.pattern = ''
+    newCommandInput.oninput = null
+    state.terminalInput = newCommandInput
 }

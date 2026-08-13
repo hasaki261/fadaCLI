@@ -8,12 +8,18 @@ export function newDecLine(state) {
     terminalCT.appendChild(state.decLine)
     state.terminalInput.value = ''
     state.terminalInput.focus()
+    state.decLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
     return state.decLine
 }
-export function newNormalLine(content) {
+export function newNormalLine(content, isColored = false, autoAppend = false) {
     const normalLine = document.createElement("div")
-    normalLine.className = "normalTerminalLineCT"
+    normalLine.className = isColored ? "coloredTerminalLineCT" : "normalTerminalLineCT"
     normalLine.textContent = String(content)
+    if (autoAppend) {
+        document.querySelector('.terminalCT').appendChild(normalLine)
+        normalLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
+        return
+    }
     return normalLine
 }
 export function newLoading(element) { 
@@ -109,8 +115,17 @@ export function getFilesTree(filesData) {
     welcomeMessage.style.filter = 'blur(0px)'
     welcomeMessage.style.animation = ''
     welcomeMessage.style.animation = 'reverseFocus 1s linear forwards 2s, reverseAppearAll 1s linear forwards 1s'
+    const secFolder = document.querySelector('.secLevelFolderCT')
     document.querySelector('.mainFolderCT').style.animation = 'appearAll 2s linear forwards 1s, focus 1s linear forwards 2s'
-    document.querySelector('.secLevelFolderCT').style.animation = 'appearAll 2s linear forwards 1s, focus 1s linear forwards 2s'
+    secFolder.style.animation = 'appearAll 2s linear forwards 1s, focus 1s linear forwards 2s'
+    secFolder.addEventListener('animationend', removeanimation)
+}
+function removeanimation() {
+    const secFolder = document.querySelector('.secLevelFolderCT')
+    secFolder.style.opacity = 1
+    secFolder.style.filter = 'blur(0px)'
+    secFolder.style.animation = ''
+    secFolder.removeEventListener('animationend', removeanimation)
 }
 export async function getLogInScreen(userInfo) {
     const terminalTheme = 'Default'

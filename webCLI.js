@@ -33,7 +33,8 @@ mainFolder.addEventListener('click', () => {
 const state = { 
      isRunningCommand: false,
      decLine: document.getElementById("decTerminalLineCT"),
-     terminalInput: document.getElementById("terminalInput") 
+     terminalInput: document.getElementById("terminalInput"),
+    //  nick: 'hasaski'
     }
 const terminalCT = document.querySelector(".terminalCT")
 state.terminalInput.value = ''
@@ -42,6 +43,7 @@ terminalCT.addEventListener('click', () => state.terminalInput.focus());
 terminalCT.replaceChildren()
 state.isRunningCommand = true
 uidCLI(worker, state)
+// newDecLine(state)
 worker.addEventListener("message", async (e) => {
     if (e.data.type === 'mainScreens') {
         await getScreensReady()
@@ -66,7 +68,7 @@ worker.addEventListener("message", async (e) => {
         usernameElement.textContent = e.data.response.nick
     }
 })
-terminalCT.addEventListener('keydown', (event) => {
+terminalCT.addEventListener('keydown', async (event) => {
     if (event.key === 'Enter') {
         if (state.isRunningCommand) return
         const inputValue = state.terminalInput.value
@@ -77,10 +79,36 @@ terminalCT.addEventListener('keydown', (event) => {
             newDecLine(state)
             return state.isRunningCommand = false
         }
-        if (inputValue === 'uidfetch') {
+        if (inputValue === 'commands') {
             state.isRunningCommand = true
+            await showCommands()
+            newDecLine(state)
+            return state.isRunningCommand = false
         }
+        if (inputValue === 'whoami') {
+            state.isRunningCommand = true
+            newNormalLine(state.nick, false, true)
+            newDecLine(state)
+            return state.isRunningCommand = false
+        }
+        // if (inputValue === 'uidfetch') {
+        //     state.isRunningCommand = true
+        //     return uidCLI(worker, state)
+        // }
         terminalCT.appendChild(newNormalLine(`fadash: command not found: ${inputValue}`))
         return newDecLine(state)
     }
 })
+async function showCommands() {
+    const mainCT = document.querySelector('.terminalCT')
+    const commands = await (await fetch(`./commands.json`)).json()
+    commands.forEach(command => {
+        const newCommandLineCT = newNormalLine('')
+        const newCommandLineName = newNormalLine(`${command.name}:`, true)
+        const newCommandLineDesc = newNormalLine(command.desc)
+        newCommandLineCT.appendChild(newCommandLineName)
+        newCommandLineCT.appendChild(newCommandLineDesc)
+        mainCT.appendChild(newCommandLineCT)
+        newCommandLineCT.scrollIntoView({ behavior: 'smooth', block: 'end' })
+    })
+}

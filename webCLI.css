@@ -648,10 +648,24 @@ body.light::after {
     opacity: 0.85;
 }
 .normalTerminalLineCT {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
     color: var(--text);
     padding: 0;
     font-family: "terminalHas", Arial, Helvetica, sans-serif;
     font-size: 20px;
+    user-select: none;
+}
+.coloredTerminalLineCT {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    color: var(--primary);
+    padding: 0;
+    font-family: "terminalHas", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
     user-select: none;
 }
 @keyframes opAppear {
