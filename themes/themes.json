@@ -1,0 +1,5 @@
+[    
+    { "name": "Default", "type": "dark", "desc": "Default blue dark theme" },
+    { "name": "Light", "type": "light", "desc": "Default light theme, with shadows" },
+    { "name": "Yuzuha", "type": "dark", "desc": "A theme inspired in Yuzuha, stickers and purple/red pallet" }
+]

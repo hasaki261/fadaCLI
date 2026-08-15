@@ -3,185 +3,64 @@
     height: 100vh;
 }
 
-/* ==================== VARIÁVEIS DE COR ==================== */
+/* ==================== Colors ==================== */
 :root {
     --bg-image: url("./bg.webp");
-    /* Modo Escuro */
     --bg-dark: oklch(0.1 0.04 256);
     --bg-dark-t: oklch(0.1 0.04 256 / 0.92);
     --bg: oklch(0.15 0.04 256);
     --bg-light: oklch(0.2 0.04 256);
     --bg-light-e: oklch(0.22 0.04 256);
     --text: oklch(0.92 0.04 256);
-    /* Menos cansativo para os olhos */
     --text-muted: oklch(0.65 0.04 256);
-    /* Melhor contraste intermediário */
-    --highlight: oklch(0.5 0.08 256);
     --border: oklch(0.35 0.04 256);
-    /* Mais visível */
     --border-muted: oklch(0.25 0.03 256);
-    /* Mais sutil */
     --primary: oklch(0.7 0.12 256);
-    /* Mais vibrante */
-    --secondary: oklch(0.7 0.12 76);
-    --danger: oklch(0.65 0.15 30);
-    /* Mais saturado */
-    --warning: oklch(0.7 0.12 100);
     --success: oklch(0.65 0.12 160);
     --info: oklch(0.7 0.12 260);
     --shadow-color: transparent;
-    --gradient-good: linear-gradient(135deg,
-            oklch(0.65 0.12 160) 0%,
-            oklch(0.75 0.10 150) 100%);
-    --gradient-weak: linear-gradient(135deg,
-            oklch(0.65 0.15 30) 0%,
-            oklch(0.75 0.12 20) 100%);
-    --absolute-bg-dark: oklch(0.10 0.02 280);
-    --absolute-bg: oklch(0.14 0.02 280);
-    --absolute-bg-light: oklch(0.18 0.02 280);
-    --absolute-bg-light-e: oklch(0.20 0.02 280);
-    --absolute-text: oklch(0.75 0.15 280);
-    /* Roxo claro vibrante */
-    --absolute-text-muted: oklch(0.60 0.10 280);
-    /* Roxo médio */
-    --absolute-highlight: oklch(0.50 0.15 280);
-    --absolute-border: oklch(0.45 0.15 280);
-    /* Roxo para bordas */
-    --absolute-border-muted: oklch(0.30 0.08 280);
-    /* Roxo escuro */
-    --absolute-primary: oklch(0.65 0.20 280);
-    /* Roxo brilhante primário */
-    --absolute-secondary: oklch(0.70 0.18 290);
-    /* Roxo-azulado claro */
-    --absolute-shadow-color: oklch(0.25 0.10 280);
-
-    /* Gradientes especiais para ABSOLUTE Dark */
-    --absolute-gradient-primary: linear-gradient(135deg,
-            oklch(0.65 0.20 280) 0%,
-            oklch(0.60 0.22 290) 50%,
-            oklch(0.55 0.20 270) 100%);
-    --absolute-gradient-accent: linear-gradient(135deg,
-            oklch(0.50 0.18 280) 0%,
-            oklch(0.60 0.15 290) 100%);
-    --peak-bg-dark: oklch(0.10 0.02 200);
-    --peak-bg: oklch(0.14 0.02 200);
-    --peak-bg-light: oklch(0.18 0.02 200);
-    --peak-bg-light-e: oklch(0.20 0.02 200);
-    --peak-text: oklch(0.75 0.16 200);
-    /* Cyan claro vibrante */
-    --peak-text-muted: oklch(0.60 0.12 200);
-    /* Cyan médio */
-    --peak-highlight: oklch(0.50 0.15 200);
-    --peak-border: oklch(0.50 0.16 200);
-    /* Cyan para bordas */
-    --peak-border-muted: oklch(0.35 0.10 200);
-    /* Cyan escuro */
-    --peak-primary: oklch(0.65 0.20 200);
-    /* Cyan brilhante primário */
-    --peak-secondary: oklch(0.70 0.18 190);
-    /* Azul-cyan claro */
-    --peak-shadow-color: oklch(0.25 0.12 200);
-
-    /* Gradientes especiais para PEAK Dark */
-    --peak-gradient-primary: linear-gradient(135deg,
-            oklch(0.65 0.20 200) 0%,
-            oklch(0.60 0.22 190) 50%,
-            oklch(0.70 0.18 210) 100%);
-    --peak-gradient-accent: linear-gradient(135deg,
-            oklch(0.55 0.18 200) 0%,
-            oklch(0.65 0.15 190) 100%);
-    /* Duração da transição de tema */
     --theme-transition-duration: 0.4s;
-    --randomdeg: 2deg;
-    --text-name: oklch(0.2 0.04 256);
-    --bgimage-userinfoct: url("https://vpaianhudtmuyjvckqnl.supabase.co/storage/v1/object/public/assets/webpassets/ZZZICONS/AutoNC.webp");
-    --shadow-color: oklch(0.85 0.03 256);
 }
 
 body.light {
-    /* Modo Claro - usando OKLCH (mais moderno) */
     --bg-dark: oklch(0.92 0.04 256);
     --bg-dark-t: oklch(0.92 0.04 256 / 0.92);
     --bg: oklch(0.96 0.04 256);
     --bg-light: oklch(1 0.04 256);
     --bg-light-e: oklch(0.93 0.04 256);
     --text: oklch(0.25 0.05 256);
-    /* Melhor contraste, menos saturado */
     --text-muted: oklch(0.5 0.04 256);
-    /* Mais legível, menos saturado */
-    --highlight: oklch(1 0.08 256);
     --border: oklch(0.7 0.04 256);
-    /* Mais suave */
     --border-muted: oklch(0.85 0.03 256);
-    /* Mais claro e sutil */
     --primary: oklch(0.45 0.12 256);
-    /* Mais vibrante */
-    --secondary: oklch(0.45 0.12 76);
-    --danger: oklch(0.55 0.15 30);
-    /* Mais saturado */
-    --warning: oklch(0.6 0.12 100);
-    --success: oklch(0.5 0.12 160);
-    --info: oklch(0.5 0.12 260);
-    --gradient-good: linear-gradient(135deg,
-            oklch(0.5 0.12 160) 0%,
-            oklch(0.6 0.10 150) 100%);
-    --gradient-weak: linear-gradient(135deg,
-            oklch(0.55 0.15 30) 0%,
-            oklch(0.65 0.12 20) 100%);
-    --absolute-bg-dark: oklch(0.90 0.02 280);
-    --absolute-bg: oklch(0.94 0.02 280);
-    --absolute-bg-light: oklch(0.97 0.02 280);
-    --absolute-bg-light-e: oklch(0.92 0.02 280);
-    --absolute-text: oklch(0.35 0.15 280);
-    /* Roxo escuro vibrante */
-    --absolute-text-muted: oklch(0.50 0.08 280);
-    /* Roxo médio */
-    --absolute-highlight: oklch(0.98 0.03 280);
-    --absolute-border: oklch(0.60 0.12 280);
-    /* Roxo para bordas */
-    --absolute-border-muted: oklch(0.75 0.06 280);
-    /* Roxo claro */
-    --absolute-primary: oklch(0.50 0.18 280);
-    /* Roxo vibrante primário */
-    --absolute-secondary: oklch(0.55 0.15 290);
-    /* Roxo-azulado */
-    --absolute-shadow-color: oklch(0.70 0.08 280);
-
-    /* Gradientes especiais para ABSOLUTE */
-    --absolute-gradient-primary: linear-gradient(135deg,
-            oklch(0.50 0.18 280) 0%,
-            oklch(0.45 0.20 290) 50%,
-            oklch(0.40 0.18 270) 100%);
-    --absolute-gradient-accent: linear-gradient(135deg,
-            oklch(0.60 0.15 280) 0%,
-            oklch(0.70 0.12 290) 100%);
-    --peak-bg-dark: oklch(0.90 0.02 200);
-    --peak-bg: oklch(0.94 0.02 200);
-    --peak-bg-light: oklch(0.97 0.02 200);
-    --peak-bg-light-e: oklch(0.92 0.02 200);
-    --peak-text: oklch(0.30 0.15 200);
-    /* Cyan escuro vibrante */
-    --peak-text-muted: oklch(0.45 0.10 200);
-    /* Cyan médio */
-    --peak-highlight: oklch(0.98 0.03 200);
-    --peak-border: oklch(0.55 0.15 200);
-    /* Cyan para bordas */
-    --peak-border-muted: oklch(0.75 0.08 200);
-    /* Cyan claro */
-    --peak-primary: oklch(0.50 0.18 200);
-    /* Cyan vibrante primário */
-    --peak-secondary: oklch(0.55 0.15 190);
-    /* Azul-cyan */
-    --peak-shadow-color: oklch(0.70 0.08 200);
-
-    /* Gradientes especiais para PEAK */
-    --peak-gradient-primary: linear-gradient(135deg,
-            oklch(0.55 0.18 200) 0%,
-            oklch(0.60 0.16 190) 50%,
-            oklch(0.65 0.14 210) 100%);
-    --peak-gradient-accent: linear-gradient(135deg,
-            oklch(0.60 0.15 200) 0%,
-            oklch(0.70 0.12 190) 100%);
+    --shadow-color: transparent;
+}
+body.light {
+    --bg-dark: oklch(0.92 0.04 256);
+    --bg-dark-t: oklch(0.92 0.04 256 / 0.92);
+    --bg: oklch(0.96 0.04 256);
+    --bg-light: oklch(1 0.04 256);
+    --bg-light-e: oklch(0.93 0.04 256);
+    --text: oklch(0.25 0.05 256);
+    --text-muted: oklch(0.5 0.04 256);
+    --border: oklch(0.7 0.04 256);
+    --border-muted: oklch(0.85 0.03 256);
+    --primary: oklch(0.45 0.12 256);
+    --shadow-color: transparent;
+}
+body.yuzuha {
+    --bg-image: url("./themes/yuzuha/bg.gif");
+    --bg-dark: oklch(0.1 0.1 300);
+    --bg-dark-t: oklch(0.1 0.1 300 / 0.82);
+    --bg: oklch(0.15 0.1 300);
+    --bg-light: oklch(0.2 0.1 300);
+    --bg-light-e: oklch(0.05 0.1 300);
+    --text: oklch(0.96 0.1 340);
+    --text-muted: oklch(0.76 0.1 340);
+    --border: oklch(0.5 0.2 335);
+    --border-muted: oklch(0.3 0.2 300);
+    --primary: oklch(0.6 0.18 20);
+    --shadow-color: transparent;
 }
 
 /* ==================== RESET E FONTES ==================== */
@@ -317,6 +196,27 @@ body.light::after {
         color var(--theme-transition-duration) linear,
         box-shadow var(--theme-transition-duration) linear;
 }
+.pixeledfb {
+    clip-path: polygon(
+        0px calc(100% - 8px),
+        2px calc(100% - 8px),
+        2px calc(100% - 4px),
+        4px calc(100% - 4px),
+        4px calc(100% - 2px),
+        8px calc(100% - 2px),
+        8px 100%,
+        calc(100% - 8px) 100%,
+        calc(100% - 8px) calc(100% - 2px),
+        calc(100% - 4px) calc(100% - 2px),
+        calc(100% - 4px) calc(100% - 4px),
+        calc(100% - 2px) calc(100% - 4px),
+        calc(100% - 2px) calc(100% - 8px),
+        100% calc(100% - 8px),
+        100% 0px,
+        0px 0px,
+        0px 8px
+    );
+}
 
 .sticl {
     text-decoration: none;
@@ -435,12 +335,12 @@ body.light::after {
     padding: 1px;
     border-radius: 999px;
     overflow: hidden;
+    cursor: pointer;
     transition: var(--theme-transition-duration)
 }
 
 .modest:hover {
     background-color: var(--text);
-    cursor: pointer;
 }
 
 .modest:hover .sun,
@@ -533,6 +433,58 @@ body.light::after {
     align-items: flex-start;
     transition: var(--theme-transition-duration);
 }
+.pixeledTerminalCT {
+        clip-path: polygon(
+        0px calc(100% - 28px),
+        2px calc(100% - 28px),
+        2px calc(100% - 22px),
+        4px calc(100% - 22px),
+        4px calc(100% - 18px),
+        6px calc(100% - 18px),
+        6px calc(100% - 14px),
+        8px calc(100% - 14px),
+        8px calc(100% - 12px),
+        10px calc(100% - 12px),
+        10px calc(100% - 10px),
+        12px calc(100% - 10px),
+        12px calc(100% - 8px),
+        14px calc(100% - 8px),
+        14px calc(100% - 6px),
+        18px calc(100% - 6px),
+        18px calc(100% - 4px),
+        22px calc(100% - 4px),
+        22px calc(100% - 2px),
+        28px calc(100% - 2px),
+        28px 100%,
+        calc(100% - 4px) 100%,
+        calc(100% - 4px) calc(100% - 4px),
+        100% calc(100% - 4px),
+        100% 4px,
+        calc(100% - 4px) 4px,
+        calc(100% - 4px) 0px,
+        28px 0px,
+        28px 2px,
+        22px 2px,
+        22px 4px,
+        18px 4px,
+        18px 6px,
+        14px 6px,
+        14px 8px,
+        12px 8px,
+        12px 10px,
+        10px 10px,
+        10px 12px,
+        8px 12px,
+        8px 14px,
+        6px 14px,
+        6px 18px,
+        4px 18px,
+        4px 22px,
+        2px 22px,
+        2px 28px,
+        0px 28px
+    );
+}
 .terminalScreenCT {
     display: flex;
     flex-direction: column;
@@ -611,6 +563,7 @@ body.light::after {
     font-size: 20px;
     font-family: "terminalHas", Arial, Helvetica, sans-serif;
     caret-color: var(--primary);
+    transition: var(--theme-transition-duration)
 }
 .terminalInput:focus {
     outline: none;
@@ -631,6 +584,41 @@ body.light::after {
     align-items: flex-start;
     transition: var(--theme-transition-duration);
     opacity: 0.85;
+    transition: var(--theme-transition-duration);
+}
+.pixeledTerminalTopScreen {
+    clip-path: polygon(
+        0px calc(100% - 4px),
+        4px calc(100% - 4px),
+        4px 100%,
+        calc(100% - 4px) 100%,
+        calc(100% - 4px) calc(100% - 4px),
+        100% calc(100% - 4px),
+        100% 28px,
+        calc(100% - 2px) 28px,
+        calc(100% - 2px) 22px,
+        calc(100% - 4px) 22px,
+        calc(100% - 4px) 18px,
+        calc(100% - 6px) 18px,
+        calc(100% - 6px) 14px,
+        calc(100% - 8px) 14px,
+        calc(100% - 8px) 12px,
+        calc(100% - 10px) 12px,
+        calc(100% - 10px) 10px,
+        calc(100% - 12px) 10px,
+        calc(100% - 12px) 8px,
+        calc(100% - 14px) 8px,
+        calc(100% - 14px) 6px,
+        calc(100% - 18px) 6px,
+        calc(100% - 18px) 4px,
+        calc(100% - 22px) 4px,
+        calc(100% - 22px) 2px,
+        calc(100% - 28px) 2px,
+        calc(100% - 28px) 0px,
+        4px 0px,
+        4px 4px,
+        0px 4px
+    );
 }
 .terminalBottomScreen {
     position: relative;
@@ -646,6 +634,41 @@ body.light::after {
     align-items: flex-start;
     transition: var(--theme-transition-duration);
     opacity: 0.85;
+    transition: var(--theme-transition-duration);
+}
+.pixeledTerminalBottomScreen {
+    clip-path: polygon(
+        0px calc(100% - 4px),
+        4px calc(100% - 4px),
+        4px 100%,
+        calc(100% - 28px) 100%,
+        calc(100% - 28px) calc(100% - 2px),
+        calc(100% - 22px) calc(100% - 2px),
+        calc(100% - 22px) calc(100% - 4px),
+        calc(100% - 18px) calc(100% - 4px),
+        calc(100% - 18px) calc(100% - 6px),
+        calc(100% - 14px) calc(100% - 6px),
+        calc(100% - 14px) calc(100% - 8px),
+        calc(100% - 12px) calc(100% - 8px),
+        calc(100% - 12px) calc(100% - 10px),
+        calc(100% - 10px) calc(100% - 10px),
+        calc(100% - 10px) calc(100% - 12px),
+        calc(100% - 8px) calc(100% - 12px),
+        calc(100% - 8px) calc(100% - 14px),
+        calc(100% - 6px) calc(100% - 14px),
+        calc(100% - 6px) calc(100% - 18px),
+        calc(100% - 4px) calc(100% - 18px),
+        calc(100% - 4px) calc(100% - 22px),
+        calc(100% - 2px) calc(100% - 22px),
+        calc(100% - 2px) calc(100% - 28px),
+        100% calc(100% - 28px),
+        100% 4px,
+        calc(100% - 4px) 4px,
+        calc(100% - 4px) 0px,
+        4px 0px,
+        4px 4px,
+        0px 4px
+    );
 }
 .normalTerminalLineCT {
     display: flex;
@@ -656,6 +679,7 @@ body.light::after {
     font-family: "terminalHas", Arial, Helvetica, sans-serif;
     font-size: 20px;
     user-select: none;
+    transition: var(--theme-transition-duration)
 }
 .coloredTerminalLineCT {
     display: flex;
@@ -667,6 +691,7 @@ body.light::after {
     font-size: 20px;
     font-weight: bold;
     user-select: none;
+    transition: var(--theme-transition-duration)
 }
 @keyframes opAppear {
     from {
@@ -701,6 +726,7 @@ body.light::after {
     flex-direction: column;
     overflow: hidden;
     gap: 3px;
+    transition: var(--theme-transition-duration)
 }
 .decBar {
     position: relative;
@@ -711,6 +737,7 @@ body.light::after {
     background: linear-gradient(to left, var(--primary), var(--border-muted));
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
+    transition: var(--theme-transition-duration)
 }
 .mainFolderCT {
     display: flex;
@@ -722,11 +749,13 @@ body.light::after {
     gap: 5px;
     filter: blur(10px);
     opacity: 0;
+    transition: var(--theme-transition-duration)
 }
 .mainFolderName {
     font-family: "terminalHas", Arial, Helvetica, sans-serif;
     font-size: 21px;
     color: var(--text);
+    transition: var(--theme-transition-duration)
 }
 .expanderArrow {
     margin-top: 5px;
@@ -734,6 +763,7 @@ body.light::after {
     height: 25px;
     color: var(--text);
     transform: rotate(90deg);
+    transition: var(--theme-transition-duration)
 }
 .expanderArrowRecoil {
     margin-top: 5px;
@@ -741,16 +771,19 @@ body.light::after {
     height: 25px;
     color: var(--text);
     transform: rotate(0deg);
+    transition: var(--theme-transition-duration)
 }
 .fileIcons {
     width: 30px;
     height: 30px;
     color: var(--primary);
+    transition: var(--theme-transition-duration)
 }
 .folderIcons {
     color: var(--primary);
     width: 35px;
     height: 35px;
+    transition: var(--theme-transition-duration)
 }
 .secLevelFolderCT {
     width: 100%;
@@ -759,9 +792,11 @@ body.light::after {
     padding-bottom: 20px;
     opacity: 0;
     filter: blur(10px);
+    transition: var(--theme-transition-duration)
 }
 #mainAgentFolder {
     display: none;
+    transition: var(--theme-transition-duration)
 }
 .secLevelFolder {
     display: flex;
@@ -774,6 +809,7 @@ body.light::after {
     border-bottom: none;
     border-width: 3px;
     border-color: var(--border);
+    transition: var(--theme-transition-duration)
 }
 .fileCT {
     height: 45px;
@@ -782,6 +818,7 @@ body.light::after {
     padding-left: 12px;
     align-items: center;
     gap: 5px;
+    transition: var(--theme-transition-duration)
 }
 @keyframes appearAll {
     from {
@@ -822,12 +859,14 @@ body.light::after {
     height: 45px;
     width: 100%;
     padding-left: 12px;
+    transition: var(--theme-transition-duration)
 }
 .fileExpanderArrow {
     width: 20px;
     height: 20px;
     color: var(--text);
     transform: rotate(0deg);
+    transition: var(--theme-transition-duration)
 }
 .welcomeMessage {
     display: none;
@@ -843,6 +882,7 @@ body.light::after {
     font-weight: bolder;
     opacity: 0;
     animation: appearAll 1s linear forwards, focus 1s linear forwards 0.5s;
+    transition: var(--theme-transition-duration)
 }
 .userInfoCT {
     display: none;
@@ -855,6 +895,7 @@ body.light::after {
     opacity: 0;
     filter: blur(4px);
     animation: appearAll 1s linear forwards 2s, liteFocus 0.7s linear forwards 2.2s;
+    transition: var(--theme-transition-duration)
 }
 @keyframes liteFocus {
     from {
@@ -869,12 +910,13 @@ body.light::after {
     width: 100%;
     min-height: 100px;
     background-color: transparent;
-    border: dotted 4px var(--primary);
+    border: dotted 4px var(--border);
     border-top: none;
     border-left: none;
     border-right: none;
     padding: 5px;
     gap: 20px;
+    transition: var(--theme-transition-duration)
 }
 .iconsASCII {
     width: 75px;
@@ -889,12 +931,14 @@ body.light::after {
     font-weight: normal !important;
     border-radius: 100px;
     opacity: 1;
+    transition: var(--theme-transition-duration)
 }
 .userInfoNickname {
     font-family: "terminalhas";
     align-self: center;
     font-size: 31px;
     color: var(--primary);
+    transition: var(--theme-transition-duration)
 }
 .userInfoLevel {
     font-family: "terminalhas";
@@ -902,6 +946,7 @@ body.light::after {
     font-size: 31px;
     color: var(--primary);
     margin-left: auto;
+    transition: var(--theme-transition-duration)
 }
 .userInfoTextCT {
     display: flex;
@@ -910,17 +955,20 @@ body.light::after {
     padding: 5px;
     padding-top: 20px;
     gap: 8px;
+    transition: var(--theme-transition-duration)
 }
 .userInfoTextIdc {
     font-family: "terminalhas";
     font-weight: bold;
     color: var(--primary);
     font-size: 23px;
+    transition: var(--theme-transition-duration)
 }
 .userInfoTextValue {
     font-family: "terminalhas";
     color: var(--text-muted);
     font-size: 21px;
+    transition: var(--theme-transition-duration)
 }
 .userInfoThumb {
     top: 120px;
@@ -929,6 +977,7 @@ body.light::after {
     width: 120px;
     height: 120px;
     border-radius: 20px;  
+    transition: var(--theme-transition-duration)
 }
 .logInMessage {
     display: none;
@@ -944,4 +993,5 @@ body.light::after {
     font-weight: bolder;
     opacity: 0;
     animation: appearAll 1s linear forwards, focus 1s linear forwards .5s;
+    transition: var(--theme-transition-duration)
 }

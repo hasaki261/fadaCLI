@@ -91,6 +91,25 @@ terminalCT.addEventListener('keydown', async (event) => {
             newDecLine(state)
             return state.isRunningCommand = false
         }
+        if (inputValue.trim().split(' ').filter(Boolean)[0] === 'themes') {
+            state.isRunningCommand = true
+            const theme = inputValue.trim().split(' ').filter(Boolean)[1] ? inputValue.trim().split(' ').filter(Boolean)[1] : undefined
+            if (!theme) {
+                const themes = await changeTheme(theme, true)
+                themes.forEach(theme => {
+                    const themeLine = newNormalLine('')
+                    const themeName = newNormalLine(`${theme.name}:`, true)
+                    const themeDesc = newNormalLine(theme.desc)
+                    themeLine.appendChild(themeName)
+                    themeLine.appendChild(themeDesc)
+                    document.querySelector('.terminalCT').appendChild(themeLine)
+                    themeLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
+                })
+                newNormalLine('Use "themes <theme name>" to change your theme')
+            } else await changeTheme(theme)
+            newDecLine(state)
+            return state.isRunningCommand = false
+        }
         // if (inputValue === 'uidfetch') {
         //     state.isRunningCommand = true
         //     return uidCLI(worker, state)
@@ -111,4 +130,44 @@ async function showCommands() {
         mainCT.appendChild(newCommandLineCT)
         newCommandLineCT.scrollIntoView({ behavior: 'smooth', block: 'end' })
     })
+}
+async function changeTheme(theme, getThemes = false) {
+    const themes = await (await fetch(`./themes/themes.json`)).json()
+    if (getThemes) return themes
+    let themeClass
+    let isValidTheme = false
+    themes.forEach(systemTheme => {
+        const name = systemTheme.name
+        if (name.toLowerCase() === theme.toLowerCase()) {
+            isValidTheme = true
+            themeClass = name
+        }
+    })
+    if (!isValidTheme) {
+        newNormalLine(`${theme} is not a valid theme, type themes to see available themes`, false, true)
+        return
+    } else {
+        const allThemeClasses = themes.map(t => t.name.toLowerCase())
+        document.body.classList.remove(...allThemeClasses)
+        document.body.classList.add(themeClass.toLowerCase())
+        if (themeClass.toLowerCase() === 'default') {
+            document.body.classList.remove(...allThemeClasses)
+            document.querySelector('.terminalCT').classList.remove('pixeledTerminalCT')
+            document.querySelector('.terminalTopScreen').classList.remove('pixeledTerminalTopScreen')
+            document.querySelector('.terminalBottomScreen').classList.remove('pixeledTerminalBottomScreen')
+            document.querySelector('.userInfoThumb').src = './baboo-ascii.webm'
+        }
+        if (themeClass.toLowerCase() !== 'light') {
+            document.getElementById("darkmode").disabled = true
+            document.querySelector('.modest').style.cursor = 'not-allowed'
+        }
+        if (themeClass.toLowerCase() === 'yuzuha') {
+            document.querySelector('.fb').classList.add('pixeledfb')
+            document.querySelector('.terminalCT').classList.add('pixeledTerminalCT')
+            document.querySelector('.terminalTopScreen').classList.add('pixeledTerminalTopScreen')
+            document.querySelector('.terminalBottomScreen').classList.add('pixeledTerminalBottomScreen')
+            document.querySelector('.userInfoThumb').src = './themes/yuzuha/yuzuha-ascii.webm'
+        }
+        document.getElementById('userInfoTextValueTHEME').textContent = themeClass
+    }
 }
