@@ -1,3 +1,8 @@
-<html><body><h1>503 Service Unavailable</h1>
-No server is available to handle this request.
-</body></html>
+{
+    "Icon": "SuitChaosMetal",
+    "Name": "Metal Caótico",
+    "SetBonus": {
+        "2": "<color=#FE437E>Dano de Éter</color> +10%",
+        "4": "O Dano CRIT do portador aumenta 20%. Quando um Agente da equipe ativar o dano da <color=#FE437E>Corrupção</color>, o efeito aumenta mais 5,5% por 8s, podendo acumular até 6 vez(es). Ativações repetidas reiniciam a duração."
+    }
+}
