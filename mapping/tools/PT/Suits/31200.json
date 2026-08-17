@@ -1,2 +1,8 @@
-429: Too Many Requests
-For more on scraping GitHub and how it may affect your rights, please review our Terms of Service (https://docs.github.com/en/site-policy/github-terms/github-terms-of-service).
+{
+    "Icon": "SuitShockstarDisco",
+    "Name": "Disco Estrelante",
+    "SetBonus": {
+        "2": "Impacto +6%",
+        "4": "<color=#FFFFFF>Ataques Básicos</color>, <color=#FFFFFF>Ataques Rápidos</color> e <color=#FFFFFF>Contraesquivas</color> causam 20% a mais de Atordoamento ao alvo principal."
+    }
+}

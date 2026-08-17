@@ -1,17 +1,39 @@
-
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-  <head>
-    <title>503 first byte timeout</title>
-  </head>
-  <body>
-    <h1>Error 503 first byte timeout</h1>
-    <p>first byte timeout</p>
-    <h3>Error 54113</h3>
-    <p>Details: cache-bur-kbur8200061-BUR 1786981240 3205092860</p>
-    <hr>
-    <p>Varnish cache server</p>
-  </body>
-</html>
+{
+    "ItemName": "[Lunar] Decrescente",
+    "Rarity": 2,
+    "ImagePath": "Weapon_B_Common_02",
+    "Profession": {
+        "Type": "Attack",
+        "Name": "Atacante"
+    },
+    "MainStat": {
+        "PropertyId": 12101,
+        "PropertyValue": 32
+    },
+    "SecondaryStat": {
+        "PropertyId": 12102,
+        "PropertyValue": 800
+    },
+    "Talents": {
+        "1": {
+            "Title": "Lua Minguante",
+            "Description": "<color=#FFFFFF>Ataques em Cadeia</color> ou <color=#FFFFFF>Supremos</color> aumentam <color=#2BAD00>15%</color> do dano do portador por 6s."
+        },
+        "2": {
+            "Title": "Lua Minguante",
+            "Description": "<color=#FFFFFF>Ataques em Cadeia</color> ou <color=#FFFFFF>Supremos</color> aumentam <color=#2BAD00>17,5%</color> do dano do portador por 6s."
+        },
+        "3": {
+            "Title": "Lua Minguante",
+            "Description": "<color=#FFFFFF>Ataques em Cadeia</color> ou <color=#FFFFFF>Supremos</color> aumentam <color=#2BAD00>20%</color> do dano do portador por 6s."
+        },
+        "4": {
+            "Title": "Lua Minguante",
+            "Description": "<color=#FFFFFF>Ataques em Cadeia</color> ou <color=#FFFFFF>Supremos</color> aumentam <color=#2BAD00>22,5%</color> do dano do portador por 6s."
+        },
+        "5": {
+            "Title": "Lua Minguante",
+            "Description": "<color=#FFFFFF>Ataques em Cadeia</color> ou <color=#FFFFFF>Supremos</color> aumentam <color=#2BAD00>25%</color> do dano do portador por 6s."
+        }
+    }
+}
