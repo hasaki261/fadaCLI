@@ -1,39 +1,17 @@
-{
-    "ItemName": "Forja das Dez Direções",
-    "Rarity": 4,
-    "ImagePath": "Weapon_S_1401",
-    "Profession": {
-        "Type": "Anomaly",
-        "Name": "Anômalo"
-    },
-    "MainStat": {
-        "PropertyId": 12101,
-        "PropertyValue": 48
-    },
-    "SecondaryStat": {
-        "PropertyId": 12102,
-        "PropertyValue": 1200
-    },
-    "Talents": {
-        "1": {
-            "Title": "Poeira Estelar de Presente",
-            "Description": "A <color=#FFFFFF>Maestria de Anomalia</color> do portador aumenta <color=#2BAD00>60</color> ponto(s). Ao provocar <color=#F0D12B>Ofensiva</color>, o <color=#F0D12B>Dano Físico</color> do portador aumenta <color=#2BAD00>20%</color> por 20s, acumulando até 2 vezes. Ativações repetidas reiniciam a duração. Ao entrar em combate, o portador obtém 2 acúmulos."
-        },
-        "2": {
-            "Title": "Poeira Estelar de Presente",
-            "Description": "A <color=#FFFFFF>Maestria de Anomalia</color> do portador aumenta <color=#2BAD00>69</color> ponto(s). Ao provocar <color=#F0D12B>Ofensiva</color>, o <color=#F0D12B>Dano Físico</color> do portador aumenta <color=#2BAD00>23%</color> por 20s, acumulando até 2 vezes. Ativações repetidas reiniciam a duração. Ao entrar em combate, o portador obtém 2 acúmulos."
-        },
-        "3": {
-            "Title": "Poeira Estelar de Presente",
-            "Description": "A <color=#FFFFFF>Maestria de Anomalia</color> do portador aumenta <color=#2BAD00>78</color> ponto(s). Ao provocar <color=#F0D12B>Ofensiva</color>, o <color=#F0D12B>Dano Físico</color> do portador aumenta <color=#2BAD00>26%</color> por 20s, acumulando até 2 vezes. Ativações repetidas reiniciam a duração. Ao entrar em combate, o portador obtém 2 acúmulos."
-        },
-        "4": {
-            "Title": "Poeira Estelar de Presente",
-            "Description": "A <color=#FFFFFF>Maestria de Anomalia</color> do portador aumenta <color=#2BAD00>87</color> ponto(s). Ao provocar <color=#F0D12B>Ofensiva</color>, o <color=#F0D12B>Dano Físico</color> do portador aumenta <color=#2BAD00>29%</color> por 20s, acumulando até 2 vezes. Ativações repetidas reiniciam a duração. Ao entrar em combate, o portador obtém 2 acúmulos."
-        },
-        "5": {
-            "Title": "Poeira Estelar de Presente",
-            "Description": "A <color=#FFFFFF>Maestria de Anomalia</color> do portador aumenta <color=#2BAD00>96</color> ponto(s). Ao provocar <color=#F0D12B>Ofensiva</color>, o <color=#F0D12B>Dano Físico</color> do portador aumenta <color=#2BAD00>32%</color> por 20s, acumulando até 2 vezes. Ativações repetidas reiniciam a duração. Ao entrar em combate, o portador obtém 2 acúmulos."
-        }
-    }
-}
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>503 first byte timeout</title>
+  </head>
+  <body>
+    <h1>Error 503 first byte timeout</h1>
+    <p>first byte timeout</p>
+    <h3>Error 54113</h3>
+    <p>Details: cache-bur-kbur8200047-BUR 1786981686 3862313648</p>
+    <hr>
+    <p>Varnish cache server</p>
+  </body>
+</html>
