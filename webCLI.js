@@ -23,6 +23,7 @@ function toggleDarkMode() {
     });
 }
 toggleDarkMode()
+let userData
 const mainFolder = document.querySelector('.mainFolderCT')
 mainFolder.addEventListener('click', () => {
     mainFolder.querySelector('.expanderArrow').classList.toggle('expanderArrowRecoil')
@@ -36,6 +37,12 @@ const state = {
      terminalInput: document.getElementById("terminalInput"),
     //  nick: 'hasaski'
     }
+worker.onmessage = function(e) {
+    if (e.data.type === 'fetchData' && e.data.response.success) {
+        userData = e.data.result
+        console.log(userData)
+    }
+}
 const terminalCT = document.querySelector(".terminalCT")
 state.terminalInput.value = ''
 terminalCT.addEventListener('mouseenter', () => state.terminalInput.focus());
@@ -123,13 +130,16 @@ async function showCommands() {
     const commands = await (await fetch(`./commands.json`)).json()
     commands.forEach(command => {
         const newCommandLineCT = newNormalLine('')
-        const newCommandLineName = newNormalLine(`${command.name}:`, true)
+        const newCommandLineName = newNormalLine(`${command.name}:`, true, false, command.customColor || false)
         const newCommandLineDesc = newNormalLine(command.desc)
         newCommandLineCT.appendChild(newCommandLineName)
         newCommandLineCT.appendChild(newCommandLineDesc)
         mainCT.appendChild(newCommandLineCT)
         newCommandLineCT.scrollIntoView({ behavior: 'smooth', block: 'end' })
     })
+}
+async function showCards() {
+
 }
 async function changeTheme(theme, getThemes = false) {
     const themes = await (await fetch(`./themes/themes.json`)).json()
@@ -158,6 +168,11 @@ async function changeTheme(theme, getThemes = false) {
             document.querySelector('.userInfoThumb').src = './baboo-ascii.webm'
         }
         if (themeClass.toLowerCase() !== 'light') {
+            document.body.classList.remove(...allThemeClasses)
+            document.querySelector('.terminalCT').classList.remove('pixeledTerminalCT')
+            document.querySelector('.terminalTopScreen').classList.remove('pixeledTerminalTopScreen')
+            document.querySelector('.terminalBottomScreen').classList.remove('pixeledTerminalBottomScreen')
+            document.querySelector('.userInfoThumb').src = './baboo-ascii.webm'
             document.getElementById("darkmode").disabled = true
             document.querySelector('.modest').style.cursor = 'not-allowed'
         }

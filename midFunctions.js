@@ -11,10 +11,11 @@ export function newDecLine(state) {
     state.decLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
     return state.decLine
 }
-export function newNormalLine(content, isColored = false, autoAppend = false) {
+export function newNormalLine(content, isColored = false, autoAppend = false, customColor = false) {
     const normalLine = document.createElement("div")
     normalLine.className = isColored ? "coloredTerminalLineCT" : "normalTerminalLineCT"
     normalLine.textContent = String(content)
+    if (customColor) normalLine.style.color = customColor
     if (autoAppend) {
         document.querySelector('.terminalCT').appendChild(normalLine)
         normalLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
