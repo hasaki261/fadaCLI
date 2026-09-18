@@ -7,6 +7,11 @@ export default defineConfig({
         target: "https://enka.network/",
         changeOrigin: true,
       },
+      "/ascii/api/convert": {
+        target: "https://yourascii.vercel.app/",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/ascii/, '')
+      }
     },
   },
 })

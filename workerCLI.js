@@ -39,8 +39,8 @@ self.onmessage = async function (e) {
         self.postMessage( {type: 'fetchResult', response: { success: true, nick: userData.PlayerInfo.SocialDetail.ProfileDetail.Nickname, uid: userData.PlayerInfo.SocialDetail.ProfileDetail.Uid }} )
         fullData = userData
         const realData = await mapData(fullData)
-        if (realData.sucess) self.postMessage( {type: 'fetchData', response = {success: true, data: realData} } )
-        else self.postMessage( {type: 'fetchData', response = {success: false, data: realData.error} } )
+        if (realData) self.postMessage( {type: 'fetchData', response: {success: true, data: realData} } )
+        else self.postMessage( {type: 'fetchData', response: {success: false} } )
     }
   }
   if (type === "displayStart") {
@@ -101,14 +101,25 @@ async function processSocialData(userData) {
         desc: userDesc
     }
 }
+async function fetchJson(url) {
+    const res = await fetch(url)
+    if (!res.ok) {
+        console.error(`Fetch failed: ${url} — status ${res.status}`)
+        throw new Error(`Failed to fetch ${url}: ${res.status}`)
+    }
+    return res.json()
+}
 async function mapData(data) {
-    const rawAvatarsMap = await (await fetch('./mapping/raw/avatars.json')).json() 
-    const rawWeaponMap = await (await fetch('./mapping/raw/weapons.json')).json()
+    const rawAvatarsMap = await fetchJson('./mapping/raw/avatars.json')
+    const rawWeaponMap = await fetchJson('./mapping/raw/weapons.json')
+    const statsInfo = await fetchJson('./mapping/raw/property.json')
+    const disksInfo = await fetchJson('./mapping/raw/equipments.json')
     const avatars = data.PlayerInfo.ShowcaseDetail.AvatarList
+    const agentsData = []
     for (const avatar of avatars) {
-        const avatarInfo = await (await fetch(`./mapping/tools/EN/Avatars/${avatar.Id}.json`)).json()
-        const weaponInfo = await (await fetch(`./mapping/tools/EN/Weapons/${avatar.Weapon.Id}.json`)).json()
-        const name = avatarInfo.name
+        const avatarInfo = await fetchJson(`./mapping/tools/EN/Avatars/${avatar.Id}.json`)
+        const weaponInfo = await fetchJson(`./mapping/tools/EN/Weapons/${avatar.Weapon.Id}.json`)
+        const name = avatarInfo.Name
         const avatarClass = avatarInfo.Specialty.Name
         const highLightProps =  rawAvatarsMap[avatar.Id].HighlightProps
         const agentBaseStats = {}
@@ -154,10 +165,9 @@ async function mapData(data) {
         const weaponSecValue = weaponSec.PropertyValue* (1 + 0.3 * avatar.Weapon.BreakLevel)
         agentRelativeStats[weaponSec.PropertyId] = weaponSecValue
         // Now with two pieces disks bonus
-        const disksInfo = await (await fetch('./mapping/raw/equipments.json')).json()
         const disks = avatar.EquippedList
         const diskBonuses = findBonus(disks, disksInfo)
-        Object.entries(diskBonuses).forEach(([key, value]) => { 
+        Object.entries(diskBonuses.bonuses).forEach(([key, value]) => { 
             agentRelativeStats[key] = (agentRelativeStats[key] || 0) + value
         })
         // We have to calculate disks Mainstats too
@@ -168,7 +178,7 @@ async function mapData(data) {
         }
         disks.forEach(disk => {
             const diskMain = disk.Equipment.MainPropertyList[0]
-            const diskRarity = rarityScale[disksInfo[disk.Equipment.Id].Rarity]
+            const diskRarity = rarityScale[disksInfo.Items[disk.Equipment.Id].Rarity]
             const diskMainValue = diskMain.PropertyValue + (diskMain.PropertyValue * disk.Equipment.Level * diskRarity)
             agentRelativeStats[diskMain.PropertyId] = (agentRelativeStats[diskMain.PropertyId] || 0) + diskMainValue
             // In the same looping, we can calculate substats too
@@ -178,49 +188,97 @@ async function mapData(data) {
             })
         })
         // We have to sum base stats with relative stats with the same name
-        const statsInfo = await (await fetch('./mapping/raw/property.json'))
-        agentStats = {}
-        Object.entries(totalBaseStats).forEach(([stat, value]) => {
-            agentStats[statsInfo[stat].Name] = (agentStats[statsInfo[stat].Name] || 0) + value
-        })
-        Object.entries(agentRelativeStats).forEach(([stat, value]) => {
-            agentStats[statsInfo[stat].Name] = (agentStats[statsInfo[stat].Name] || 0) + value
-        })
-        // Some stats represents the same stat but with different names, we will join everything in a total
-        Object.entries(agentStats).forEach(([stat, value]) => {
-            if (stat.split('_')[1] === 'base' || stat.split('_')[1] === 'Base') {
-                const total = agentStats[stat]
-                 + (agentStats[`${stat.split('_')[0]}_ratio`]/10000 || agentStats[`${stat.split('_')[0]}_Ratio`]/10000 || 0) * agentStats[stat]
-                 + (agentStats[stat.split('_')[0]] || 0);
-                agentStats[`${stat.split('_')[0]}_Total`] = total.toFixed(2)
-            }
-            // Also, we have to verify if a value is a percentual or integer and floor this
-            const format = findStatFormat(stat, statsInfo)
-            const decimal = format.includes('.')
-             ? format.split('.')[1].replace(/[^0#]/g, '').length
-             : 1
-            let realValue = value.toFixed(decimal)
-            if (format.includes('%')) realValue = `${realValue/100}%`
-            agentStats[stat] = String(Number(realValue))
+        const agentStats = sumStats(statsInfo, totalBaseStats, agentRelativeStats)
+        // Now we have three objs, one for base stats, other for relative stats and one for the sum of these two
+        // We can return some info from the agent too
+        const skillsArray = { '0': 'Basic Attack', '1': 'Special Attack', '2': 'Dash', '3': 'Ultimate', '5': 'Core Skill', '6': 'Assist' } 
+        const agentInfo = {
+            id: avatar.Id,
+            name: name,
+            level: avatar.Level,
+            class: avatarClass,
+            stats: highLightProps,
+            element: avatarInfo.ElementTypes[0],
+            subelement: (rawAvatarsMap[avatar.Id].ElementTypes[0] || avatarInfo.ElementTypes),
+            skills: avatar.SkillLevelList.reduce((acc, skill) => {
+                acc[skillsArray[skill.Index]] = skill.Level;
+                return acc;
+            }, {}),
+            weapon: {
+                id: avatar.Weapon.Id,
+                name: weaponInfo.ItemName,
+                level: avatar.Weapon.Level,
+                sig: rawAvatarsMap[avatar.Id].WeaponId === avatar.Weapon.Id
+            },
+            disks: avatar.EquippedList.map(disk => {
+                const equipmentInfo = disk.Equipment
+                delete equipmentInfo.IsAvailable
+                delete equipmentInfo.IsLocked
+                delete equipmentInfo.IsTrash
+                delete equipmentInfo.BreakLevel
+                delete equipmentInfo.Exp
+                delete equipmentInfo.Uid
+                return equipmentInfo
+            }),
+            pieces: {
+                'twoPieces': diskBonuses.dups,
+                'quadPieces': diskBonuses.quad
+            },
+            fav: avatar.IsFavorite,
+            skin: avatar.SkinId,
+            since: avatar.ObtainmentTimestamp
+        }
+        agentsData.push({
+            agentInfo: agentInfo,
+            baseData: totalBaseStats,
+            relativeData: agentRelativeStats,
+            totalData: agentStats
         })
     }
+    return agentsData
 }
 function findBonus(disks, disksInfo) {
     const bonuses = {}
-    const suits = disks.map(disk => diskInfo.Items[disk.Equipment.Id].SuitId)
+    const suits = disks.map(disk => disksInfo.Items[disk.Equipment.Id].SuitId)
     const dups = []
+    let quad
     suits.forEach(suitId => {
+        const count = suits.filter(x => x === suitId)
+        if (count.length === 4) quad = suitId
         if (dups.includes(suitId)) return
         const firstIdx = suits.indexOf(suitId)
         const lastIdx = suits.lastIndexOf(suitId)
         if (firstIdx !== lastIdx) {
             dups.push(suitId)
-            const suitBonus = diskInfo.Suits[suitId].SetBonusProps
+            const suitBonus = disksInfo.Suits[suitId].SetBonusProps
+            if (Object.keys(suitBonus).length === 0) return 
             const [stat, bonus] = Object.entries(suitBonus)[0]
             bonuses[stat] = (bonuses[stat] || 0) + bonus
         }
     })
-    return bonuses
+    return { bonuses: bonuses, dups: dups, quad: (quad || None) }
+}
+function sumStats(statsInfo, baseStats, relativeStats) {
+    const familyTotal = {}
+    Object.keys(relativeStats).forEach(stat => {
+        const family = stat.split('').slice(0, -1).join('')
+        if (Object.keys(familyTotal).includes(family)) return
+        const variants = Object.keys(statsInfo).filter(key => key.startsWith(family))
+        let percent, base, flat
+        variants.forEach(subKey => {
+            if ((subKey.endsWith('1') && !statsInfo[subKey].Format?.includes('%')) || statsInfo[subKey].Name.toLowerCase().split('_')[1] === 'base') {
+                base = (base || 0) + (baseStats[subKey] || 0) + (relativeStats[subKey] || 0)
+            }
+            else if (subKey.endsWith('2')
+             || statsInfo[subKey].Name.toLowerCase().split('_')[1] === 'ratio'
+             || statsInfo[subKey].Format?.includes('%')
+            ) percent = (percent || 0) + (relativeStats[subKey] || 0) + (baseStats[subKey] || 0)
+            else flat = (flat || 0) + (relativeStats[subKey] || 0) + (baseStats[subKey] || 0)
+        })
+        if (base) familyTotal[family] = (base || 0)*(1+((percent || 0)/10000)) + (flat || 0)
+        else familyTotal[family] = percent ? (percent/100 || 0) : (flat || 0)  
+    })
+    return familyTotal
 }
 function findStatFormat(statName, statsInfo) {
     return Object.entries(statsInfo).filter(([id, info]) => info.Name === statName)[0].Format

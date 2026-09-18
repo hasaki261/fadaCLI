@@ -6,5 +6,5 @@
     { "name": "whoami", "desc": "show the current user" },
     { "name": "pwd", "desc": "print the current directory path" },
     { "name": "commands", "desc": "list all available commands" },
-    { "name": "cards", "desc": "show your agents info in terminal", "customColor": "oklch(0.7 0.1 139)" }
+    { "name": "zenfetch", "desc": "shows agent data in terminal, likes neofetch", "customColor": "oklch(0.7 0.1 139)" }
 ]

@@ -4,7 +4,8 @@ const worker = new Worker(new URL("./workerCLI.js", import.meta.url),
   }
 )
 import { uidCLI } from './commands/fetchuidCLI'
-import { newDecLine, newNormalLine, getScreensReady, getFilesTree, getLogInScreen } from './midFunctions';
+import { zzzFetch } from './commands/zenfetch'
+import { newDecLine, newNormalLine, getScreensReady, getFilesTree, getLogInScreen, newLoading } from './midFunctions';
 function toggleDarkMode() {
     const lightmodecheckbox = document.getElementById("darkmode");
     const body = document.body;
@@ -37,12 +38,6 @@ const state = {
      terminalInput: document.getElementById("terminalInput"),
     //  nick: 'hasaski'
     }
-worker.onmessage = function(e) {
-    if (e.data.type === 'fetchData' && e.data.response.success) {
-        userData = e.data.result
-        console.log(userData)
-    }
-}
 const terminalCT = document.querySelector(".terminalCT")
 state.terminalInput.value = ''
 terminalCT.addEventListener('mouseenter', () => state.terminalInput.focus());
@@ -51,7 +46,291 @@ terminalCT.replaceChildren()
 state.isRunningCommand = true
 uidCLI(worker, state)
 // newDecLine(state)
+// zzzFetch(
+// {
+//     "agentInfo": {
+//       "id": 1091,
+//       "name": "Miyabi",
+//       "level": 60,
+//       "class": "Anomaly",
+//       "stats": [
+//         12101,
+//         20101,
+//         21101
+//       ],
+//       "element": "Ice",
+//       "subelement": "FireFrost",
+//       "skills": {
+//         "Basic Attack": 12,
+//         "Special Attack": 12,
+//         "Dash": 12,
+//         "Ultimate": 12,
+//         "Core Skill": 7,
+//         "Assist": 10
+//       },
+//       "weapon": {
+//         "id": 14109,
+//         "name": "Hailstorm Shrine",
+//         "level": 60,
+//         "sig": true
+//       },
+//       "disks": [
+//         {
+//           "Id": 31141,
+//           "Level": 15,
+//           "MainPropertyList": [
+//             {
+//               "PropertyId": 11103,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 550
+//             }
+//           ],
+//           "RandomPropertyList": [
+//             {
+//               "PropertyId": 13102,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 480
+//             },
+//             {
+//               "PropertyId": 20103,
+//               "PropertyLevel": 2,
+//               "PropertyValue": 240
+//             },
+//             {
+//               "PropertyId": 21103,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 480
+//             },
+//             {
+//               "PropertyId": 12102,
+//               "PropertyLevel": 4,
+//               "PropertyValue": 300
+//             }
+//           ]
+//         },
+//         {
+//           "Id": 31142,
+//           "Level": 15,
+//           "MainPropertyList": [
+//             {
+//               "PropertyId": 12103,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 79
+//             }
+//           ],
+//           "RandomPropertyList": [
+//             {
+//               "PropertyId": 20103,
+//               "PropertyLevel": 3,
+//               "PropertyValue": 240
+//             },
+//             {
+//               "PropertyId": 21103,
+//               "PropertyLevel": 2,
+//               "PropertyValue": 480
+//             },
+//             {
+//               "PropertyId": 31203,
+//               "PropertyLevel": 3,
+//               "PropertyValue": 9
+//             },
+//             {
+//               "PropertyId": 12102,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 300
+//             }
+//           ]
+//         },
+//         {
+//           "Id": 32743,
+//           "Level": 15,
+//           "MainPropertyList": [
+//             {
+//               "PropertyId": 13103,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 46
+//             }
+//           ],
+//           "RandomPropertyList": [
+//             {
+//               "PropertyId": 20103,
+//               "PropertyLevel": 3,
+//               "PropertyValue": 240
+//             },
+//             {
+//               "PropertyId": 31203,
+//               "PropertyLevel": 2,
+//               "PropertyValue": 9
+//             },
+//             {
+//               "PropertyId": 13102,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 480
+//             },
+//             {
+//               "PropertyId": 21103,
+//               "PropertyLevel": 2,
+//               "PropertyValue": 480
+//             }
+//           ]
+//         },
+//         {
+//           "Id": 32744,
+//           "Level": 15,
+//           "MainPropertyList": [
+//             {
+//               "PropertyId": 21103,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 1200
+//             }
+//           ],
+//           "RandomPropertyList": [
+//             {
+//               "PropertyId": 12102,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 300
+//             },
+//             {
+//               "PropertyId": 13103,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 15
+//             },
+//             {
+//               "PropertyId": 31203,
+//               "PropertyLevel": 4,
+//               "PropertyValue": 9
+//             },
+//             {
+//               "PropertyId": 20103,
+//               "PropertyLevel": 2,
+//               "PropertyValue": 240
+//             }
+//           ]
+//         },
+//         {
+//           "Id": 32745,
+//           "Level": 15,
+//           "MainPropertyList": [
+//             {
+//               "PropertyId": 12102,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 750
+//             }
+//           ],
+//           "RandomPropertyList": [
+//             {
+//               "PropertyId": 11103,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 112
+//             },
+//             {
+//               "PropertyId": 20103,
+//               "PropertyLevel": 4,
+//               "PropertyValue": 240
+//             },
+//             {
+//               "PropertyId": 13102,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 480
+//             },
+//             {
+//               "PropertyId": 21103,
+//               "PropertyLevel": 2,
+//               "PropertyValue": 480
+//             }
+//           ]
+//         },
+//         {
+//           "Id": 32746,
+//           "Level": 15,
+//           "MainPropertyList": [
+//             {
+//               "PropertyId": 31402,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 750
+//             }
+//           ],
+//           "RandomPropertyList": [
+//             {
+//               "PropertyId": 21103,
+//               "PropertyLevel": 3,
+//               "PropertyValue": 480
+//             },
+//             {
+//               "PropertyId": 20103,
+//               "PropertyLevel": 3,
+//               "PropertyValue": 240
+//             },
+//             {
+//               "PropertyId": 12103,
+//               "PropertyLevel": 2,
+//               "PropertyValue": 19
+//             },
+//             {
+//               "PropertyId": 11102,
+//               "PropertyLevel": 1,
+//               "PropertyValue": 300
+//             }
+//           ]
+//         }
+//       ],
+//       "pieces": {
+//         "twoPieces": [
+//           31100,
+//           32700
+//         ],
+//         "quadPieces": 32700
+//       },
+//       "fav": true,
+//       "skin": 0,
+//       "since": 1736269571
+//     },
+//     "baseData": {
+//       "11101": 7673.7042,
+//       "12101": 1624.1952,
+//       "12201": 86,
+//       "13101": 606.5977,
+//       "20101": 500,
+//       "21101": 5000,
+//       "30501": 120,
+//       "31201": 238,
+//       "31401": 116
+//     },
+//     "relativeData": {
+//       "11102": 300,
+//       "11103": 2312,
+//       "12102": 4800,
+//       "12103": 354,
+//       "13102": 1440,
+//       "13103": 199,
+//       "20103": 6480,
+//       "21103": 11200,
+//       "23103": 800,
+//       "31203": 81,
+//       "31402": 3000
+//     },
+//     "totalData": {
+//       "1110": 10215.915326,
+//       "1210": 2757.808896,
+//       "1310": 892.9477688,
+//       "2010": 69.8,
+//       "2110": 162,
+//       "2310": 8,
+//       "3120": 319,
+//       "3140": 150.8
+//     }
+//   }, 'hasaki', 1, 1005418754
+// )
+let nick, uid
 worker.addEventListener("message", async (e) => {
+    if (e.data.type === 'fetchResult' && e.data.response.success) {
+        nick = e.data.response.nick
+        uid = e.data.response.uid
+        console.log(uid, nick)
+    }
+    if (e.data.type === 'fetchData' && e.data.response.success) {
+        userData = e.data.response.data
+    }
     if (e.data.type === 'mainScreens') {
         await getScreensReady()
     }
@@ -98,6 +377,34 @@ terminalCT.addEventListener('keydown', async (event) => {
             newDecLine(state)
             return state.isRunningCommand = false
         }
+        if (inputValue === 'zenfetch' || inputValue === 'zenfetch --help' || inputValue === 'zenfetch help') {
+            state.isRunningCommand = true
+            newNormalLine('Available agents:', true, true)
+            userData.forEach(agent => {
+                newNormalLine(agent.agentInfo.name, true, true)
+            })
+            newNormalLine('try zenfetch <agent>', true, true)
+            newDecLine(state)
+            return state.isRunningCommand = false
+        }
+        if (inputValue.includes('zenfetch') && (inputValue.split(' ')[1] && inputValue.split(' ')[1] !== '')) {
+            state.isRunningCommand = true
+            const response = []
+            userData.forEach((agent, idx) => {
+                if (agent.agentInfo.name.toLowerCase() !== inputValue.split(' ').slice(1).join(' ').toLowerCase()) return
+                response.push('fetching')
+                state.terminalInput.disabled = true
+                state.terminalInput.value = `${state.terminalInput.value} ...`
+                zzzFetch(agent, nick, (idx + 1), uid).then(res => {
+                    newDecLine(state)
+                })
+            })
+            if (response.length === 0) {
+                newNormalLine(`${inputValue} is not a valid agent, type zzzfetch to see available agents`, false, true)
+                newDecLine(state)
+            }
+            return state.isRunningCommand = false
+        }
         if (inputValue.trim().split(' ').filter(Boolean)[0] === 'themes') {
             state.isRunningCommand = true
             const theme = inputValue.trim().split(' ').filter(Boolean)[1] ? inputValue.trim().split(' ').filter(Boolean)[1] : undefined
@@ -138,9 +445,6 @@ async function showCommands() {
         newCommandLineCT.scrollIntoView({ behavior: 'smooth', block: 'end' })
     })
 }
-async function showCards() {
-
-}
 async function changeTheme(theme, getThemes = false) {
     const themes = await (await fetch(`./themes/themes.json`)).json()
     if (getThemes) return themes
@@ -168,11 +472,6 @@ async function changeTheme(theme, getThemes = false) {
             document.querySelector('.userInfoThumb').src = './baboo-ascii.webm'
         }
         if (themeClass.toLowerCase() !== 'light') {
-            document.body.classList.remove(...allThemeClasses)
-            document.querySelector('.terminalCT').classList.remove('pixeledTerminalCT')
-            document.querySelector('.terminalTopScreen').classList.remove('pixeledTerminalTopScreen')
-            document.querySelector('.terminalBottomScreen').classList.remove('pixeledTerminalBottomScreen')
-            document.querySelector('.userInfoThumb').src = './baboo-ascii.webm'
             document.getElementById("darkmode").disabled = true
             document.querySelector('.modest').style.cursor = 'not-allowed'
         }

@@ -3,6 +3,7 @@ export function newDecLine(state) {
     const newDecLine = state.decLine.cloneNode(true)
     const newTerminalInput = newDecLine.querySelector(".terminalInput")
     state.terminalInput.disabled = true
+    newTerminalInput.disabled = false
     state.terminalInput = newTerminalInput
     state.decLine = newDecLine
     terminalCT.appendChild(state.decLine)
@@ -45,31 +46,33 @@ export function newLoading(element) {
         return stopPromise
     }
 }
-export async function getSVGASCII(imageUrl) {
+export async function getSVGASCII(imageUrl, colored = false) {
     let newUrl = imageUrl
     newUrl = newUrl
      .replace('https://', '')
      .replace('http://', '')
-    const res = await fetch('https://yourascii.vercel.app/api/convert', {
+    const res = await fetch('/ascii/api/convert', {
         method: 'POST',
         headers: {
             "Content-Type": 'application/json'
         },
         body: JSON.stringify({
             url: `https://${newUrl}`,
-            resolution: 120,
-            colorMode: 'mono',
+            resolution: colored ? 160 : 120,
+            colorMode: colored ? 'colored' : 'mono',
             format: 'svg',
         })
     })
     if (!res.ok) {
+        const errorBody = await res.text().catch(() => '(sem corpo)')
+        console.error('Detalhes do erro:', errorBody)
         throw new Error(`Failed to fetch SVG ASCII: ${res.status} ${res.statusText}`)
     }
     let svgText = await res.text()
     svgText = svgText
      .replace(/<svg /, '<svg class="iconsASCII" ')
      .replace('fill="#000"', 'fill="transparent"')
-     .replaceAll('fill="#fff"', 'fill="currentColor"')
+    if (!colored) svgText = svgText.replaceAll('fill="#fff"', 'fill="currentColor"')
     const parser = new DOMParser()
     const svg = parser.parseFromString(svgText, "image/svg+xml").documentElement
     return (svg)

@@ -996,3 +996,36 @@ body.light::after {
     animation: appearAll 1s linear forwards, focus 1s linear forwards .5s;
     transition: var(--theme-transition-duration)
 }
+.colorsGrid {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    width: 270px;
+    height: 50px;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+.colorBox {
+    width: 45px;
+    height: 25px;
+}
+.infoCT {
+    display: flex;
+    height: fit-content;
+    flex-direction: column;
+    gap: 7px
+}
+.fetchBox {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    gap: 10px;
+}
+.fetchAvatar {
+    width: 25vw;
+    height: 1000px;
+    user-select: none;
+    opacity: 1;
+    font-size: 21px !important;
+    font-weight: normal !important;
+    font-family: 'terminalHas' !important;
+}
