@@ -381,7 +381,7 @@ terminalCT.addEventListener('keydown', async (event) => {
             state.isRunningCommand = true
             newNormalLine('Available agents:', true, true)
             userData.forEach(agent => {
-                newNormalLine(agent.agentInfo.name, true, true)
+                newNormalLine(agent.agentInfo.name, false, true)
             })
             newNormalLine('try zenfetch <agent>', true, true)
             newDecLine(state)
