@@ -169,7 +169,7 @@ function updateChecker() {
 // export function changeTheme(themeName) {
 //     const theme = document.createElement('link')
 //     theme.rel = 'stylesheet'
-//     theme.href = `./themes/${themeName}/${themeName}.css`
+//     theme.href = `/themes/${themeName}/${themeName}.css`
 //     theme.onload = () => {
 //         document.querySelector('.theme').remove()
 //         theme.classList.add('theme')

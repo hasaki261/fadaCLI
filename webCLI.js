@@ -195,21 +195,21 @@ async function changeTheme(theme, getThemes = false) {
             document.querySelector('.userInfoThumb').src = './baboo-ascii.webm'
         }
         if (themeClass.toLowerCase() === 'light') {
-            document.querySelector('.userInfoThumb').src = './themes/light/baboo-light.webm'
+            document.querySelector('.userInfoThumb').src = '/themes/light/baboo-light.webm'
         }
         if (themeClass.toLowerCase() === 'yuzuha') {
             document.querySelector('.fb').classList.add('pixeledfb')
             document.querySelector('.terminalCT').classList.add('pixeledTerminalCT')
             document.querySelector('.terminalTopScreen').classList.add('pixeledTerminalTopScreen')
             document.querySelector('.terminalBottomScreen').classList.add('pixeledTerminalBottomScreen')
-            document.querySelector('.userInfoThumb').src = './themes/yuzuha/yuzuha-ascii.webm'
+            document.querySelector('.userInfoThumb').src = '/themes/yuzuha/yuzuha-ascii.webm'
         }
         if (themeClass.toLowerCase() === 'yada') {
             document.querySelector('.fb').classList.add('pixeledfb')
             document.querySelector('.terminalCT').classList.add('pixeledTerminalCT')
             document.querySelector('.terminalTopScreen').classList.add('pixeledTerminalTopScreen')
             document.querySelector('.terminalBottomScreen').classList.add('pixeledTerminalBottomScreen')
-            document.querySelector('.userInfoThumb').src = './themes/dreamIdols/yada.webm'
+            document.querySelector('.userInfoThumb').src = '/themes/dreamIdols/yada.webm'
         }
         document.getElementById('userInfoTextValueTHEME').textContent = themeClass
     }

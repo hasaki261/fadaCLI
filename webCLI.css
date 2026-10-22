@@ -47,7 +47,7 @@ body.light {
     --shadow-color: transparent;
 }
 body.yuzuha {
-    --bg-image: url("./themes/yuzuha/bg.gif");
+    --bg-image: url("/themes/yuzuha/bg.gif");
     --bg-dark: oklch(0.1 0.1 300);
     --bg-dark-t: oklch(0.1 0.1 300 / 0.82);
     --bg: oklch(0.15 0.1 300);
@@ -62,7 +62,7 @@ body.yuzuha {
 }
 
 body.yada {
-    --bg-image: url("./themes/dreamIdols/dreamIdols.avif");
+    --bg-image: url("/themes/dreamIdols/dreamIdols.avif");
     --bg-dark: oklch(0.5714 0.2513 298.1);
     --bg-dark-t: oklch(0.5714 0.2513 298.1 / 0.67);
     --bg-light: oklch(0.25 0.3235 322.29 / 0.95);
