@@ -19,13 +19,13 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir -p mapping/raw
+          mkdir -p public/mapping/raw
           curl -sL -H "Authorization: token $GH_TOKEN" \
             "https://api.github.com/repos/EnkaNetwork/API-docs/contents/store/zzz?ref=master" \
             | jq -r '.[] | select(.type=="file") | .download_url' \
             | while read url; do
                 filename=$(basename "$url")
-                curl -sL -o "mapping/raw/$filename" "$url"
+                curl -sL -o "public/mapping/raw/$filename" "$url"
               done
 
       - name: Get ZZZ tooltip data (PT/EN) from EnkaNetwork/API-docs
@@ -58,7 +58,7 @@ jobs:
                          -H "Accept: application/vnd.github+json" \
                          "https://api.github.com/repos/EnkaNetwork/API-docs/contents/tooltip-data/zzz/${lang}?ref=master" \
                          | jq -r '.[] | select(.type=="dir") | .name'); do
-              fetch_files "tooltip-data/zzz/${lang}/${sub}" "mapping/tools/${lang}/${sub}"
+              fetch_files "tooltip-data/zzz/${lang}/${sub}" "public/mapping/tools/${lang}/${sub}"
             done
           done
           
@@ -66,7 +66,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add mapping/raw mapping/tools
+          git add public/mapping/raw public/mapping/tools
           if git diff --staged --quiet; then
             echo "No changes"
           else

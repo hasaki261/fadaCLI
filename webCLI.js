@@ -157,7 +157,7 @@ terminalCT.addEventListener('keydown', async (event) => {
 })
 async function showCommands() {
     const mainCT = document.querySelector('.terminalCT')
-    const commands = await (await fetch(`./commands.json`)).json()
+    const commands = await (await fetch(`/commands.json`)).json()
     commands.forEach(command => {
         const newCommandLineCT = newNormalLine('')
         const newCommandLineName = newNormalLine(`${command.name}:`, true, false, command.customColor || false)

@@ -2,3 +2,4 @@ node_modules
 example.json
 example2.json
 test.mjs
+dist

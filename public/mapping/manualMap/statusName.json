@@ -1,0 +1,32 @@
+{
+    "PT": {
+        "2010": { "long": "Taxa Crítica", "short": "CR", "type": "percent" },
+        "2110": { "long": "Dano Crítico", "short": "CD", "type": "percent"},
+        "1110": { "long": "Pontos de Vida", "short": "PV", "type": "total" },
+        "1210": { "long": "Ataque", "short": "ATQ", "type": "total" },
+        "1310": { "long": "Defesa", "short": "DEF", "type": "total" },
+        "1220": { "long": "Impacto", "short": "Impact", "type": "total" },
+        "2310": { "long": "Taxa de Perfuração", "short": "Pen%", "type": "percent" },
+        "2320": { "long": "Perfuração", "short": "Pen", "type": "flat" },
+        "3050": { "long": "Recarga de Energia", "short": "ER%", "type": "total/percent" },
+        "3140": { "long": "Maestria de Anomalia", "short": "AM", "type": "total" },
+        "3120": { "long": "Proficiência", "short": "Prof", "type": "flat" },
+        "2130": { "long": "Dano de Laceração", "short": "LDMG%", "type": "percent" },
+        "1230": { "long": "Dano Bruto", "short": "BDMG", "type": "total" }
+    },
+    "EN": {
+        "2010": { "long": "Crit Rate", "short": "CR", "type": "percent" },
+        "2110": { "long": "Crit Damage", "short": "CD", "type": "percent"},
+        "1110": { "long": "Health Points", "short": "HP", "type": "total" },
+        "1210": { "long": "Attack", "short": "ATK", "type": "total" },
+        "1310": { "long": "Defense", "short": "DEF", "type": "total" },
+        "1220": { "long": "Impact", "short": "Impact", "type": "total" },
+        "2310": { "long": "Pen Ratio", "short": "Pen%", "type": "percent" },
+        "2320": { "long": "Pen", "short": "Pen", "type": "flat" },
+        "3050": { "long": "Energy Regen", "short": "ER%", "type": "total/percent" },
+        "3140": { "long": "Anomaly Mastery", "short": "AM", "type": "total" },
+        "3120": { "long": "Proficiency", "short": "Prof", "type": "flat" },
+        "2130": { "long": "Laceration DMG", "short": "LDMG%", "type": "percent" },
+        "1230": { "long": "Brute Damage", "short": "BDMG", "type": "total" }
+    }
+}

@@ -1,8 +1,8 @@
 import { newDecLine, newNormalLine, getSVGASCII } from '../midFunctions.js'
-import avatarInfo from '../mapping/raw/avatars.json'
-import diskInfo from '../mapping/raw/equipments.json'
-import propertys from '../mapping/raw/property.json'
-import statusName from '../mapping/manualMap/statusName.json'
+import avatarInfo from '/mapping/raw/avatars.json'
+import diskInfo from '/mapping/raw/equipments.json'
+import propertys from '/mapping/raw/property.json'
+import statusName from '/mapping/manualMap/statusName.json'
 const rarityScale = {
     "4": 0.2,
     "3": 0.25,

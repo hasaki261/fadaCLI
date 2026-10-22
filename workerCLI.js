@@ -57,13 +57,13 @@ self.onmessage = async function (e) {
   }
 }
 async function processAgentdata(userData) {
-    const avatarsData = await (await fetch(`./mapping/raw/avatars.json`)).json()
+    const avatarsData = await (await fetch(`/mapping/raw/avatars.json`)).json()
     const showCaseData = userData.PlayerInfo.ShowcaseDetail
     const rawUserAvatars = showCaseData.AvatarList
     const userAvatarsIds = rawUserAvatars.map(idx => idx.Id)
     const userAgents = []
     for (const avatarId of userAvatarsIds) {
-        const agentData = await (await fetch(`./mapping/tools/${language}/Avatars/${avatarId}.json`)).json() // Missing Fallback for non-existing avatars
+        const agentData = await (await fetch(`/mapping/tools/${language}/Avatars/${avatarId}.json`)).json() // Missing Fallback for non-existing avatars
         const agentObject = {
             name: agentData.Name,
             class: agentData.Specialty,
@@ -75,8 +75,8 @@ async function processAgentdata(userData) {
     return userAgents
 }
 async function processSocialData(userData) {
-    const pfpData = await (await fetch(`./mapping/raw/pfps.json`)).json()
-    const bannerData = await (await fetch(`./mapping/raw/namecards.json`)).json()
+    const pfpData = await (await fetch(`/mapping/raw/pfps.json`)).json()
+    const bannerData = await (await fetch(`/mapping/raw/namecards.json`)).json()
     const socialData = userData.PlayerInfo.SocialDetail
     const userNickName = socialData.ProfileDetail.Nickname
     const userIconId = socialData.ProfileDetail.ProfileId
@@ -114,10 +114,10 @@ async function fetchJson(url) {
     return res.json()
 }
 async function mapData(data) {
-    const rawAvatarsMap = await fetchJson('./mapping/raw/avatars.json')
-    const rawWeaponMap = await fetchJson('./mapping/raw/weapons.json')
-    const statsInfo = await fetchJson('./mapping/raw/property.json')
-    const disksInfo = await fetchJson('./mapping/raw/equipments.json')
+    const rawAvatarsMap = await fetchJson('/mapping/raw/avatars.json')
+    const rawWeaponMap = await fetchJson('/mapping/raw/weapons.json')
+    const statsInfo = await fetchJson('/mapping/raw/property.json')
+    const disksInfo = await fetchJson('/mapping/raw/equipments.json')
     const rarityScale = {
         "4": 0.2,
         "3": 0.25,
@@ -128,8 +128,8 @@ async function mapData(data) {
     for (const avatar of avatars) {
         try
         {
-            const avatarInfo = await fetchJson(`./mapping/tools/EN/Avatars/${avatar.Id}.json`)
-            const weaponInfo = avatar?.Weapon?.Id ? await fetchJson(`./mapping/tools/EN/Weapons/${avatar?.Weapon?.Id}.json`).catch(() => ({})) || {} : {}
+            const avatarInfo = await fetchJson(`/mapping/tools/EN/Avatars/${avatar.Id}.json`)
+            const weaponInfo = avatar?.Weapon?.Id ? await fetchJson(`/mapping/tools/EN/Weapons/${avatar?.Weapon?.Id}.json`).catch(() => ({})) || {} : {}
             const name = avatarInfo.Name
             const avatarClass = avatarInfo?.Specialty?.Name
             const highLightProps = rawAvatarsMap?.[avatar.Id]?.HighlightProps
