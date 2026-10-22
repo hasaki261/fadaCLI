@@ -75,6 +75,7 @@ export async function zzzFetch(data, name, idx, uid) {
             let total = data.totalData[family] !== undefined
                 ? data.totalData[family]
                 : (data.relativeData[stat] || 0) + (data.baseData[stat] || 0)
+            if (data.agentInfo?.class && data.agentInfo?.class === 'Rupture') total = getRuptureStat(data.totalData)
             let prefix = ''
             if (statusName?.EN?.[family]?.type?.includes('percent')) prefix = '%'
             if (statusName?.EN?.[family]?.type === 'total/percent') total = total/100
@@ -224,4 +225,9 @@ function getDiskAbr(diskId) {
     } catch {
         return `???`
     }
+}
+function getRuptureStat(agentTotalData) {
+    const hp = agentTotalData[1110] || 0
+    const atk = agentTotalData[1210] || 0
+    return (atk*0.3 + hp*0.1)
 }

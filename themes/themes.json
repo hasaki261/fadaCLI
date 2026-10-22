@@ -1,5 +1,6 @@
 [    
     { "name": "Default", "type": "dark", "desc": "Default blue dark theme" },
     { "name": "Light", "type": "light", "desc": "Default light theme, with shadows" },
-    { "name": "Yuzuha", "type": "dark", "desc": "A theme inspired in Yuzuha, stickers and purple/red pallet" }
+    { "name": "Yuzuha", "type": "dark", "desc": "A theme inspired in Yuzuha with purple/red pallet" },
+    { "name": "Yada", "type": "light", "desc": "Idols inspired theme, with idols colors" }
 ]

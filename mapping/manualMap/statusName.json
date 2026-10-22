@@ -11,7 +11,8 @@
         "3050": { "long": "Recarga de Energia", "short": "ER%", "type": "total/percent" },
         "3140": { "long": "Maestria de Anomalia", "short": "AM", "type": "total" },
         "3120": { "long": "Proficiência", "short": "Prof", "type": "flat" },
-        "2130": { "long": "Dano de Laceração", "short": "LDMG%", "type": "percent" }
+        "2130": { "long": "Dano de Laceração", "short": "LDMG%", "type": "percent" },
+        "1230": { "long": "Dano Bruto", "short": "BDMG", "type": "total" }
     },
     "EN": {
         "2010": { "long": "Crit Rate", "short": "CR", "type": "percent" },
@@ -25,6 +26,7 @@
         "3050": { "long": "Energy Regen", "short": "ER%", "type": "total/percent" },
         "3140": { "long": "Anomaly Mastery", "short": "AM", "type": "total" },
         "3120": { "long": "Proficiency", "short": "Prof", "type": "flat" },
-        "2130": { "long": "Laceration DMG", "short": "LDMG%", "type": "percent" }
+        "2130": { "long": "Laceration DMG", "short": "LDMG%", "type": "percent" },
+        "1230": { "long": "Brute Damage", "short": "BDMG", "type": "total" }
     }
 }

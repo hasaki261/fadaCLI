@@ -2,8 +2,6 @@
     display: flex;
     height: 100vh;
 }
-
-/* ==================== Colors ==================== */
 :root {
     --bg-image: url("./bg.webp");
     --bg-dark: oklch(0.1 0.04 256);
@@ -63,7 +61,20 @@ body.yuzuha {
     --shadow-color: transparent;
 }
 
-/* ==================== RESET E FONTES ==================== */
+body.yada {
+    --bg-image: url("./themes/dreamIdols/dreamIdols.avif");
+    --bg-dark: oklch(0.5714 0.2513 298.1);
+    --bg-dark-t: oklch(0.5714 0.2513 298.1 / 0.67);
+    --bg-light: oklch(0.25 0.3235 322.29 / 0.95);
+    --primary: oklch(0.6996 0.1242 176.46 / 0.95);
+    --bg: oklch(0.5673 0.2235 322.29);
+    --text: oklch(0.941 0.1858 122.8);
+    --text-muted: oklch(0.841 0.1858 122.8);
+    --border: oklch(0.941 0.2858 122.8);
+    --border-muted: oklch(0.741 0.2858 122.8);
+    --shadow-color: oklch(0.819 0.1198 182.32);
+}
+/* ==================== RESET AND FONTS ==================== */
 * {
     margin: 0;
     padding: 0;
@@ -107,7 +118,7 @@ body.yuzuha {
     font-style: normal;
 }
 
-/* ==================== BODY E BACKGROUNDS ==================== */
+/* ==================== BODY AND BACKGROUNDS ==================== */
 html {
     min-height: 100vh;
 }
@@ -266,7 +277,7 @@ body.light::after {
     transition: color var(--theme-transition-duration) linear;
 }
 
-/* ==================== DROPDOWN DE PERSONAGENS ==================== */
+/* ==================== CHARACTERS DROPDOWN ==================== */
 .dropdown {
     margin: 0 0 0 10px;
     display: inline-block;
@@ -291,6 +302,7 @@ body.light::after {
 }
 
 #actcha {
+    display: none;
     width: 20px;
     height: 20px;
 
@@ -336,7 +348,8 @@ body.light::after {
     border-radius: 999px;
     overflow: hidden;
     cursor: pointer;
-    transition: var(--theme-transition-duration)
+    transition: var(--theme-transition-duration);
+    display: none;
 }
 
 .modest:hover {
@@ -378,7 +391,7 @@ body.light::after {
 #darkmode:checked~.moon {
     top: 0px;
 }
-/* ================ Link Ajuda ================= */
+/* ================ HELP LINK ================= */
 .htubd {
     margin-right: 10px;
 }
@@ -408,6 +421,8 @@ body.light::after {
 .htub:hover .htubi {
     fill: var(--bg-light);
 }
+
+/* CSS ABOVE IS FROM OTHER PROJECT */
 .cliCT {
     display: flex;
     flex-direction: row;

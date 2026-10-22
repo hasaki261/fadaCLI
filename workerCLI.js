@@ -76,12 +76,15 @@ async function processAgentdata(userData) {
 }
 async function processSocialData(userData) {
     const pfpData = await (await fetch(`./mapping/raw/pfps.json`)).json()
+    const bannerData = await (await fetch(`./mapping/raw/namecards.json`)).json()
     const socialData = userData.PlayerInfo.SocialDetail
     const userNickName = socialData.ProfileDetail.Nickname
     const userIconId = socialData.ProfileDetail.ProfileId
     const userBannerId = socialData.ProfileDetail.CallingCardId
+    const userBannerPath = bannerData[userBannerId].Icon
+    const userBannerURL = 'https://enka.network' + userBannerPath
     const userIconPath = pfpData[userIconId].Icon
-    const userIconURl = 'https://enka.network' + userIconPath
+    const userIconURL = 'https://enka.network' + userIconPath
     const userDesc = socialData.Desc
     const userLevel = socialData.ProfileDetail.Level
     let userServer = userData.region
@@ -91,13 +94,14 @@ async function processSocialData(userData) {
     else if (userServer === 'JP') userServer = 'Japan/JP'
     const userUid = socialData.ProfileDetail.Uid
     return {
-        iconURL: userIconURl,
+        iconURL: userIconURL,
         nick: userNickName,
         level: userLevel,
         uid: userUid,
         server: userServer,
         iconId: userIconId,
         bannerId: userBannerId,
+        bannerURL: userBannerURL,
         desc: userDesc
     }
 }

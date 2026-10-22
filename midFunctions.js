@@ -142,6 +142,8 @@ export async function getLogInScreen(userInfo) {
     document.getElementById('userInfoTextValueSERVER').textContent = userInfo.server
     document.getElementById('userInfoTextValueTHEME').textContent = terminalTheme
     document.getElementById('userInfoTextValueICONID').textContent = userInfo.iconId
+    document.getElementById('userInfoTextValueICONID').href = userInfo.iconURL
+    document.getElementById('userInfoTextValueBANNERID').href = userInfo.bannerURL
     document.getElementById('userInfoTextValueBANNERID').textContent = userInfo.bannerId
     const logInMessage = document.querySelector('.logInMessage')
     logInMessage.style.opacity = 1
@@ -163,3 +165,14 @@ function updateChecker() {
     const fullString = hour + ':' + minutes + ' ' +  month + '/' + day
     return fullString
 }
+// A better way to change themes, not used yet
+// export function changeTheme(themeName) {
+//     const theme = document.createElement('link')
+//     theme.rel = 'stylesheet'
+//     theme.href = `./themes/${themeName}/${themeName}.css`
+//     theme.onload = () => {
+//         document.querySelector('.theme').remove()
+//         theme.classList.add('theme')
+//     }
+//     document.head.appendChild(theme)
+// }

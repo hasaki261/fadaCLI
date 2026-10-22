@@ -1,10 +1,6 @@
 [
-    { "name": "clear", "desc": "wipe text from your screen" },
-    { "name": "ls", "desc": "list files and directories from actual location" },
-    { "name": "cd", "desc": "change to another directory" },
-    { "name": "cat", "desc": "show the contents of a file" },
-    { "name": "whoami", "desc": "show the current user" },
-    { "name": "pwd", "desc": "print the current directory path" },
-    { "name": "commands", "desc": "list all available commands" },
-    { "name": "zenfetch", "desc": "shows agent data in terminal, likes neofetch", "customColor": "oklch(0.7 0.1 139)" }
+    { "name": "clear", "desc": "wipe text from your screen", "customColor": "oklch(0.7 0.1 139)"  },
+    { "name": "commands", "desc": "list all available commands", "customColor": "oklch(0.7 0.1 139)"  },
+    { "name": "themes", "desc": "list all terminal themes" },
+    { "name": "zenfetch", "desc": "shows agent data in terminal, likes neofetch"}
 ]

@@ -36,7 +36,6 @@ const state = {
      isRunningCommand: false,
      decLine: document.getElementById("decTerminalLineCT"),
      terminalInput: document.getElementById("terminalInput"),
-    //  nick: 'hasaski'
     }
 const terminalCT = document.querySelector(".terminalCT")
 state.terminalInput.value = ''
@@ -45,282 +44,6 @@ terminalCT.addEventListener('click', () => state.terminalInput.focus());
 terminalCT.replaceChildren()
 state.isRunningCommand = true
 uidCLI(worker, state)
-// newDecLine(state)
-// zzzFetch(
-// {
-//     "agentInfo": {
-//       "id": 1091,
-//       "name": "Miyabi",
-//       "level": 60,
-//       "class": "Anomaly",
-//       "stats": [
-//         12101,
-//         20101,
-//         21101
-//       ],
-//       "element": "Ice",
-//       "subelement": "FireFrost",
-//       "skills": {
-//         "Basic Attack": 12,
-//         "Special Attack": 12,
-//         "Dash": 12,
-//         "Ultimate": 12,
-//         "Core Skill": 7,
-//         "Assist": 10
-//       },
-//       "weapon": {
-//         "id": 14109,
-//         "name": "Hailstorm Shrine",
-//         "level": 60,
-//         "sig": true
-//       },
-//       "disks": [
-//         {
-//           "Id": 31141,
-//           "Level": 15,
-//           "MainPropertyList": [
-//             {
-//               "PropertyId": 11103,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 550
-//             }
-//           ],
-//           "RandomPropertyList": [
-//             {
-//               "PropertyId": 13102,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 480
-//             },
-//             {
-//               "PropertyId": 20103,
-//               "PropertyLevel": 2,
-//               "PropertyValue": 240
-//             },
-//             {
-//               "PropertyId": 21103,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 480
-//             },
-//             {
-//               "PropertyId": 12102,
-//               "PropertyLevel": 4,
-//               "PropertyValue": 300
-//             }
-//           ]
-//         },
-//         {
-//           "Id": 31142,
-//           "Level": 15,
-//           "MainPropertyList": [
-//             {
-//               "PropertyId": 12103,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 79
-//             }
-//           ],
-//           "RandomPropertyList": [
-//             {
-//               "PropertyId": 20103,
-//               "PropertyLevel": 3,
-//               "PropertyValue": 240
-//             },
-//             {
-//               "PropertyId": 21103,
-//               "PropertyLevel": 2,
-//               "PropertyValue": 480
-//             },
-//             {
-//               "PropertyId": 31203,
-//               "PropertyLevel": 3,
-//               "PropertyValue": 9
-//             },
-//             {
-//               "PropertyId": 12102,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 300
-//             }
-//           ]
-//         },
-//         {
-//           "Id": 32743,
-//           "Level": 15,
-//           "MainPropertyList": [
-//             {
-//               "PropertyId": 13103,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 46
-//             }
-//           ],
-//           "RandomPropertyList": [
-//             {
-//               "PropertyId": 20103,
-//               "PropertyLevel": 3,
-//               "PropertyValue": 240
-//             },
-//             {
-//               "PropertyId": 31203,
-//               "PropertyLevel": 2,
-//               "PropertyValue": 9
-//             },
-//             {
-//               "PropertyId": 13102,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 480
-//             },
-//             {
-//               "PropertyId": 21103,
-//               "PropertyLevel": 2,
-//               "PropertyValue": 480
-//             }
-//           ]
-//         },
-//         {
-//           "Id": 32744,
-//           "Level": 15,
-//           "MainPropertyList": [
-//             {
-//               "PropertyId": 21103,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 1200
-//             }
-//           ],
-//           "RandomPropertyList": [
-//             {
-//               "PropertyId": 12102,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 300
-//             },
-//             {
-//               "PropertyId": 13103,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 15
-//             },
-//             {
-//               "PropertyId": 31203,
-//               "PropertyLevel": 4,
-//               "PropertyValue": 9
-//             },
-//             {
-//               "PropertyId": 20103,
-//               "PropertyLevel": 2,
-//               "PropertyValue": 240
-//             }
-//           ]
-//         },
-//         {
-//           "Id": 32745,
-//           "Level": 15,
-//           "MainPropertyList": [
-//             {
-//               "PropertyId": 12102,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 750
-//             }
-//           ],
-//           "RandomPropertyList": [
-//             {
-//               "PropertyId": 11103,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 112
-//             },
-//             {
-//               "PropertyId": 20103,
-//               "PropertyLevel": 4,
-//               "PropertyValue": 240
-//             },
-//             {
-//               "PropertyId": 13102,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 480
-//             },
-//             {
-//               "PropertyId": 21103,
-//               "PropertyLevel": 2,
-//               "PropertyValue": 480
-//             }
-//           ]
-//         },
-//         {
-//           "Id": 32746,
-//           "Level": 15,
-//           "MainPropertyList": [
-//             {
-//               "PropertyId": 31402,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 750
-//             }
-//           ],
-//           "RandomPropertyList": [
-//             {
-//               "PropertyId": 21103,
-//               "PropertyLevel": 3,
-//               "PropertyValue": 480
-//             },
-//             {
-//               "PropertyId": 20103,
-//               "PropertyLevel": 3,
-//               "PropertyValue": 240
-//             },
-//             {
-//               "PropertyId": 12103,
-//               "PropertyLevel": 2,
-//               "PropertyValue": 19
-//             },
-//             {
-//               "PropertyId": 11102,
-//               "PropertyLevel": 1,
-//               "PropertyValue": 300
-//             }
-//           ]
-//         }
-//       ],
-//       "pieces": {
-//         "twoPieces": [
-//           31100,
-//           32700
-//         ],
-//         "quadPieces": 32700
-//       },
-//       "fav": true,
-//       "skin": 0,
-//       "since": 1736269571
-//     },
-//     "baseData": {
-//       "11101": 7673.7042,
-//       "12101": 1624.1952,
-//       "12201": 86,
-//       "13101": 606.5977,
-//       "20101": 500,
-//       "21101": 5000,
-//       "30501": 120,
-//       "31201": 238,
-//       "31401": 116
-//     },
-//     "relativeData": {
-//       "11102": 300,
-//       "11103": 2312,
-//       "12102": 4800,
-//       "12103": 354,
-//       "13102": 1440,
-//       "13103": 199,
-//       "20103": 6480,
-//       "21103": 11200,
-//       "23103": 800,
-//       "31203": 81,
-//       "31402": 3000
-//     },
-//     "totalData": {
-//       "1110": 10215.915326,
-//       "1210": 2757.808896,
-//       "1310": 892.9477688,
-//       "2010": 69.8,
-//       "2110": 162,
-//       "2310": 8,
-//       "3120": 319,
-//       "3140": 150.8
-//     }
-//   }, 'hasaki', 1, 1005418754
-// )
 let nick, uid
 worker.addEventListener("message", async (e) => {
     if (e.data.type === 'fetchResult' && e.data.response.success) {
@@ -419,7 +142,7 @@ terminalCT.addEventListener('keydown', async (event) => {
                     document.querySelector('.terminalCT').appendChild(themeLine)
                     themeLine.scrollIntoView({ behavior: 'smooth', block: 'end' })
                 })
-                newNormalLine('Use "themes <theme name>" to change your theme')
+                newNormalLine('Use "themes <theme name>" to change your theme', true, true)
             } else await changeTheme(theme)
             newDecLine(state)
             return state.isRunningCommand = false
@@ -471,9 +194,8 @@ async function changeTheme(theme, getThemes = false) {
             document.querySelector('.terminalBottomScreen').classList.remove('pixeledTerminalBottomScreen')
             document.querySelector('.userInfoThumb').src = './baboo-ascii.webm'
         }
-        if (themeClass.toLowerCase() !== 'light') {
-            document.getElementById("darkmode").disabled = true
-            document.querySelector('.modest').style.cursor = 'not-allowed'
+        if (themeClass.toLowerCase() === 'light') {
+            document.querySelector('.userInfoThumb').src = './themes/light/baboo-light.webm'
         }
         if (themeClass.toLowerCase() === 'yuzuha') {
             document.querySelector('.fb').classList.add('pixeledfb')
@@ -481,6 +203,13 @@ async function changeTheme(theme, getThemes = false) {
             document.querySelector('.terminalTopScreen').classList.add('pixeledTerminalTopScreen')
             document.querySelector('.terminalBottomScreen').classList.add('pixeledTerminalBottomScreen')
             document.querySelector('.userInfoThumb').src = './themes/yuzuha/yuzuha-ascii.webm'
+        }
+        if (themeClass.toLowerCase() === 'yada') {
+            document.querySelector('.fb').classList.add('pixeledfb')
+            document.querySelector('.terminalCT').classList.add('pixeledTerminalCT')
+            document.querySelector('.terminalTopScreen').classList.add('pixeledTerminalTopScreen')
+            document.querySelector('.terminalBottomScreen').classList.add('pixeledTerminalBottomScreen')
+            document.querySelector('.userInfoThumb').src = './themes/dreamIdols/yada.webm'
         }
         document.getElementById('userInfoTextValueTHEME').textContent = themeClass
     }
