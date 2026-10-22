@@ -192,7 +192,7 @@ async function changeTheme(theme, getThemes = false) {
             document.querySelector('.terminalCT').classList.remove('pixeledTerminalCT')
             document.querySelector('.terminalTopScreen').classList.remove('pixeledTerminalTopScreen')
             document.querySelector('.terminalBottomScreen').classList.remove('pixeledTerminalBottomScreen')
-            document.querySelector('.userInfoThumb').src = './baboo-ascii.webm'
+            document.querySelector('.userInfoThumb').src = '/baboo-ascii.webm'
         }
         if (themeClass.toLowerCase() === 'light') {
             document.querySelector('.userInfoThumb').src = '/themes/light/baboo-light.webm'
