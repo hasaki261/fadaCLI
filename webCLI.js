@@ -169,7 +169,7 @@ async function showCommands() {
     })
 }
 async function changeTheme(theme, getThemes = false) {
-    const themes = await (await fetch(`./themes/themes.json`)).json()
+    const themes = await (await fetch(`/themes.json`)).json()
     if (getThemes) return themes
     let themeClass
     let isValidTheme = false
