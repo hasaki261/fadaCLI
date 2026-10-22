@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/zzz/uid/:path*",
+      "destination": "https://enka.network/api/zzz/uid/:path*"
+    },
+    {
+      "source": "/ascii/api/convert",
+      "destination": "https://yourascii.vercel.app/api/convert"
+    }
+  ]
+}
