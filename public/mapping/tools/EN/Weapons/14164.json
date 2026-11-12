@@ -1,0 +1,39 @@
+{
+    "ItemName": "Plume of Rebirth",
+    "Rarity": 4,
+    "ImagePath": "Weapon_S_1641",
+    "Profession": {
+        "Type": "Anomaly",
+        "Name": "Anomaly"
+    },
+    "MainStat": {
+        "PropertyId": 12101,
+        "PropertyValue": 48
+    },
+    "SecondaryStat": {
+        "PropertyId": 31402,
+        "PropertyValue": 1200
+    },
+    "Talents": {
+        "1": {
+            "Title": "Hatching Day",
+            "Description": "The equipper's Anomaly Proficiency increases by <color=#2BAD00>90</color>. When Anomaly DMG dealt by any squad member to an enemy triggers a critical hit, the equipper's <color=#FF5521>Fire DMG</color> increases by <color=#2BAD00>40%</color> for 20s. Repeated triggers reset the duration."
+        },
+        "2": {
+            "Title": "Hatching Day",
+            "Description": "The equipper's Anomaly Proficiency increases by <color=#2BAD00>99</color>. When Anomaly DMG dealt by any squad member to an enemy triggers a critical hit, the equipper's <color=#FF5521>Fire DMG</color> increases by <color=#2BAD00>44%</color> for 20s. Repeated triggers reset the duration."
+        },
+        "3": {
+            "Title": "Hatching Day",
+            "Description": "The equipper's Anomaly Proficiency increases by <color=#2BAD00>108</color>. When Anomaly DMG dealt by any squad member to an enemy triggers a critical hit, the equipper's <color=#FF5521>Fire DMG</color> increases by <color=#2BAD00>48%</color> for 20s. Repeated triggers reset the duration."
+        },
+        "4": {
+            "Title": "Hatching Day",
+            "Description": "The equipper's Anomaly Proficiency increases by <color=#2BAD00>117</color>. When Anomaly DMG dealt by any squad member to an enemy triggers a critical hit, the equipper's <color=#FF5521>Fire DMG</color> increases by <color=#2BAD00>52%</color> for 20s. Repeated triggers reset the duration."
+        },
+        "5": {
+            "Title": "Hatching Day",
+            "Description": "The equipper's Anomaly Proficiency increases by <color=#2BAD00>126</color>. When Anomaly DMG dealt by any squad member to an enemy triggers a critical hit, the equipper's <color=#FF5521>Fire DMG</color> increases by <color=#2BAD00>56%</color> for 20s. Repeated triggers reset the duration."
+        }
+    }
+}
