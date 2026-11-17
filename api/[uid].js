@@ -8,7 +8,8 @@ export default async function handler(req, res) {
         try {
             const response  = await fetch(url,  {
                 headers: {
-                    Accept: "application/json"
+                    Accept: "application/json",
+                    "User-Agent": "fadaCLI (https://fada-cli.vercel.app) hasak116"
                 },
             })
             if (response.ok) {
